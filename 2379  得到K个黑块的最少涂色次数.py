@@ -19,4 +19,4 @@ class Solution:
             if cur > big:
                 big = cur
 
-        return(k - big)
+        return k - big

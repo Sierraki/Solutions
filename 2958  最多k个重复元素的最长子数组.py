@@ -17,4 +17,4 @@ class Solution:
             cur = i - left + 1
             big = max(cur, big)
 
-        return(big)
+        return big

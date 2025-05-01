@@ -4,11 +4,10 @@ class Solution:
         k = sum(nums)
 
         nums += nums
-  
 
         cur = big = sum(nums[:k])
 
         for i in range(k, n + k):
             cur += nums[i] - nums[i - k]
             big = max(big, cur)
-        return(k - big)
+        return k - big

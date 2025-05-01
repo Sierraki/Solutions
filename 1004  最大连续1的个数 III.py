@@ -3,7 +3,7 @@ class Solution:
         n = len(nums)
 
         cnt = defaultdict(int)
-    
+
         wl = 0
         one = zero = 0
         for i in range(n):
@@ -18,7 +18,6 @@ class Solution:
                 if cnt[nums[i - wl]] == 0:
                     del cnt[nums[i - wl]]
 
-            #return(dict(cnt), nums[i - wl + 1 : i + 1], one, zero)
+            # return(dict(cnt), nums[i - wl + 1 : i + 1], one, zero)
 
-        return(one + zero)
-        
+        return one + zero

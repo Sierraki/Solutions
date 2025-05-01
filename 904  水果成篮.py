@@ -8,7 +8,6 @@ class Solution:
 
         n = len(nums)
 
-
         for i in range(n):
             if not cnt or (len(cnt) < 2) or (len(cnt) == 2 and cnt[nums[i]] != 0):
                 cnt[nums[i]] += 1
@@ -19,5 +18,5 @@ class Solution:
                 if cnt[nums[i - cur]] == 0:
                     del cnt[nums[i - cur]]
 
-            #print(dict(cnt), nums[i - cur + 1 : i + 1], cur)
-        return(cur)
+            # print(dict(cnt), nums[i - cur + 1 : i + 1], cur)
+        return cur

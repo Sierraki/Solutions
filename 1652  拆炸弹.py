@@ -8,7 +8,7 @@ class Solution:
             for i in range(k, k + n):
                 init += code[i] - code[i - k]
                 code[i - k] = init
-            return(code[:n])
+            return code[:n]
 
         elif k < 0:
             init = sum(code[n + k : n])
@@ -16,9 +16,7 @@ class Solution:
             for i in range(n, 2 * n):
                 init += code[i] - code[i + k]
                 code[i - n + 1] = init
-            return(code[:n])
+            return code[:n]
 
         else:
-            return([0 for i in range(n)])
-
-                
+            return [0 for i in range(n)]

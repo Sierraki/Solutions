@@ -6,9 +6,8 @@ class Solution:
 
         s = cur = sum(nums[:k])
 
-
         for i in range(k, n):
             cur += nums[i] - nums[i - k]
             s = max(s, cur)
 
-        return(k - s)
+        return k - s

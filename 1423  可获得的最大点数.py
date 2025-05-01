@@ -10,11 +10,9 @@ class Solution:
             cur += cardPoints[i]
         s = cur
 
-
         for i in range(wl, n):
 
             cur = cur + cardPoints[i] - cardPoints[i - wl]
             s = min(cur, s)
 
-
-        return(t - s)
+        return t - s

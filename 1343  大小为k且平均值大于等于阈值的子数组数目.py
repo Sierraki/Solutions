@@ -3,7 +3,6 @@ class Solution:
         f = sum(arr[:k])
         target = k * threshold
 
-
         cur = f
         cnt = 0
         if cur >= target:
@@ -14,4 +13,4 @@ class Solution:
             cur = arr[i] - arr[i - k] + cur
             if cur >= target:
                 cnt += 1
-        return(cnt)
+        return cnt

@@ -1,6 +1,6 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s = "".join([i.lower() for i in s if i.isalpha()or i.isalnum()])
+        s = "".join([i.lower() for i in s if i.isalpha() or i.isalnum()])
 
         n = len(s)
 
@@ -15,4 +15,4 @@ class Solution:
             else:
                 stat = False
                 break
-        return(stat)
+        return stat

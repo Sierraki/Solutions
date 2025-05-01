@@ -7,7 +7,7 @@ class Solution:
         cur = 0
 
         for i in range(n):
-            if cnt[s[i]] <2 and max(cnt.values()) <= 2:
+            if cnt[s[i]] < 2 and max(cnt.values()) <= 2:
                 cnt[s[i]] += 1
                 cur += 1
             else:
@@ -16,4 +16,4 @@ class Solution:
                 if cnt[s[i - cur]] == 0:
                     del cnt[s[i - cur]]
 
-        return(cur)
+        return cur

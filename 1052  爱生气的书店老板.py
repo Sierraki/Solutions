@@ -1,5 +1,7 @@
 class Solution:
-    def maxSatisfied(self, customers: List[int], grumpy: List[int], minutes: int) -> int:
+    def maxSatisfied(
+        self, customers: List[int], grumpy: List[int], minutes: int
+    ) -> int:
         nums = customers
         g = grumpy
         k = minutes
@@ -19,5 +21,4 @@ class Solution:
             if g[i - k] == 1:
                 w -= nums[i - k]
             big = max(w, big)
-        return(big + s)
-
+        return big + s

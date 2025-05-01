@@ -15,4 +15,4 @@ class Solution:
                 if cnt[s[left]] == 0:
                     del cnt[s[left]]
                 left += 1
-        return(big)
+        return big

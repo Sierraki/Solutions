@@ -35,4 +35,4 @@ class Solution:
                     del d2[nums[i - wl]]
         b = wl
 
-        return(max(a, b))
+        return max(a, b)

@@ -3,6 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums1 in-place instead.
         """
-        nums1[m:]=nums2
+        nums1[m:] = nums2
         nums1.sort()
         return nums1

@@ -17,9 +17,9 @@ class Solution:
                 # return(i - k - 1, i, i + k)
                 summ = summ + nums[i + k] - nums[i - k - 1]
                 avg = int(summ / (2 * k + 1))
-                
+
                 com.append(avg)
 
             for i in range(k):
                 com.append(-1)
-            return(com)
+            return com

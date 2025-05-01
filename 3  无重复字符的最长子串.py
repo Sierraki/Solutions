@@ -20,5 +20,4 @@ class Solution:
                 r += 1
                 l += 1
 
-
-        return(big)
+        return big

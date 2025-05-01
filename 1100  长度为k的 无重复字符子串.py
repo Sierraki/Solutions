@@ -4,7 +4,7 @@ class Solution:
         n = len(s)
         s = [s[i] for i in range(n)]
 
-        if k>n:
+        if k > n:
             return 0
         else:
 
@@ -24,4 +24,4 @@ class Solution:
                 if len(cnt) == k:
                     c += 1
 
-            return(c)
+            return c

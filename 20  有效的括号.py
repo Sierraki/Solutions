@@ -1,30 +1,17 @@
-
 class Solution:
     def isValid(self, s: str) -> bool:
-            s = [i for i in s]
-            al = {"[": "]", "(": ")", "{": "}"}
-            ar = {"]": "[", ")": "(", "}": "{"}
+        mapping = {")": "(", "}": "{", "]": "["}
+        stack = []
 
-            # 最晚出现的左括号最先匹配
-            # 先出现的左括号后匹配
+        if len(s) % 2 != 0:
+            return False
 
-            left=[]
+        for char in s:
+            if char in mapping.values():
+                stack.append(char)
+            elif char in mapping:
+                if not stack or stack[-1] != mapping[char]:
+                    return False
+                stack.pop()
 
-            st=True
-            n=len(s)
-            if n%2!=0:
-                return(False)
-            else:
-                for i in s:
-                    if i in al:
-                        left.append(i)
-                    else:
-                        if not left or ar[i]!=left[-1]:
-                            st=False
-                            break
-                        else:
-                            left.pop(-1)
-                if left:
-                    st=False
-                        
-            return(st)
+        return not stack

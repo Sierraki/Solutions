@@ -20,5 +20,4 @@ class Solution:
                 a.append(list1[t])
                 t += 1
 
-
         return a

@@ -9,4 +9,4 @@ class Solution:
             if int(a) != 0 and num % int(a) == 0:
                 cnt += 1
 
-        return(cnt)
+        return cnt

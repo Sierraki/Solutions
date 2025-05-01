@@ -10,4 +10,4 @@ class Solution:
             a = s[i - k + 1 : i + 1]
             if len(set(a)) <= maxLetters:
                 cnt[a] += 1
-        return(max(cnt.values()) if cnt else 0)
+        return max(cnt.values()) if cnt else 0

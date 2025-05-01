@@ -17,4 +17,4 @@ class Solution:
                 del cnt[nums[i - k]]
             a.append(len(cnt))
 
-        return(a)
+        return a

@@ -9,7 +9,6 @@ class Solution:
         for i in s1:
             dict1[i] += 1
 
-
         if len(s2) >= len(s1):
             for i in range(k):
                 dict2[s2[i]] += 1
@@ -26,7 +25,6 @@ class Solution:
                     stat = True
                     break
 
-
         else:
             stat = False
-        return(stat)
+        return stat

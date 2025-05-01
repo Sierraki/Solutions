@@ -12,7 +12,7 @@ class Solution:
         maxx = cnt  # 1
         cur = cnt
 
-        #print(s)
+        # print(s)
         for j in range(k, len(s)):
 
             if s[j] in yy:
@@ -22,6 +22,6 @@ class Solution:
 
             if cur > maxx:
                 maxx = cur
-            #print(s[j - k], s[j], cur, maxx)
+            # print(s[j - k], s[j], cur, maxx)
 
-        return(maxx)
+        return maxx

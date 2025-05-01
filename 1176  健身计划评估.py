@@ -1,5 +1,7 @@
 class Solution:
-    def dietPlanPerformance(self, calories: List[int], k: int, lower: int, upper: int) -> int:
+    def dietPlanPerformance(
+        self, calories: List[int], k: int, lower: int, upper: int
+    ) -> int:
         nums = calories
         n = len(calories)
 
@@ -18,4 +20,4 @@ class Solution:
                 s -= 1
             elif cur > upper:
                 s += 1
-        return(s)
+        return s

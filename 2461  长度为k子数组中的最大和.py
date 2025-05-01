@@ -1,11 +1,10 @@
 class Solution:
     def maximumSubarraySum(self, nums: List[int], k: int) -> int:
-        m=k
+        m = k
         n = len(nums)
         cnt = defaultdict(int)
         cur = 0
         big = 0
-
 
         for i in range(k):
             cnt[nums[i]] += 1
@@ -28,4 +27,4 @@ class Solution:
             if len(cnt) >= m and cur > big:
                 big = cur
 
-        return(big)
+        return big

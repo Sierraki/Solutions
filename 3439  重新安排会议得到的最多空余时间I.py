@@ -1,6 +1,8 @@
 class Solution:
-    def maxFreeTime(self, eventTime: int, k: int, startTime: List[int], endTime: List[int]) -> int:
-        
+    def maxFreeTime(
+        self, eventTime: int, k: int, startTime: List[int], endTime: List[int]
+    ) -> int:
+
         n = len(startTime)
         a = [startTime[i] - endTime[i - 1] for i in range(1, n)]
 
@@ -16,4 +18,4 @@ class Solution:
         for i in range(j, len(a)):
             cur += a[i] - a[i - j]
             big = max(big, cur)
-        return(big)
+        return big

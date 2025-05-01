@@ -6,7 +6,7 @@ class Solution:
         k = len(p)
 
         n = len(s)
-        a=[]
+        a = []
 
         for i in p:
             d2[i] += 1
@@ -22,4 +22,4 @@ class Solution:
             if d1 == d2:
                 a.append(i - k + 1)
 
-        return(a)
+        return a

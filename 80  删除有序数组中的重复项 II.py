@@ -4,7 +4,7 @@ class Solution:
 
         cnt = 0
 
-        for right in range( len(nums)):
+        for right in range(len(nums)):
             if nums[right] == nums[right - 1]:
                 cnt += 1
             else:

@@ -6,4 +6,3 @@ class Solution:
                 nums[k] = x
                 k += 1
         return k
- 
