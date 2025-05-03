@@ -51,7 +51,7 @@ class Solution:
         window_counts = defaultdict(int)
 
         # 最小窗口长度、起始位置
-        min_len = float("inf")
+        min_len = float("inf")#最大值
         result = (0, 0)  # 窗口起止索引
 
         while right < n:
