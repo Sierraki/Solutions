@@ -1,30 +1,26 @@
-from sortedcontainers import SortedList as sl  # 修正类名大小写
+from collections import defaultdict
 
-bulbs = [6, 5, 8, 9, 7, 1, 10, 2, 3, 4]
+s = "1010101"
 k = 2
-n = len(bulbs)
-# 转换数组
-nums = [0] * n
-for idx, i in enumerate(bulbs, start=1):
-    nums[i - 1] = idx
-print(nums)
-# 进入判断
-k += 2
-a = sl(nums[:k])
-ans = cur = float("inf")
-if nums[0] in a[:2] and nums[k] in a[:2]:
-    ans = cur = max(a[:2])
+cur = 0
+left = right = 0
+cnt = defaultdict(int)
+n = len(s)
 
-for i in range(k, n):
-    # 加入元素nums[i]
-    a.add(nums[i])
-    # 删除元素nums[i-k]
-    a.remove(nums[i - k])
-    # 判断两端点，nums[i],nums[i-k+1]
-    if nums[i] in a[:2] and nums[i - k + 1] in a[:2]:
-        cur = max(a[:2])
-        ans = min(ans, cur)
-if ans==float("inf"):
-    return -1
-else:
-    return ans
+while right < n:
+    cnt[s[right]] += 1
+    if cnt["0"] <= k or cnt["1"] <= k:
+        cur += 1
+        right += 1
+    else:
+        cnt.clear()
+        left += 1
+        right = left
+
+    if right >= n:
+        cnt.clear()
+        left += 1
+        right = left
+
+    # print(s[left : right + 1], cur)
+print(cur)

@@ -1,20 +1,44 @@
-from collections import defaultdict
+class Solution:
+    def countKConstraintSubstrings(self, s: str, k: int) -> int:
+        cur = 0
+        left = right = 0
+        cnt = defaultdict(int)
+        n = len(s)
+        while right < n:
+            cnt[s[right]] += 1
+            if cnt["0"] <= k or cnt["1"] <= k:
+                cur += 1
+                right += 1
+            else:
+                cnt.clear()
+                left += 1
+                right = left
 
-s = "10101"
-k = 1
+            if right >= n:
+                cnt.clear()
+                left += 1
+                right = left
+            # print(s[left : right + 1], cur)
+        return cur
 
-cnt = defaultdict(int)
-left = right = 0
-n = len(s)
-cnt[s[0]] += 1
-cur = 0
-while right <n:
-    # 移动左
-    if min(cnt.values()) <= k:
-        cur += 1
-        left += 1
-    # 移动右
-    else:
-        right += 1
+from collections import defaultdict as dd
 
-    print(cur)
+
+class Solution:
+    def countKConstraintSubstrings(self, s: str, k: int) -> int:
+        cur = 0
+        left = right = 0
+        cnt = defaultdict(int)
+        n = len(s)
+
+        while right < n:
+            cnt[s[right]] += 1
+            while cnt["0"] > k and cnt["1"] > k:  # 如果窗口不满足条件，收缩左边界
+                cnt[s[left]] -= 1
+                if cnt[s[left]] == 0:
+                    del cnt[s[left]]
+                left += 1
+            cur += right - left + 1  # 统计以 right 为右边界的子串数量
+            right += 1
+
+        return cur
