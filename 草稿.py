@@ -1,26 +1,39 @@
 from collections import defaultdict
-
-s = "1010101"
-k = 2
-cur = 0
-left = right = 0
-cnt = defaultdict(int)
-n = len(s)
-
-while right < n:
-    cnt[s[right]] += 1
-    if cnt["0"] <= k or cnt["1"] <= k:
-        cur += 1
-        right += 1
+nums = [1, 1, 1, 1, 1, 1]
+k = 4
+n = len(nums)
+mo = 10**9 + 7
+cnt = defaultdict(list)
+for i in range(k):
+    if nums[i] not in cnt:
+        cnt[nums[i]] = [nums[i]]
     else:
-        cnt.clear()
-        left += 1
-        right = left
+        cnt[nums[i]].append(nums[i] * cnt[nums[i]][-1])
+res = sum(i[-1] for i in cnt.values())
+cur = mx = res % mo
 
-    if right >= n:
-        cnt.clear()
-        left += 1
-        right = left
+for i in range(k, n):
+    # 受影响的数，是nums[i],nums[i-k]
+    if nums[i] == nums[i - k]:
+        continue
+    else:
+        # REMOVE
+        res -= cnt[nums[i - k]][-1]
+        cnt[nums[i - k]].pop()
+        if cnt[nums[i - k]] == []:
+            del cnt[nums[i - k]]
+        else:
+            res += cnt[nums[i - k]][-1]
+        # add
 
-    # print(s[left : right + 1], cur)
-print(cur)
+        if nums[i] in cnt:
+            res -= cnt[nums[i]][-1]
+            cnt[nums[i]].append(nums[i] * cnt[nums[i]][-1])
+        else:
+            cnt[nums[i]] = [nums[i]]
+        res += cnt[nums[i]][-1]
+
+        cur = res % mo
+        mx = max(cur, mx)
+        print(cur, mx)
+print(cur, mx)

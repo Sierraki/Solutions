@@ -5,7 +5,6 @@ class Solution:
         r = 0
         cur = big = 0
         n = len(s)
-
         while r < n and l <= r:
             if cnt[s[r]] < 1 and len(cnt) == r - l + 1:
                 cnt[s[r]] += 1
@@ -19,5 +18,4 @@ class Solution:
                     del cnt[s[l]]
                 r += 1
                 l += 1
-
         return big
