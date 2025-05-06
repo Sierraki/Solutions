@@ -22,7 +22,6 @@ class Solution:
 
 from collections import defaultdict 
 
-
 class Solution:
     def countKConstraintSubstrings(self, s: str, k: int) -> int:
         cur = 0
