@@ -6,10 +6,8 @@ class Solution:
             for i in range(n):
                 if n == 2**i:
                     return True
-                    break
                 elif 2**i > n:
                     return False
-                    break
 
 
 eg = Solution()
