@@ -2,3 +2,5 @@ import bisect
 from sortedcontainers import SortedList
 from collections import defaultdict, Counter
 
+s = "KRSCDCSONAJNHLBMDQGIFCPEKPOHQIHLTDIQGEKLRLCQNBOHNDQGHJPNDQPERNFSSSRDEQLFPCCCARFMDLHADJADAGNNSBNCJQOF"
+
