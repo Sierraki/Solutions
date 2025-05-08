@@ -1,22 +1,24 @@
-nums = [1, 2, 3, 4]
+from collections import Counter
+import bisect
 
-a = [1]
-n = len(nums)
-b = nums.copy()
-print(nums)
-for i in range(1, n):
-    a.append(a[i - 1] * nums[i - 1])
-print(a)
 
-res = 1
-for j in range(n - 1, -1, -1):
-    if j == n - 1:
-        b[j] = res
-    else:
-        res *= nums[j + 1]
-        b[j] = res
+queries = ["cbd"]
+words = ["zaaaz"]
+for idx, i in enumerate(words):
+    a = Counter(i)
+    words[idx] = a[min(a)]
 
-print(b)
-for i in range(n):
-    nums[i] = a[i] * b[i]
-print(nums)
+for idx, i in enumerate(queries):
+    a = Counter(i)
+    queries[idx] = a[min(a)]
+
+words.sort()
+print(words)
+print(queries)
+n = len(words)
+
+for idx, i in enumerate(queries):
+    lc = bisect.bisect(words, i)
+    queries[idx] = n - lc
+
+print(queries)
