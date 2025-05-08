@@ -1,38 +1,18 @@
+from collections import defaultdict
+
+
 class Solution:
     def maxConsecutiveAnswers(self, answerKey: str, k: int) -> int:
-        nums = answerKey
-
-        n = len(nums)
-
-        d1 = defaultdict(int)
-        wl = 0
-
-        # F --> T
-        for i in range(n):
-            if d1["F"] < k or (d1["F"] == k and nums[i] == "T"):
-                d1[nums[i]] += 1
-                wl += 1
-            elif d1["F"] > k or (d1["F"] == k and nums[i] == "F"):
-                d1[nums[i]] += 1
-                d1[nums[i - wl]] -= 1
-                if d1[nums[i - wl]] == 0:
-                    del d1[nums[i - wl]]
-
-        a = wl
-
-        d2 = defaultdict(int)
-        wl = 0
-
-        # F --> T
-        for i in range(n):
-            if d2["T"] < k or (d2["T"] == k and nums[i] == "F"):
-                d2[nums[i]] += 1
-                wl += 1
-            elif d2["T"] > k or (d2["T"] == k and nums[i] == "T"):
-                d2[nums[i]] += 1
-                d2[nums[i - wl]] -= 1
-                if d2[nums[i - wl]] == 0:
-                    del d2[nums[i - wl]]
-        b = wl
-
-        return max(a, b)
+        # 窗口内元素，频次最小的要小于等于k
+        cnt = defaultdict(int)
+        left = mx = 0
+        for idx, right in enumerate(answerKey):
+            cnt[right] += 1
+            target = max(cnt.values())
+            while idx - left + 1 - target > k:
+                cnt[answerKey[left]] -= 1
+                if cnt[answerKey[left]] == 0:
+                    del cnt[answerKey[left]]
+                left += 1
+            mx = max(mx, idx - left + 1)
+        return mx
