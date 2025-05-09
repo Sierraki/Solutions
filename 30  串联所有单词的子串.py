@@ -10,7 +10,7 @@ class Solution:
         left, right = 0, k - 1
         ans = []  # 答案列表
         while right < len(s):
-            tmp = []  # 临时表 
+            tmp = []  # 临时表
             for i in range(left, right + 1, n):
                 tmp.append(s[i : i + n])
             if Counter(tmp) == target:
