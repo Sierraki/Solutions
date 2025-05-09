@@ -13,7 +13,6 @@ class Solution:
             tmp = []  # 临时表
             for i in range(left, right + 1, n):
                 tmp.append(s[i : i + n])
-                # print(tmp)
             if Counter(tmp) == target:
                 ans.append(left)
             left += 1
