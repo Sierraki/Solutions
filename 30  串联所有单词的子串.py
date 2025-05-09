@@ -13,6 +13,10 @@ class Solution:
             tmp = []  # 临时表
             for i in range(left, right + 1, n):
                 tmp.append(s[i : i + n])
+<<<<<<< HEAD
+=======
+                # print(tmp)
+>>>>>>> c06d07604492383854bf04633e5541ca710f4ed8
             if Counter(tmp) == target:
                 ans.append(left)
             left += 1
