@@ -1,24 +1,16 @@
-from collections import Counter
+from collections import Counter, defaultdict
 import bisect
 
+strs = ["flower", "flow", "flight"]
 
-queries = ["cbd"]
-words = ["zaaaz"]
-for idx, i in enumerate(words):
-    a = Counter(i)
-    words[idx] = a[min(a)]
+ans = []
+strs.sort()
+for i in range(len(strs[0])):
+    if strs[0][i] == strs[-1][i]:
+        ans.append(strs[0][i])
+    else:
+        break
+print(strs)
+ans = "".join(ans)
 
-for idx, i in enumerate(queries):
-    a = Counter(i)
-    queries[idx] = a[min(a)]
-
-words.sort()
-print(words)
-print(queries)
-n = len(words)
-
-for idx, i in enumerate(queries):
-    lc = bisect.bisect(words, i)
-    queries[idx] = n - lc
-
-print(queries)
+print(ans)
