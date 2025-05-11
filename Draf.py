@@ -1,8 +1,12 @@
-from collections import Counter
+import string
 
-points = [[1,1],[2,3],[3,2]]
+target = 18
 
-st=True
-points.sort()
+nums = [i for i in range(target)]
+print(nums)
 
-if points[1][0]-points[0][0]==points[2][0]-points[1][0] and points[1][0]-points[0][0]==points[2][0]-points[1][0]
+left,right=0,1
+cur=nums[left]
+while right<target:
+    cur+=nums[right]
+    while cur!=target<18
