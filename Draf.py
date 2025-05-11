@@ -1,12 +1,17 @@
-import string
+from collections import Counter
 
-target = 18
-
-nums = [i for i in range(target)]
-print(nums)
-
-left,right=0,1
-cur=nums[left]
-while right<target:
-    cur+=nums[right]
-    while cur!=target<18
+s = "aaaabbbbcccc"
+cnt = Counter(s)
+print(cnt)
+a = [i for i in cnt]
+print(a)
+k = len(cnt)
+n = len(s)
+print(n, k)
+a1 = sorted(a)
+a2 = sorted(a, reverse=True)
+print(a1, a2)
+a=a1+a2
+b = a * int(n / k/2)
+b = "".join(b)
+print(b)
