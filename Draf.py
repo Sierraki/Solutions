@@ -1,17 +1,24 @@
-from collections import defaultdict
+class Solution:
+    def dell(self, s: str):
+        s = [i for i in s]
+        pin = len(s) - 2
+        while pin >= 0:
+            if (s[pin] == "C" and s[pin + 1] == "D") or (
+                s[pin] == "A" and s[pin + 1] == "B"
+            ):
+                del s[pin]
+                del s[pin]
+                pin -= 2
+            else:
+                pin-=1
+        return s
+    def minLength(self, s: str) -> int:
+        last=cur=len(self.s)
+        while cur>=last:
+            
+        
 
-items1 = [[1, 1], [4, 5], [3, 8]]
-items2 = [[3, 1], [1, 5]]
 
-cnt = defaultdict()
-items1 += items2
-for i in items1:
-    if i[0] not in cnt:
-        cnt[i[0]] = 0
-print(cnt)
-for i in items1:
-    cnt[i[0]] += i[1]
-print(cnt)
-a = [[i, j] for i, j in cnt.items()]
-a.sort()
-print(a)
+eg = Solution()
+
+eg.minLength("ABFCACDB")
