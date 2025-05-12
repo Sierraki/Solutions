@@ -1,24 +1,20 @@
-class Solution:
-    def dell(self, s: str):
-        s = [i for i in s]
-        pin = len(s) - 2
-        while pin >= 0:
-            if (s[pin] == "C" and s[pin + 1] == "D") or (
-                s[pin] == "A" and s[pin + 1] == "B"
-            ):
-                del s[pin]
-                del s[pin]
-                pin -= 2
-            else:
-                pin-=1
-        return s
-    def minLength(self, s: str) -> int:
-        last=cur=len(self.s)
-        while cur>=last:
-            
-        
+from collections import Counter
 
+num1 = 1
+num2 = 10
+num3 = 100
 
-eg = Solution()
+nums = [str(num1), str(num2), str(num3)]
+for i in range(len(nums)):
+    nums[i] = nums[i].zfill(4)
+print(nums)
+a = []
+for i in range(len(nums[0])):
+    mi = 9
+    for j in nums:
+        mi = min(mi, int(j[i]))
+    a.append(mi)
 
-eg.minLength("ABFCACDB")
+print(a)
+b = "".join(map(str, a))
+print(int(b))
