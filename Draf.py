@@ -1,4 +1,6 @@
-actions = [1, 2, 3, 4, 5]
+import bisect
+from collections import Counter, defaultdict
 
-odd=[i for i in actions if i%2==0]
-even = [i for i in actions if i % 2 == 1]
+
+a = ["" ]* 10
+print(a)
