@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 class Solution:
     def lengthOfLongestSubstring(self, s: str) -> int:
         cnt = defaultdict(int)
