@@ -3,11 +3,11 @@ from collections import Counter, defaultdict
 from itertools import count
 from datetime import datetime
 
-n = 11
-a = bin(n)[2:]
-for i in range(len(a) - 1):
-    if a[i] == a[i + 1]:
-        print(False)
-        break
-else:
-    print(True)
+nums = [1, 3, 6, 10, 12, 15]
+
+cur = cnt = 0
+for i in nums:
+    if i % 6 == 0:
+        cur += i
+        cnt += 1
+print(cur // cnt)
