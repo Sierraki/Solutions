@@ -1,4 +1,12 @@
-actions = [1, 2, 3, 4, 5]
+from collections import Counter, defaultdict
 
-odd=[i for i in actions if i%2==0]
-even = [i for i in actions if i % 2 == 1]
+
+word = "aeioqq"
+k = 1
+
+d1 = ["a", "e", "i", "o", "u"]
+cnt = {"a": 0, "e": 0, "i": 0, "o": 0, "u": 0}
+cur = 0
+cnt = Counter(word[:5])
+if len(cnt)
+print(cnt)
