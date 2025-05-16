@@ -1,49 +1,37 @@
-import bisect
 from collections import Counter, defaultdict
-from itertools import count
-from datetime import datetime
 
 
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+word = "aeiou"
+k = 0
 
+cnt = {"a": 0, "e": 0, "i": 0, "o": 0, "u": 0}
+fcnt = Counter()
+su = 0  # total cnt
 
-def link(value):
-    if not value:
-        return None
-    head = ListNode(value[0])
-    pin = head
-    for i in value[1:]:
-        pin.next = ListNode(i)
-        pin = pin.next
-    return head
+for i in word[: (5 + k)]:
+    if i in cnt:
+        cnt[i] += 1
+    else:
+        fcnt[i] += 1
+if len(cnt) >= 5 and len(fcnt) == k and min(fcnt.values()) == 1 :
+    su += 1
+wl = k + 5
+for i in range(k + 5, len(word)):
+    # remove
+    if word[i - wl] in cnt:
+        cnt[word[i - wl]] -= 1
+    else:
+        fcnt[word[i - wl]] -= 1
+        if fcnt[word[i - wl]] == 0:
+            del fcnt[word[i - wl]]
 
+    # add
+    if word[i] in cnt:
+        cnt[word[i]] += 1
+    else:
+        fcnt[word[i]] += 1
 
-def printf(head):
-    while head:
-        print(head.val, end="->")
-        head = head.next
-    print("None")
-
-
-class Solution:
-
-    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        head = ListNode(0)
-        pin = head
-
-        if l1.val <= l2.val:
-            pin.next = l1
-            l1 = l1.next
-        else:
-            pin.next = l2
-            l2 = l2.next
-        pin = pin.next
-
-        return head
-
-
-eg = Solution()
-print(printf(eg.mergeTwoLists(link([1, 2, 4]), link([1, 2, 4]))))
+    if min(cnt.values()) >= 1 and len(fcnt) == k and min(fcnt.values()) == 1:
+        su += 1
+    print(word[i - wl + 1 : i + 1], su, cnt, fcnt)
+print(su)
