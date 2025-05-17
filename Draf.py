@@ -1,20 +1,16 @@
+from collections import defaultdict, Counter
+from bisect import bisect
 from typing import List
 from math import sqrt, floor
 
-m = 2
-n = 3
-indices = [[0, 1], [1, 1]]
-row = [0] * n
-print(row)
-ma = []
-for _ in range(m):
-    ma.append(row)
-print(ma)
-for i in indices:
-    # row
-    for j in range(n):
-        ma[i[0]][j] += 1
-    # col
-    for k in range(m):
-        ma[k][i[1]] += 1
-    print(ma)
+strs = ["alic3", "bob", "3", "4", "00000"]
+
+
+mx = 0
+for idx, i in enumerate(strs):
+    if i.isdigit():
+        strs[idx] = int(i)
+    else:
+        strs[idx] = len(i)
+    mx = max(strs[idx], mx)
+print(mx)
