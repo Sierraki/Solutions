@@ -9,7 +9,6 @@ class Solution:
         if nums == []:
             return [a, b]
         elif nums != []:
-
             if target > nums[r] or target < nums[l]:
                 return [a, b]
             else:
@@ -22,12 +21,9 @@ class Solution:
                     if l == r:
                         break
                 a = l
-
                 l = 0
                 r = n - 1
-
                 while l < r:
-
                     if target >= nums[m]:
                         l = m
                     else:
@@ -36,5 +32,4 @@ class Solution:
                     if m == l:
                         break
                 b = m
-
                 return (a, b)

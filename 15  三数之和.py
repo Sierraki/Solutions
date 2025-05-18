@@ -3,7 +3,6 @@ class Solution:
         n = len(nums)
         nums.sort()
         print(nums)
-
         a = []
         for i in range(n - 2):
             if i > 0 and nums[i] == nums[i - 1]:
@@ -25,5 +24,4 @@ class Solution:
                     l += 1
                 else:
                     r -= 1
-
         return a
