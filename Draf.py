@@ -4,23 +4,25 @@ from typing import List
 from math import sqrt, floor
 
 
-players = [1, 100]
-trainers = [100, 1]
-players.sort()
-print(players)
-trainers.sort()
-cnt = 0
+transactions = [[2, 1], [5, 0], [4, 2]]
+loss = []  # cashback < cost
+profit = []  # cashback >= cost
+for cost, cashback in transactions:
+    if cashback < cost:
+        loss.append((cost, cashback))
+    else:
+        profit.append((cost, cashback))
+# 排序规则
+loss.sort(key=lambda x: x[1])  # 按 cashback 升序
+profit.sort(reverse=True)  # 按 cost 降序
+print(loss)
+print(profit)
+total = 0
+money = 0
+for cost, cashback in loss + profit:
+    if money < cost:
+        total += cost - money
+        money = cost
+    money = money - cost + cashback
 
-for i in trainers:
-    if players == []:
-        break
-    lc = bisect.bisect_left(players, i)
-    # print(i, lc)
-    if lc - 1 >= 0 and players[lc - 1] <= i:
-        cnt += 1
-        del players[lc - 1]
-    elif lc < len(players) and players[lc] <= i:
-        cnt += 1
-        del players[lc]
-
-print(cnt)
+print(total)
