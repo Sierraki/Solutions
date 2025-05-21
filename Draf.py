@@ -4,20 +4,18 @@ from typing import List
 from math import sqrt, floor
 
 
-nums = [1, 2, 3, 3, 2, 2]
+nums = [1, 2, -1, -2, 1, 0, -1]
 
-target = max(nums)
+nums = list(set(nums))
+nums.sort(reverse=True)
 
-mx = cur = 0
-left = right = 0
+cur = nums[0]
+print(nums,cur)
+for i in range(1, len(nums)):
+    last = cur
+    cur += nums[i]
+    if cur <= last:
 
-while right < len(nums):
-    if nums[right] == nums[left] == target:
-        right += 1
-        cur += 1
-        mx = max(cur, mx)
-    else:
-        right += 1
-        left = right
-        cur = 0
-print(mx)
+        break
+
+print(last)
