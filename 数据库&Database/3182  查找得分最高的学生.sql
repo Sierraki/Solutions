@@ -1,36 +1,24 @@
-with
-    a1 as (
-        select
-            student_id,
-            major,
-            course_id
-        from
-            students
-            cross join courses using (major)
-    ),
-    a2 as (
-        select
-            student_id,
-            major,
-            course_id,
-            grade
-        from
-            a1
-            left join enrollments using (student_id, course_id)
-    )
-select distinct
-    student_id
-from
-    a2
-where
-    student_id not in (
-        select
-            student_id
-        from
-            a2
-        where
-            grade <> 'A'
-            or grade is null
-    )
-order by
-    student_id
+WITH a1 AS
+(
+	SELECT  student_id
+	       ,major
+	       ,course_id
+	FROM students
+	CROSS JOIN courses USING
+	(major
+	)
+), a2 AS
+(
+	SELECT  student_id
+	       ,major
+	       ,course_id
+	       ,grade
+	FROM a1
+	LEFT JOIN enrollments USING
+	(student_id, course_id
+	)
+)
+SELECT  distinct student_id
+FROM a2
+WHERE student_id NOT IN ( SELECT student_id FROM a2 WHERE grade <> 'A' or grade is null )
+ORDER BY student_id
