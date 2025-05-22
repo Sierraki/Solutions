@@ -2,25 +2,13 @@ from collections import defaultdict, Counter
 from math import sqrt, floor
 import bisect
 
-boxes = [4, 3, 4, 1]
-warehouse = [5, 3, 3, 4, 1]
+costs = [[17, 2, 17], [16, 16, 5], [14, 3, 19]]
+n = len(costs)
 
-mi = float("inf")
-for idx, i in enumerate(warehouse):
-    mi = min(mi, i)
-    warehouse[idx] = mi
+for i in range(1, n):
+    for j in range(3):
+        b = costs[i - 1]
+        a = b.copy()
+        del a[j]
+        costs[i][j] += min(a)
 
-print(warehouse)
-boxes.sort()
-print(boxes)
-cnt = 0
-top = len(warehouse) - 1
-dow = 0
-while dow < (len(boxes)) and top>=0:
-    if boxes[dow] <= warehouse[top]:
-        cnt += 1
-        dow += 1
-        top -= 1
-    else:
-        top -= 1
-    print(cnt)
