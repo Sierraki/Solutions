@@ -3,11 +3,13 @@ from math import sqrt, floor
 import bisect, re
 
 
-s = "abccbaacz"
+nums = [2, 3, -1, 8, 4]
+total = sum(nums)
+n=len(nums)
+for i in range(1, n):
+    nums[i] += nums[i - 1]
 
-cnt=Counter()
+print(nums, total)
 
-for i in s:
-    cnt[i] += 1
-    if cnt[i]==2:
-        
+for i in range(n):
+    if 
