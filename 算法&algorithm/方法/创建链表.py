@@ -10,8 +10,8 @@ def build_linked_list(values):
     head = ListNode(values[0])
     current = head
     for val in values[1:]:
-        current.next = ListNode(val)
-        current = current.next
+        current.next = ListNode(val)  # 先复制
+        current = current.next  # 再移动
     return head
 
 

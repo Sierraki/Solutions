@@ -3,13 +3,13 @@ from math import sqrt, floor
 import bisect, re
 
 
-nums = [2, 3, -1, 8, 4]
-total = sum(nums)
-n=len(nums)
-for i in range(1, n):
-    nums[i] += nums[i - 1]
-
-print(nums, total)
-
-for i in range(n):
-    if 
+a = [2, 4, 3]
+b = [5, 6, 4]
+a = "".join(map(str, a))
+b = "".join(map(str, b))
+t = str(int(a) + int(b))
+print(t)
+b = []
+for i in range(len(t) - 1, -1, -1):
+    b.append(t[i])
+print(b)
