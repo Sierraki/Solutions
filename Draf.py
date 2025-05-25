@@ -12,3 +12,5 @@ s2 = [i for i in s2]
 mapp = {i: idx for idx, i in enumerate(s1)}
 # 环检测
 print(mapp)
+for i in range(len(s1)):
+    
