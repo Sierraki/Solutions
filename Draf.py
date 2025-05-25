@@ -3,13 +3,12 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-arr = [-10, 12, -20, -8, 15]
+s1 = "bank"
+s2 = "kanb"
 
-st = False
-a = set()
-for i in arr:
-    if i % 2 == 0:
-        a.add(i // 2)
-    if i in a:
-        st = True
-print(st)
+s1 = [i for i in s1]
+s2 = [i for i in s2]
+
+mapp = {i: idx for idx, i in enumerate(s1)}
+# 环检测
+print(mapp)
