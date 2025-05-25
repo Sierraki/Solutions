@@ -3,15 +3,18 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-matrix = [[-5]]
-target = -2
+s = "abc"
 
-a = [j for i in matrix for j in i]
-if not a:
-    print(False)
-a.sort()
-print(a)
-lc = bisect.bisect_left(a, target)
-lc1 = bisect.bisect(a, target)
 
-print(a[lc1-1] == target or a[lc-1] == target)
+def check(i, j):
+    return abs(ord(i) - ord(j)) == 1 or {i, j} == {"a", "z"}
+
+
+a = []
+for i in s:
+    if a != [] and check(a[-1], s[0]):
+        a.pop()
+    else:
+        a.append(s[0])
+    s = s[1:]
+print(a + list(s))
