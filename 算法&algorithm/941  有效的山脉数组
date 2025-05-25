@@ -1,19 +1,11 @@
 class Solution:
     def validMountainArray(self, arr: List[int]) -> bool:
-        if len(arr) < 3:
+        n = len(arr)
+        left = 0
+        while left + 1 < n and arr[left] < arr[left + 1]:
+            left += 1
+        if left == 0 or left == n - 1:
             return False
-        left, right = 0, len(arr) - 1
-        l = True
-        r = True
-        while left != right:
-            if arr[left] < arr[left + 1]:
-                left += 1
-            else:
-                l = False
-            if arr[right] < arr[right - 1]:
-                right -= 1
-            else:
-                r = False
-            if l == r == False:
-                break
-        return left == right and right != len(arr) - 1 and left != 0
+        while left + 1 < n and arr[left] > arr[left + 1]:
+            left += 1
+        return left == n - 1
