@@ -3,18 +3,13 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-s = "abc"
+arr = [-10, 12, -20, -8, 15]
 
-
-def check(i, j):
-    return abs(ord(i) - ord(j)) == 1 or {i, j} == {"a", "z"}
-
-
-a = []
-for i in s:
-    if a != [] and check(a[-1], s[0]):
-        a.pop()
-    else:
-        a.append(s[0])
-    s = s[1:]
-print(a + list(s))
+st = False
+a = set()
+for i in arr:
+    if i % 2 == 0:
+        a.add(i // 2)
+    if i in a:
+        st = True
+print(st)
