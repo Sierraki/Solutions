@@ -3,24 +3,18 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-s = "aababcabc"
+grid = [[5, 0, 0, 1], [0, 4, 1, 5], [0, 5, 2, 0], [4, 1, 0, 2]]
 
-cnt = Counter(s[:3])
-n = len(s)
-c = 0
-
-print(cnt)
+nz_cnt=z_cnt=0
+n = len(grid)
 for i in range(n):
-    if i < 2:
-        cnt[s[i]] += 1
-    elif i == 2 and len(cnt) == 3:
-        c += 1
-    elif i > 2:
-        cnt[s[i]] += 1
-        cnt[s[i - 3]] -= 1
-        if cnt[s[i - 3]] == 0:
-            del cnt[s[i - 3]]
-        if len(cnt) == 3:
-            c += 1
-        print(cnt, c)
-print(c)
+    if grid[i][i] !=0 :
+        nz_cnt+=1
+for i in range(n - 1, -1, -1):
+    if grid[i][i] != 0:
+        nz_cnt += 1
+for i in grid:
+    for j in i:
+        if j==0:
+            z_cnt+=1
+        
