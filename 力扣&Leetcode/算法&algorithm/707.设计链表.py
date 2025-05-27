@@ -1,15 +1,9 @@
-from collections import defaultdict, Counter
-from math import sqrt, floor
-import bisect, re
-from functools import lru_cache
-
-
 class MyLinkedList:
 
     def __init__(self):
         self.dummy = ListNode()
         self.len = 0
-        print(self.dummy)
+        # print(self.dummy)
 
     def get(self, index: int) -> int:
         pin = self.dummy
@@ -20,14 +14,14 @@ class MyLinkedList:
                 pin = pin.next
                 index -= 1
             return pin.val
-        print(pin.val)
+        # print(pin.val)
 
     def addAtHead(self, val: int) -> None:
         new = ListNode(val)
         new.next = self.dummy.next
         self.dummy.next = new
         self.len += 1
-        print(self.dummy)
+        # print(self.dummy)
 
     def addAtTail(self, val: int) -> None:
         new = ListNode(val)
@@ -36,19 +30,21 @@ class MyLinkedList:
             pin = pin.next
         pin.next = new
         self.len += 1
-        print(self.dummy)
+        # print(self.dummy)
 
     def addAtIndex(self, index: int, val: int) -> None:
         pin = self.dummy
         new = ListNode(val)
+        index -= 1
         if index + 1 <= self.len:
-            index -= 1
             while index >= 0:
+                print(pin.val)
                 pin = pin.next
                 index -= 1
             new.next = pin.next
             pin.next = new
-        print(self.dummy)
+            self.len += 1
+        # print(self.dummy)
 
     def deleteAtIndex(self, index: int) -> None:
         pin = self.dummy
@@ -57,7 +53,8 @@ class MyLinkedList:
                 pin = pin.next
                 index -= 1
             pin.next = pin.next.next
-        print(self.dummy)
+            self.len -= 1
+        # print(self.dummy)
 
 
 # Your MyLinkedList object will be instantiated and called as such:
