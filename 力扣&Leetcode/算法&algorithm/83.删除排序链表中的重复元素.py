@@ -39,3 +39,25 @@ class Solution:
             else:
                 pin.next = pin.next.next
         return head
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        if not head:
+            return None
+        cnt = Counter()
+        pin = head
+        dummy = ListNode()
+        p1 = dummy
+        while pin:
+            if pin.val not in cnt:
+                cnt[pin.val] += 1
+                p1.next = ListNode(pin.val)
+                p1 = p1.next
+            pin = pin.next
+        return dummy.next
