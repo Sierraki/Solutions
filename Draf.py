@@ -3,15 +3,16 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-s = "1111011110000011100000110001011011110010111001010111110001"
+words = ["mass", "as", "hero", "superhero"]
+words.sort(key=len, reverse=True)
 
-tar = int(s, 2)
-print(tar)
-cnt = 0
-while tar > 1:
-    if tar % 2 == 1:
-        tar += 1
-    else:
-        tar = tar // 2
-    cnt += 1
-print(cnt)
+a = []
+b = []
+for i in words:
+    if i not in a:
+        a.append(i)
+
+    for j in a:
+        if i in j and i != j:
+            b.append(i)
+print(b)
