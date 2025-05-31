@@ -3,16 +3,17 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-words = ["mass", "as", "hero", "superhero"]
-words.sort(key=len, reverse=True)
-
+queries = [3, 1, 2, 1]
+m = 5
+print(queries)
+nums = [i for i in range(1, m + 1)]
+print(nums)
 a = []
-b = []
-for i in words:
-    if i not in a:
-        a.append(i)
-
-    for j in a:
-        if i in j and i != j:
-            b.append(i)
-print(b)
+for i in queries:
+    lc = nums.index(i)
+    a.append(lc)
+    tar = nums[lc]
+    del nums[lc]
+    nums.insert(0, tar)
+    print(nums)
+print(a)
