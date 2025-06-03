@@ -10,16 +10,16 @@ logging.basicConfig(
 )
 
 
-nums = [1, 2, 8]
-target = 4
+a = [1, 2]
+n = len(a)
 
-sum = 1
-for i, x in enumerate(nums):
-    if (target % x):
-        return False
-    sum *= x
-    
-if sum / target == target:
-    return True
-    
-return False      
+left, right = 0, n - 1
+st = True
+while left != right and left < n // 2:
+    if a[left] == a[right]:
+        left += 1
+        right -= 1
+    else:
+        st = False
+        break
+print(st)
