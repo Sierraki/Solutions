@@ -4,9 +4,13 @@ import bisect, re
 from functools import lru_cache
 import logging
 
-nums = [1, 3, 4, 2, 2]
+a = 18
+b = 6
 
-nums.sort()
-print(nums)
+tar = min(a, b)
 
-lc=bisect.bisect()
+last = 1
+for i in range(2, tar + 1):
+    if a % i == 0 and b % i == 0:
+        last = i
+return last
