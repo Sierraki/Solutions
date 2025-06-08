@@ -3,14 +3,22 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-nums = [0, 1, 1]
+x = [1, 2, 1, 3, 2]
+y = [5, 3, 4, 6, 2]
 
-res = [False] * len(nums)
-print(res)
-a = []
-for i in range(len(nums)):
-    a += str(nums[i])
-    ans = int("".join(list(a)), 2)
-    if ans % 5 == 0:
-        res[i] = True
+a = list(zip(y, x))
+a.sort(reverse=True)
+
+l = m = r = 0
+
+while a[l][1] == a[m][1] or a[l][1] == a[r][1] or a[r][1] == a[m][1]:
+    if a[l][1] == a[r][1] or a[m][1] == a[r][1]:
+        r += 1
+    if a[l][1] == a[m][1]:
+        m += 1
+    if a[l][1] != a[m][1] and a[l][1] != a[r][1] and a[r][1] != a[m][1]:
+        break
+    if r>len(x)-1:
+        print(-1)
+res = a[l][0] + a[m][0] + a[r][0]
 print(res)
