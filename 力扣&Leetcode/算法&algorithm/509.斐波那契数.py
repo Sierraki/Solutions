@@ -9,3 +9,16 @@ class Solution:
             a = b
             b = res
         return res
+
+
+class Solution:
+
+    def fib(self, n: int) -> int:
+        def a(n):
+            if n == 1:
+                return 1
+            elif n == 0:
+                return 0
+            else:
+                return a(n - 1) + a(n - 2)
+        return a(n)
