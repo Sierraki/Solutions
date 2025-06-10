@@ -3,8 +3,8 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 
-num = -1
 
-ans = hex(num)[2:]
+nums = [1, 1, 2, 2, 3, 4, 2, 3]
+k = 6
+x = 2
 
-print(ans)
