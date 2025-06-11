@@ -4,7 +4,18 @@ import bisect, re
 from functools import lru_cache
 
 
-nums = [1, 1, 2, 2, 3, 4, 2, 3]
-k = 6
-x = 2
+words = ["hello", "i", "am", "leetcode", "hello"]
+aaaaa = [0, 1, 2, 3, 4]
+target = "hello"
+startIndex = 1
+n = len(words)
+res = set()
+for idx, i in enumerate(words):
+    if i == target:
+        if idx >= n:
+            ans = idx % n
+        else:
+            ans = idx
+        res.add(ans)
 
+print(res)
