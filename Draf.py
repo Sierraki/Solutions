@@ -4,23 +4,11 @@ import bisect, re
 from functools import lru_cache
 
 
-nums1 = [3, 5, 2, 6]
-nums2 = [3, 1, 7]
+details = ["7868190130M7522", "5303914400F9211", "9273338290F4010"]
 
-nums1.sort()
-nums2.sort()
-ans1 = str(nums1[0]) + str(nums2[0])
-ans2 = str(nums2[0]) + str(nums1[0])
-mi = min(int(ans1), int(ans2))
-p1, p2 = 0, 0
+res = 0
 
-while p1 < len(nums1) and p2 < len(nums2):
-    if nums1[p1] == nums2[p2]:
-        mi = min(mi, nums1[p1])
-        break
-    if nums1[p1] > nums2[p2]:
-        p2 += 1
-    else:
-        p1 += 1
-
-print(mi)
+for i in details:
+    if int(i[11:13])>60:
+        res+=1
+return res
