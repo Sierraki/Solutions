@@ -1,15 +1,10 @@
 class Solution:
-    def specialTriplets(self, nums: List[int]) -> int:
-        mod = 10**9 + 7
-        cl = Counter()
-        cr = Counter(nums)
-        cr[nums[0]] -= 1
-        n = len(nums)
-        ans = 0
-        for i in range(1, n - 1):
-            cl[nums[i - 1]] += 1
-            cr[nums[i]] -= 1
-            tar = nums[i] * 2
-            res = cl[tar] * cr[tar]
-            ans = (ans + res) % mod
+    def maximumProduct(self, nums: List[int], m: int) -> int:
+        ans = -float("inf")
+        mx = -float("inf")
+        mi = float("inf")
+        for i in range(m - 1, len(nums)):
+            mi = min(mi, nums[i - (m - 1)])
+            mx = max(mx, nums[i - (m - 1)])
+            ans = max(ans, nums[i] * mx, nums[i] * mi)
         return ans
