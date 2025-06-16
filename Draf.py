@@ -4,16 +4,16 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-nums = [84, 91, 18, 59, 27, 9, 81, 33, 17, 58]
-cnt = defaultdict(list)
-ans = -1
-for i in nums:
-    r = max([int(i) for i in str(i)])
-    cnt[r].append(i)
+coins = [1, 2, 5]
+amount = 11
 
-res = [[i, sorted(j, reverse=True)] for i, j in cnt.items() if len(j) >= 2]
+if amount < 1:
+    return 0
+dp = [float("inf")] * (amount + 1)
+dp[0] = 0
+for i in range(1, amount + 1):
+    for j in coins:
+        if j <= i:
+            dp[i] = min(dp[i], 1 + dp[i - j])
+return -1 if dp[amount] == float("inf") else dp[amount]
 
-if res:
-    for i, j in res:
-        ans = max(j[0] + j[1], ans)
-print(ans)
