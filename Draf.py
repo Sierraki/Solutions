@@ -7,4 +7,4 @@ from collections import deque
 coins = [1, 2, 5]
 
 
-git config --global user.email "Sierrakiper@outlook.com"
+git config --global https.proxy http://127.0.0.1:10808
