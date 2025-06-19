@@ -4,24 +4,22 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
+words = ["kuvp", "q"]
+order = "ngxlkthsjuoqcpavbfdermiywz"
 
-s = "abaaaaaa"
+cnt = Counter()
+for idx, i in enumerate(order):
+    cnt[i] += idx
 
+res = []
+for i in words:
+    ans = 0
+    for j in i:
+        ans += cnt[j]
+    if len(res) > 0:
+        if ans <= res[-1]:
+            print(False)
+    res.append(ans)
+print(True)
 
-def fun(s: str):
-    l, r = 0, len(s) - 1
-    while l < r:
-        if s[l] != s[r]:
-            return False
-        l += 1
-        r -= 1
-        return True
-
-
-l, r = 0, len(s) - 1
-while l < r:
-    if s[l] != s[r]:
-        print(fun(s[l + 1 : r + 1]) or fun(s[l:r]))
-        break
-    l += 1
-    r -= 1
+print(res)
