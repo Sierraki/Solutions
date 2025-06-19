@@ -4,15 +4,24 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-numbers = [1, 2, 4, 6, 10]
-target = 8
 
-ans = -1
-check = Counter()
-for idx, i in enumerate(numbers):
-    tar = target - i
-    if tar not in check:
-        check[tar] += idx
-    if i in check:
-        ans = [check[i], idx]
-print(ans)
+s = "abaaaaaa"
+
+
+def fun(s: str):
+    l, r = 0, len(s) - 1
+    while l < r:
+        if s[l] != s[r]:
+            return False
+        l += 1
+        r -= 1
+        return True
+
+
+l, r = 0, len(s) - 1
+while l < r:
+    if s[l] != s[r]:
+        print(fun(s[l + 1 : r + 1]) or fun(s[l:r]))
+        break
+    l += 1
+    r -= 1
