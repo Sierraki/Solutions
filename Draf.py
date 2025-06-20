@@ -4,22 +4,13 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-words = ["kuvp", "q"]
-order = "ngxlkthsjuoqcpavbfdermiywz"
+# 等差求和
+# 首项+末项）*项数/2
 
-cnt = Counter()
-for idx, i in enumerate(order):
-    cnt[i] += idx
+# x**2+x=2n
 
-res = []
-for i in words:
-    ans = 0
-    for j in i:
-        ans += cnt[j]
-    if len(res) > 0:
-        if ans <= res[-1]:
-            print(False)
-    res.append(ans)
-print(True)
+n = 5
 
-print(res)
+ans = (-1 + floor(sqrt(1 + 8 * n))) // 2
+
+print(ans)
