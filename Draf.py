@@ -4,13 +4,16 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-# 等差求和
-# 首项+末项）*项数/2
+s = "100"
 
-# x**2+x=2n
 
-n = 5
+cnt1 = cnt2 = 0
 
-ans = (-1 + floor(sqrt(1 + 8 * n))) // 2
+for idx, i in enumerate(s):
+    if not (idx % 2 == 0 and i == "0" or (idx % 2 == 1 and i == "1")):
+        cnt1 += 1
+    elif not (idx % 2 == 0 and i == "1" or (idx % 2 == 1 and i == "0")):
+        cnt2 += 1
 
-print(ans)
+
+print(min(cnt1, cnt2))
