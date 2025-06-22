@@ -4,9 +4,33 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-nums = [4, 3, 1, 6]
+s = "aaaabbbbcccc"
+cnt = Counter(s)
+res = [[i, j] for i, j in cnt.items()]
+res.sort()
+print(res)
+ans = []
+while res:
+    # ---->
+    l = 0
+    while l < len(res):
+        if res[l][1] > 0:
+            ans.append(res[l][0])
+            res[l][1] -= 1
+            if res[l][1] == 0:
+                del res[l]
+            else:
+                l += 1
 
-for i in range(1,len(nums)):
-    if abs(nums[i-1]-nums[i])%2==0:
-        return False
-return True    
+    # <----
+    r = -1
+    while r >= -len(res):
+        if res[r][1] > 0:
+            ans.append(res[r][0])
+            res[r][1] -= 1
+            if res[r][1] == 0:
+                del res[r]
+            else:
+                r -= 1
+
+print("".join(ans))
