@@ -4,16 +4,9 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-s = "100"
+nums = [4, 3, 1, 6]
 
-
-cnt1 = cnt2 = 0
-
-for idx, i in enumerate(s):
-    if not (idx % 2 == 0 and i == "0" or (idx % 2 == 1 and i == "1")):
-        cnt1 += 1
-    elif not (idx % 2 == 0 and i == "1" or (idx % 2 == 1 and i == "0")):
-        cnt2 += 1
-
-
-print(min(cnt1, cnt2))
+for i in range(1,len(nums)):
+    if abs(nums[i-1]-nums[i])%2==0:
+        return False
+return True    
