@@ -5,10 +5,8 @@ from functools import lru_cache
 from collections import deque
 
 
-demand = ["acd", "bed", "accd"]
+n=5
+res=[]
 
-res = set()
-for i in demand:
-    for j in i:
-        res.add(j)
-print(len(res))
+for i in range(n):
+    print()
