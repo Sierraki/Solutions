@@ -4,12 +4,20 @@ import bisect, re
 from functools import lru_cache
 from collections import deque
 
-price = [8, 21, 27, 34, 52, 66]
-target = 61
 
+grid = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
 
-for i in price:
-    tar = target - i
-    lc = bisect.bisect_left(price, tar)
-    if tar == price[lc]:
-        print(tar, i)
+m = len(grid)
+n = len(grid[0])
+nums = [j for i in grid for j in i]
+dp = [0] * m * n
+s = 0
+for i in range((m * n)):
+    if i < n:
+        s += nums[i]
+        dp[i] = s
+    elif i > 0 and i % n == 0:
+        dp[i] = nums[i] + dp[i - n]
+    else:
+        dp[i] = min(dp[i - n], dp[i - 1]) + nums[i]
+print(dp)
