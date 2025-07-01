@@ -5,19 +5,23 @@ from functools import lru_cache
 from collections import deque
 
 
-grid = [[1, 3, 1], [1, 5, 1], [4, 2, 1]]
+matrix = [[2, 1, 3], [6, 5, 4], [7, 8, 9]]
 
-m = len(grid)
-n = len(grid[0])
-nums = [j for i in grid for j in i]
-dp = [0] * m * n
-s = 0
-for i in range((m * n)):
-    if i < n:
-        s += nums[i]
-        dp[i] = s
-    elif i > 0 and i % n == 0:
-        dp[i] = nums[i] + dp[i - n]
+m = len(matrix)
+n = len(matrix[0])
+dp = [[0] * n for _ in range(m)]
+
+for i in range(m):
+    if i == 0:
+        dp[0] = matrix[0]
     else:
-        dp[i] = min(dp[i - n], dp[i - 1]) + nums[i]
+        for j in range(n):
+            if j == 0:
+                dp[i][j] = matrix[i][j] + min(dp[i - 1][j], dp[i - 1][j + 1])
+            elif j == n - 1:
+                dp[i][j] = matrix[i][j] + min(dp[i - 1][j], dp[i - 1][j - 1])
+            else:
+                dp[i][j] = matrix[i][j] + min(
+                    dp[i - 1][j], dp[i - 1][j - 1], dp[i - 1][j + 1]
+                )
 print(dp)
