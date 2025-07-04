@@ -3,23 +3,27 @@ from math import sqrt, floor
 import bisect, re
 from functools import lru_cache
 from collections import deque
+from typing import List
 
-nums = [1, 2, 2, 3, 1, 4, 2]
 
-cnt = defaultdict(list)
+left = 1
+right = 22
+
+
+def check(k: int) -> bool:
+    res = []
+    for i in str(k):
+        if i == "0":
+            return False
+        res.append(int(i))
+    for i in res:
+        if k % i != 0:
+            return False
+    return True
+
+
 res = []
-tar = max(Counter(nums).values())
-for i, j in Counter(nums).items():
-    if j == tar:
+for i in range(left, right + 1):
+    if check(i):
         res.append(i)
-
-for idx, i in enumerate(nums):
-    cnt[i].append(idx)
-
-print(dict(cnt))
 print(res)
-mx = 0
-
-for i in res:
-    mx = max(mx, (cnt[i][-1] - cnt[i][0] + 1))
-print(mx)
