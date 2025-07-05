@@ -5,25 +5,19 @@ from functools import lru_cache
 from collections import deque
 from typing import List
 
+matrix = [[1, 2], [2, 2]]
 
-left = 1
-right = 22
+m=len(matrix)
+n=len(matrix[0])
 
-
-def check(k: int) -> bool:
-    res = []
-    for i in str(k):
-        if i == "0":
-            return False
-        res.append(int(i))
-    for i in res:
-        if k % i != 0:
-            return False
-    return True
-
-
-res = []
-for i in range(left, right + 1):
-    if check(i):
-        res.append(i)
-print(res)
+if m==1:
+    print(True)
+else:
+    for i in range(1,m):
+        if n==1:
+            print(True)
+        else:
+            for j in range(1,n):
+                if matrix[i][j]!=matrix[i-1][j-1]:
+                    print(False)
+print(True)
