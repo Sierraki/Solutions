@@ -1,8 +1,3 @@
-from collections import defaultdict, Counter
-from bisect import bisect_left, bisect, bisect_right
-from math import sqrt
-
-
 class Solution:
     def isValid(self, word: str) -> bool:
         if len(word) < 3:
@@ -13,9 +8,9 @@ class Solution:
         al = False
         e = False
         for i in word:
-            if i in "aeiou":
+            if i in "aeiouAEIOU":
                 yy = True
-            else:
+            elif i.isalpha() and i not in "aeiouAEIOU":
                 fy = True
             if i.isalpha():
                 al = True
@@ -23,12 +18,6 @@ class Solution:
                 num = True
             else:
                 e = True
-        if yy == True and fy == True and num == True and al == True and e == False:
+        if yy and fy and (num or al) and not e:
             return True
         return False
-
-
-A = Solution()
-print(A.isValid("234Adas"))  # true
-print(A.isValid("b3"))  # false
-print(A.isValid("a3$e"))  # false
