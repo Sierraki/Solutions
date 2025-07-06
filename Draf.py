@@ -1,34 +1,16 @@
 from collections import defaultdict, Counter
-from bisect import bisect_left, bisect, bisect_right
-from math import sqrt
+from math import sqrt, floor
+import bisect, re
+from functools import lru_cache
+from collections import deque
+from typing import List
 
 
-class Solution:
-    def isValid(self, word: str) -> bool:
-        if len(word) < 3:
-            return False
-        yy = False
-        fy = False
-        num = False
-        al = False
-        e = False
-        for i in word:
-            if i in "aeiou":
-                yy = True
-            else:
-                fy = True
-            if i.isalpha():
-                al = True
-            elif i.isdigit():
-                num = True
-            else:
-                e = True
-        if yy == True and fy == True and num == True and al == True and e == False:
-            return True
-        return False
+nums = [1, 2, 3, 4]
 
-
-A = Solution()
-print(A.isValid("234Adas"))  # true
-print(A.isValid("b3"))  # false
-print(A.isValid("a3$e"))  # false
+res = 0
+for i in nums:
+    ans1 = i // 3
+    ans2 = ans1 + 1
+    res += min(abs(ans2 * 3 - i), abs(ans1 * 3 - i))
+print(res)
