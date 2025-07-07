@@ -6,11 +6,16 @@ from collections import deque
 from typing import List
 
 
-nums = [1, 2, 3, 4]
+nums = [7, 8, 3, 4, 15, 13, 4, 1]
 
-res = 0
-for i in nums:
-    ans1 = i // 3
-    ans2 = ans1 + 1
-    res += min(abs(ans2 * 3 - i), abs(ans1 * 3 - i))
+nums.sort()
+n = len(nums)
+print(nums)
+res = float('inf')
+
+for _ in range(n // 2):
+    ans = (nums[0] + nums[-1]) / 2
+    del nums[0]
+    nums.pop()
+    res=min(res,ans)
 print(res)
