@@ -5,15 +5,36 @@ from functools import lru_cache
 from collections import deque
 from typing import List
 
-num = "6777133339"
+matrix = [
+    ["1", "0", "1", "0", "0"],
+    ["1", "0", "1", "1", "1"],
+    ["1", "1", "1", "1", "1"],
+    ["1", "0", "0", "1", "0"],
+]
 
-ans = -float("inf")
-
-for i in range(2, len(num)):
-    a = num[i - 2 : i + 1]
-    if num[i] == num[i - 1] == num[i - 2]:
-        ans = max(ans, int(a))
-if ans == -float("inf"):
-    print("")
+m = len(matrix)
+n = len(matrix[0])
+if "1" in matrix:
+    mx = 2
 else:
-    print(str(ans))
+    mx = 1
+def check(matrix: list, a: list, b: list) -> bool:
+    if b[0] - a[0] != b[1] - a[1]:
+        return False
+    for i in range(a[0], b[0] + 1):
+        for j in range(a[1], b[1] + 1):
+            if matrix[i][j] == "0":
+                return False
+    return True
+if mx == 1:
+    start = 0
+if mx == 2:
+    start = 1
+
+for i in range(start, m):
+    for j in range(mx-1, n):
+        if check(matrix, [i - mx + 1, j - mx + 1], [i, j]):
+            mx += 1
+            print(mx, [i, j])
+            break
+print(mx-1)
