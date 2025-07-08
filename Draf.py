@@ -6,12 +6,16 @@ from collections import deque
 from typing import List
 
 
-words = ["pay", "attention", "practice", "attend"]
-pref = "at"
+nums = [-4, -2, 1, 4, 8]
 
-ans = 0
-for i in words:
-    if len(i) >= len(pref):
-        if i[: len(pref)] == pref:
-            ans += 1
+ans = -float("inf")
+d = float("inf")
+
+for i in nums:
+    if abs(i) < d:
+        ans = i
+        d = abs(i)
+    elif abs(i) == d:
+        if i > ans:
+            ans = i
 print(ans)
