@@ -1,14 +1,16 @@
 class Solution:
     def peakIndexInMountainArray(self, arr: List[int]) -> int:
-        n = len(arr)
-
-        left = 0
-        right = n - 1
-
-        while left < right:
-            if arr[left] <= arr[left + 1]:
-                left += 1
-            if arr[right - 1] >= arr[right]:
-                right -= 1
-
-        return left
+        l, r = 0, len(arr) - 1
+        if len(arr) == 3:
+            return arr[1]
+        else:
+            while l <= r:
+                m = (l + r) // 2 + 1
+                if arr[m - 1] < arr[m] and arr[m] > arr[m + 1]:
+                    return m
+                if arr[m - 1] < arr[m] < arr[m + 1]:
+                    l = m + 1
+                elif arr[m - 1] > arr[m] > arr[m + 1]:
+                    r = m - 1
+                if l == r:
+                    return l
