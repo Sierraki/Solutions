@@ -6,23 +6,10 @@ from collections import deque
 from typing import List
 
 
-word = "abcc"
+s1 = "this apple is sweet"
+s2 = "this apple is sour"
 
-cnt = Counter(word)
+s1 += " " + s2
 
-mx = max(cnt.values())
-mi = min(cnt.values())
+cnt=Counter(s1.split())
 
-a = set([i for i, j in cnt.items() if j == mx])
-b = set([i for i, j in cnt.items() if j == mi])
-
-if mx-mi>1 and mi>0:
-    print(False)
-else:
-    if len(b)==1 and mi==1:
-        print(True)
-    elif len(a)==1 and mx-mi==1:
-        print(True)
-    elif len(a)==1 and mi==0:
-        print(True)
-print(False)
