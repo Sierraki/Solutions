@@ -5,31 +5,25 @@ from collections import deque
 from typing import List
 
 
-num = 1234
+events = [
+    [7, 1],
+    [19, 3],
+    [9, 4],
+    [12, 5],
+    [2, 8],
+    [15, 10],
+    [18, 12],
+    [7, 14],
+    [19, 16],
+]
 
-n = len(str(num))
-res = [0] * n
-odd = []
-even = []
-o = e = 0
-for idx, i in enumerate(str(num)):
-    if int(i) % 2 == 0:
-        even.append(int(i))
-        res[idx] = 0
+cnt = Counter()
 
-    else:
-        odd.append(int(i))
-        res[idx] = 1
-even.sort(reverse=True)
-odd.sort(reverse=True)
-
-for i in range(len(res)):
-    if res[i] == 0:
-        res[i] = even[e]
-        e += 1
-    else:
-        res[i] = odd[o]
-        o += 1
-
-ans = "".join(map(str, res))
-print(ans)
+for idx, i in enumerate(events):
+    if idx == 0:
+        cnt[i[0]] += i[1]
+    elif idx > 0:
+        cnt[i[0]] += i[1] - events[idx - 1][1]
+tar = max(cnt.values())
+res = [i for i, j in cnt.items() if j == tar]
+print(cnt)
