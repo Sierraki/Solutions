@@ -5,22 +5,31 @@ from collections import deque
 from typing import List
 
 
-deck = [1, 2, 3, 4, 4, 3, 2, 1]
+num = 1234
 
-cnt = Counter(deck)
-print(cnt)
-mi = min(cnt.values())
+n = len(str(num))
+res = [0] * n
+odd = []
+even = []
+o = e = 0
+for idx, i in enumerate(str(num)):
+    if int(i) % 2 == 0:
+        even.append(int(i))
+        res[idx] = 0
 
-n = 1
-while n >= 1:
-    if n > mi:
-        print(False)
-        break
-    n += 1
-    for j in cnt.values():
-        if j % n != 0:
-            break
     else:
-        print(True)
-        break
-print(True)
+        odd.append(int(i))
+        res[idx] = 1
+even.sort(reverse=True)
+odd.sort(reverse=True)
+
+for i in range(len(res)):
+    if res[i] == 0:
+        res[i] = even[e]
+        e += 1
+    else:
+        res[i] = odd[o]
+        o += 1
+
+ans = "".join(map(str, res))
+print(ans)
