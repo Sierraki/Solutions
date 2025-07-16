@@ -5,27 +5,22 @@ from collections import deque
 from typing import List
 
 
-apple = [1, 3, 2]
-capacity = [4, 3, 1, 5, 2]
-
-
-n = sum(apple)
-capacity.sort(reverse=True)
-s = 0
+s = "13"
 res = []
-for i in capacity:
-    s += i
-    res.append(s)
 
-print(res)
+for i in range(1, len(s)):
+    if int(s[i]) % 2 == 0 and int(s[i - 1]) % 2 == 0:
+        res.append([i - 1, i])
+    elif int(s[i]) % 2 == 1 and int(s[i - 1]) % 2 == 1:
+        res.append([i - 1, i])
 
-l, r = 0, len(res) - 1
-while l < r:
-    m = (l + r) // 2
-    if res[m] < n:
-        r = m - 1
-    else:
-        l = m + 1
 
-if res[l] >= n:
-    print(l)
+def fun(s: str, a: int, b: int) -> int:
+    s = [i for i in s]
+    s[a], s[b] = s[b], s[a]
+    return int("".join(s))
+
+
+ans = res[0]
+
+print(fun(s, ans[0], ans[1]))
