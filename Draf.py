@@ -5,20 +5,27 @@ from collections import deque
 from typing import List
 
 
-grid = [[3, 2], [1, 3], [3, 4], [0, 1]]
+apple = [1, 3, 2]
+capacity = [4, 3, 1, 5, 2]
 
-n = len(grid)
-m = len(grid[0])
 
-res = [[0] * n for _ in range(m)]
+n = sum(apple)
+capacity.sort(reverse=True)
+s = 0
+res = []
+for i in capacity:
+    s += i
+    res.append(s)
 
-for i in range(m):
-    for j in range(n):
-        res[i][j] = grid[j][i]
-ans = 0
-for i in res:
-    for j in range(1, n):
-        if i[j] <= i[j - 1]:
-            ans += i[j - 1] - i[j] + 1
-            i[j] = i[j - 1] + 1
-print(res, ans)
+print(res)
+
+l, r = 0, len(res) - 1
+while l < r:
+    m = (l + r) // 2
+    if res[m] < n:
+        r = m - 1
+    else:
+        l = m + 1
+
+if res[l] >= n:
+    print(l)
