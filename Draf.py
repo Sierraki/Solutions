@@ -5,17 +5,11 @@ from collections import deque
 from typing import List
 
 
-nums = [-6, -6, -6, -1]
+nums = [1, 2, 3, 4, 2, 3, 3, 5, 7]
 
-ac = 0
-cnt = 0
-for i in range(len(nums) - 2, -1, -1):
+cnt = Counter(nums)
 
-    if nums[i] + ac != nums[i + 1]:
-        cnt += 1
-        nums[i] += ac
-        gap = nums[i + 1] - nums[i]
-        ac += gap
-    nums[i] = nums[i + 1]
+pin = 0
 
-print(nums, cnt)
+for i in range(0, len(nums), 3):
+    print(nums[i : i + 3])
