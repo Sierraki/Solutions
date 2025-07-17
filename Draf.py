@@ -5,22 +5,36 @@ from collections import deque
 from typing import List
 
 
-s = "13"
+nums = [2, 5, 7, 8, 9, 2, 3, 4, 3, 1]
+k = 3
+
+l, r = 0, 1
+
 res = []
 
-for i in range(1, len(s)):
-    if int(s[i]) % 2 == 0 and int(s[i - 1]) % 2 == 0:
-        res.append([i - 1, i])
-    elif int(s[i]) % 2 == 1 and int(s[i - 1]) % 2 == 1:
-        res.append([i - 1, i])
+while l <= r and r < len(nums):
+    if nums[r - 1] < nums[r]:
+        r += 1
+    else:
+        res.append([l, r - 1])
+        l = r
+        r = l + 1
+if l < len(nums):
+    res.append([l, len(nums) - 1])
+print(res)
+
+res = [[i, j] for i, j in res if j - i + 1 >= k]
+
+print(res)
 
 
-def fun(s: str, a: int, b: int) -> int:
-    s = [i for i in s]
-    s[a], s[b] = s[b], s[a]
-    return int("".join(s))
-
-
-ans = res[0]
-
-print(fun(s, ans[0], ans[1]))
+for i in range(len(res)):
+    if i >= 2:
+        if res[i][0] - 1 == res[i - 1][1]:
+            print(True)
+            break
+    if res[i][1] - res[i][0] + 1 >= 2 * k:
+        print(True)
+        break
+else:
+    print(False)
