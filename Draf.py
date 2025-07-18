@@ -4,12 +4,23 @@ import bisect, re
 from collections import deque
 from typing import List
 
+nums = [1, 3, 2, 1, 5, 4]
+k = 2
 
-nums = [1, 2, 3, 4, 2, 3, 3, 5, 7]
 
-cnt = Counter(nums)
+ans = 0
 
-pin = 0
-
-for i in range(0, len(nums), 3):
-    print(nums[i : i + 3])
+for idx, i in enumerate(nums):
+    a = idx - k
+    b = idx + k
+    if 0 <= a <= b <= len(nums) - 1:
+        if i > nums[a] and i > nums[b]:
+            ans += i
+    else:
+        if 0 <= a <= len(nums) - 1:
+            if i > nums[a]:
+                ans += i
+        elif 0 <= b <= len(nums) - 1:
+            if i > nums[b]:
+                ans += i
+print(ans)
