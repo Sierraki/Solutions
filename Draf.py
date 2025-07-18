@@ -4,23 +4,23 @@ import bisect, re
 from collections import deque
 from typing import List
 
-nums = [1, 3, 2, 1, 5, 4]
-k = 2
+
+s = "aaabaaa"
+k = 3
 
 
-ans = 0
+cnt = Counter(s[:k])
+if len(cnt) == 1 and s[k] not in cnt:
+    print(True)
 
-for idx, i in enumerate(nums):
-    a = idx - k
-    b = idx + k
-    if 0 <= a <= b <= len(nums) - 1:
-        if i > nums[a] and i > nums[b]:
-            ans += i
-    else:
-        if 0 <= a <= len(nums) - 1:
-            if i > nums[a]:
-                ans += i
-        elif 0 <= b <= len(nums) - 1:
-            if i > nums[b]:
-                ans += i
-print(ans)
+for i in range(k, len(s)):
+    # print(s[i - k], s[i])
+    cnt[s[i]] += 1
+    cnt[s[i - k]] -= 1
+    if cnt[s[i - k]] == 0:
+        del cnt[s[i - k]]
+    if i < len(s) - 1 and len(cnt) == 1 and s[i + 1] not in cnt and s[i - k] not in cnt:
+        print(True)
+
+if len(cnt) == 1 and s[-k - 1] not in cnt:
+    print(True)
