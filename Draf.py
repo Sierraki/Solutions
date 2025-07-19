@@ -5,12 +5,15 @@ from collections import deque
 from typing import List
 
 
-def fib(x: int) -> int:
+nums = [1, 2, 3, 5, 8, 7, 4, 50]
+aaa = [1, 3, 6, 11, 19, 26, 30, 80]
+
+
+def fib(nums: list, x: int) -> int:
     if x == 0:
-        return 1
+        return nums[0]
     else:
-        return 2 * fib(x - 1)
+        return fib(nums, x - 1) + nums[x]
 
 
-print(fib(10))
-print(2**10)
+print(fib(nums, 5))
