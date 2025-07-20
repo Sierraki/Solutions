@@ -5,15 +5,21 @@ from collections import deque
 from typing import List
 
 
-nums = [1, 2, 3, 5, 8, 7, 4, 50]
-aaa = [1, 3, 6, 11, 19, 26, 30, 80]
+s = "3902"
+
+s = [int(i) for i in str(s)]
 
 
-def fib(nums: list, x: int) -> int:
-    if x == 0:
-        return nums[0]
-    else:
-        return fib(nums, x - 1) + nums[x]
+def fun(s: list) -> list:
+    res = []
+
+    for i in range(1, len(s)):
+        res.append((s[i] + s[i - 1]) % 10)
+
+    return res
 
 
-print(fib(nums, 5))
+while len(s) != 2:
+    s = fun(s)
+
+print(s)
