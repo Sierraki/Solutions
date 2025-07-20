@@ -5,21 +5,15 @@ from collections import deque
 from typing import List
 
 
-s = "3902"
+nums = [1, 1, 2, 2, 2, 3]
 
-s = [int(i) for i in str(s)]
+cnt = Counter(nums)
 
+res = [[i, j] for i, j in cnt.items()]
+res.sort(key=lambda x: (x[1], -x[0]))
 
-def fun(s: list) -> list:
-    res = []
+ans = []
+for i in range(len(res)):
+    ans += [res[i][0]] * res[i][1]
 
-    for i in range(1, len(s)):
-        res.append((s[i] + s[i - 1]) % 10)
-
-    return res
-
-
-while len(s) != 2:
-    s = fun(s)
-
-print(s)
+print(ans)
