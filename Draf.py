@@ -4,16 +4,26 @@ import bisect, re
 from collections import deque
 from typing import List
 
+mat = [[2, 2], [25, 23]]
+k = 35
 
-nums = [1, 1, 2, 2, 2, 3]
 
-cnt = Counter(nums)
+def left(arr, k):
+    n = len(arr)
+    k = k % n
+    return arr[k:] + arr[:k]
 
-res = [[i, j] for i, j in cnt.items()]
-res.sort(key=lambda x: (x[1], -x[0]))
 
-ans = []
-for i in range(len(res)):
-    ans += [res[i][0]] * res[i][1]
+def right(arr, k):
+    n = len(arr)
+    k = k % n
+    return arr[-k:] + arr[:-k]
 
-print(ans)
+
+for idx, i in enumerate(mat):
+    if idx % 2 == 0:
+        mat[idx] = left(i, k)
+    else:
+        mat[idx] = right(i, k)
+
+print(mat)
