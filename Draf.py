@@ -4,15 +4,30 @@ import bisect, re
 from collections import deque
 from typing import List
 
-dimensions = [[2, 6], [5, 1], [3, 10], [8, 4]]
+nums = [1, 2, 3, 12]
 
-mx = -float("inf")
-ans = -float("inf")
+ans = nums[0]
 
-
-for i in dimensions:
-    if sqrt(i[0] ** 2 + i[1] ** 2) > mx:
-        ans = i[0] * i[1]
-    elif sqrt(i[0] ** 2 + i[1] ** 2) == mx:
-        ans = max(ans, i[0] * i[1])
 print(ans)
+del nums[0]
+print(nums)
+
+mi = float("inf")
+for idx, i in enumerate(nums):
+    if i < mi:
+        lc = idx
+        mi = i
+ans += mi
+del nums[lc]
+print(ans)
+print(nums)
+
+mi = float("inf")
+for idx, i in enumerate(nums):
+    if i < mi:
+        lc = idx
+        mi = i
+ans += mi
+
+print(ans)
+print(nums)
