@@ -4,30 +4,19 @@ import bisect, re
 from collections import deque
 from typing import List
 
-nums = [1, 2, 3, 12]
+word = "acolkxjbizfmhnrdq"
 
-ans = nums[0]
+n = len(word)
 
-print(ans)
-del nums[0]
-print(nums)
+a = n // 8
+b = n % 8
 
-mi = float("inf")
-for idx, i in enumerate(nums):
-    if i < mi:
-        lc = idx
-        mi = i
-ans += mi
-del nums[lc]
-print(ans)
-print(nums)
+res = 0
+if a == 0:
+    res = b
+elif a == 1:
+    res = 8 + b * 2
+else:
+    res = (1 + a) * a * 4 + b * (a + 1)
 
-mi = float("inf")
-for idx, i in enumerate(nums):
-    if i < mi:
-        lc = idx
-        mi = i
-ans += mi
-
-print(ans)
-print(nums)
+print(res)
