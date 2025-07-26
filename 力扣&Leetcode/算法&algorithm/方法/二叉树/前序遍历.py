@@ -16,3 +16,18 @@ class Solution:
         res = []
         fun(root)
         return res
+
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack = deque([root])
+        res = []
+        while stack:
+            if not root:
+                return []
+            else:
+                ans = stack.pop()
+                res.append(ans.val)
+                if ans.right:
+                    stack.append(ans.right)
+                if ans.left:
+                    stack.append(ans.left)
+        return res

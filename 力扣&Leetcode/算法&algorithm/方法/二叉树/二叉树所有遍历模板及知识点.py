@@ -65,7 +65,7 @@ class Solution:
         res = []
         stack = [root]
         # # 前序迭代模板：最常用的二叉树DFS迭代遍历模板
-        while stack:
+        while stack or res:
             cur = stack.pop()
             res.append(cur.val)
             if cur.right:
