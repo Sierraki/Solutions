@@ -5,12 +5,14 @@ from collections import deque
 from typing import List
 
 
-a = deque([1, 2, 3,9], maxlen=3)
-# a.append(1)
-# a.append(2)
-# a.append(3)
-# a.append(4)
-# a.appendleft(67)
-# a.pop()
-# a.popleft()
-print(a)
+nums = [1, 1, 1, 2, 2, 3]
+k = 2
+
+cnt = Counter(nums)
+res = [[i, j] for i, j in cnt.items()]
+res.sort(key=lambda x: x[1], reverse=True)
+ans = []
+for i in range(k):
+    if i < len(res):
+        ans.append(res[i][0])
+print(ans)
