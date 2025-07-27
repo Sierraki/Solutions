@@ -5,22 +5,24 @@ from collections import deque
 from typing import List
 
 
-boxTypes = [[5, 10], [2, 5], [4, 7], [3, 9]]
-truckSize = 10
+n = 26
 
+ans1 = n // 7
+ans2 = n % 7
 
-nums = sorted(boxTypes, key=lambda x: x[1], reverse=True)
-print(nums)
+print(ans1, ans2)
 
-ans = 0
-for i in nums:
-    if truckSize >= i[0]:
-        truckSize -= i[0]
-        ans += i[0] * i[1]
-        print(truckSize, ans)
-    else:
-        ans += truckSize * i[1]
-        print(truckSize, ans)
-        break
+res = 0
 
-print(ans)
+if ans1 > 0:
+    res += ans1 * 28 + (ans1) * (ans1 - 1) // 2 * 7
+    print(res)
+
+if ans2 > 0:
+    s = 0
+    for i in range(1, ans2 + 1):
+        s += i + ans1
+    print(s)
+    res += s
+
+print(res)
