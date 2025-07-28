@@ -4,25 +4,12 @@ import bisect, re
 from collections import deque
 from typing import List
 
+s = "is2 sentence4 This1 a3"
 
-n = 26
+res = s.split()
 
-ans1 = n // 7
-ans2 = n % 7
-
-print(ans1, ans2)
-
-res = 0
-
-if ans1 > 0:
-    res += ans1 * 28 + (ans1) * (ans1 - 1) // 2 * 7
-    print(res)
-
-if ans2 > 0:
-    s = 0
-    for i in range(1, ans2 + 1):
-        s += i + ans1
-    print(s)
-    res += s
+cnt = {int(i[-1]): i[:-1] for i in res}
 
 print(res)
+
+print(cnt)
