@@ -4,19 +4,12 @@ import bisect, re
 from collections import deque
 from typing import List
 
-original = [1, 2]
-m = 1
-n = 1
+word1 = "aaaa"
+word2 = "bccb"
 
+cnt1 = Counter(word1)
+cnt2 = Counter(word2)
+cnt = set(word1 + word2)
 
-nums = deque(original)
-res = []
-while nums:
-    for _ in range(m):
-        a = [0] * n
-        for i in range(n):
-            cur = nums.popleft()
-            a[i] = cur
-        res.append(a)
-
-print(res)
+for i in cnt:
+    print(i)
