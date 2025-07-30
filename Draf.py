@@ -4,14 +4,19 @@ import bisect, re
 from collections import deque
 from typing import List
 
+original = [1, 2]
+m = 1
+n = 1
 
-n = 4
 
-res = set()
-
-for i in range(1, floor(sqrt(n)) + 1):
-    if n % i == 0:
-        res.add(i)
-        res.add(n // i)
+nums = deque(original)
+res = []
+while nums:
+    for _ in range(m):
+        a = [0] * n
+        for i in range(n):
+            cur = nums.popleft()
+            a[i] = cur
+        res.append(a)
 
 print(res)
