@@ -4,12 +4,20 @@ import bisect, re
 from collections import deque
 from typing import List
 
-word1 = "aaaa"
-word2 = "bccb"
 
-cnt1 = Counter(word1)
-cnt2 = Counter(word2)
-cnt = set(word1 + word2)
+nums = [1, 5, 0, 3, 5]
 
-for i in cnt:
-    print(i)
+
+res = list(set([i for i in nums if i != 0]))
+
+res.sort()
+tar = res[-1]
+del res[-1]
+if not res:
+    print(0)
+if sum(res) != tar:
+    ans = len(res) + 1
+else:
+    ans = len(res)
+
+print(ans)
