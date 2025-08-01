@@ -5,19 +5,15 @@ from collections import deque
 from typing import List
 
 
-nums = [1, 5, 0, 3, 5]
+nums = [-1, 2, -3, 3]
+
+po = [i for i in nums if i > 0]
+ne = {i for i in nums if i < 0}
 
 
-res = list(set([i for i in nums if i != 0]))
-
-res.sort()
-tar = res[-1]
-del res[-1]
-if not res:
-    print(0)
-if sum(res) != tar:
-    ans = len(res) + 1
-else:
-    ans = len(res)
+ans = -1
+for i in po:
+    if -i in ne:
+        ans = max(i, ans)
 
 print(ans)
