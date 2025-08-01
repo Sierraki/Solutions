@@ -5,15 +5,18 @@ from collections import deque
 from typing import List
 
 
-nums = [-1, 2, -3, 3]
+nums = [9, 5, 7, 8, 7, 9, 8, 2, 0, 7]
 
-po = [i for i in nums if i > 0]
-ne = {i for i in nums if i < 0}
+cnt = Counter()
 
+nums.sort()
+print(nums)
+l, r = 0, len(nums) - 1
 
-ans = -1
-for i in po:
-    if -i in ne:
-        ans = max(i, ans)
-
-print(ans)
+while l < r:
+    ans = (nums[l] + nums[r]) // 2
+    cnt[ans] += 1
+    l += 1
+    r -= 1
+print(len(cnt))
+print(cnt)
