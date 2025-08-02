@@ -5,18 +5,22 @@ from collections import deque
 from typing import List
 
 
-nums = [9, 5, 7, 8, 7, 9, 8, 2, 0, 7]
+n = 4
+k = 4
 
-cnt = Counter()
+nums = [i for i in range(1, n + 1)]
+res = deque(nums)
+cnt = Counter(nums)
+cnt[1] += 1
 
-nums.sort()
-print(nums)
-l, r = 0, len(nums) - 1
-
-while l < r:
-    ans = (nums[l] + nums[r]) // 2
-    cnt[ans] += 1
-    l += 1
-    r -= 1
-print(len(cnt))
+t = 0
+cnt = Counter(nums)
 print(cnt)
+while max(cnt.values()) < 3:
+    res.rotate(-t * k)
+    cnt[res[0]] += 1
+    print(res)
+    t += 1
+ans = [i for i, j in cnt.items() if j == 1]
+
+print(ans)
