@@ -4,13 +4,18 @@ import bisect, re
 from collections import deque
 from typing import List
 
-nums = [31, 25, 72, 79, 74]
+nums = [-1, 1, 2, 3, 1]
+target = 2
 
+nums.sort()
 ans = 0
+l, r = 0, len(nums) - 1
 
-for i in range(len(nums) - 1):
-    for j in range(i + 1, len(nums)):
-        if gcd(int(str(nums[i])[0]), int(str(nums[j])[-1])) == 1:
-            ans+=1
-
+while l < r:
+    if nums[l] + nums[r] >= target:
+        r -= 1
+    else:
+        ans += r - 1
+        l += 1
+print(nums)
 print(ans)
