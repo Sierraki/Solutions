@@ -1,38 +1,16 @@
 from collections import defaultdict, Counter
-from math import sqrt, floor
+from math import sqrt, floor,gcd
 import bisect, re
 from collections import deque
 from typing import List
 
-s = "aabaabaaf"
-word = "aabaaf"  b
+nums = [31, 25, 72, 79, 74]
 
-lps = [0] * len(word)
-mx = 0
-for i in range(1, len(word)):
-    while mx > 0 and word[i] != word[mx]:
-        mx = lps[mx - 1]
-    if word[i] == word[mx]:
-        mx += 1
-    lps[i] = mx
-tar = [0, 1, 0, 1, 2, 0]
-print(lps)
+ans = 0
 
-i = j = 0
+for i in range(len(nums) - 1):
+    for j in range(i + 1, len(nums)):
+        if gcd(int(str(nums[i])[0]), int(str(nums[j])[-1])) == 1:
+            ans+=1
 
-while i < len(s):
-
-    if s[i] == word[j]:
-        j += 1
-        i += 1
-    
-    if j == len(word):
-            print(True)
-            break
-    elif i <len(s) and s[i]!=word[j]:
-        if j!=0:
-            j=lps[j-1]
-        else:
-            i+=1
-
-print(False)
+print(ans)
