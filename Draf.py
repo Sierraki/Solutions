@@ -4,26 +4,27 @@ import bisect, re
 from collections import deque
 from typing import List
 
+nums = [1, 1, 11, 4, 8, 1]
 
-nums = [2, 3, 4, 5, 6]
 
-l = r = 0
-mx = 0
-while l <= r and r < len(nums):
-    arr = nums[l : r + 1]
-    arr.sort()
-    mx1 = arr[-1]
-    if len(arr) <= 1:
-        mx2 = mx1
+def fun(n: int) -> bool:
+
+    if n <= 1:
+        return False
+    elif n == 2:
+        return True
+    elif n % 2 == 0:
+        return False
     else:
-        mx2 = arr[-2]
+        for i in range(3, int(n**0.5) + 1, 2):
+            if n % i == 0:
+                return False
+    return True
 
-    if prod(arr) == gcd(mx1, mx2) * lcm(mx1, nums[0]):
-        r += 1
-    else:
-        r += 1
-        l += 1
 
-    mx = max(mx, r - l)
-
-print(mx)
+cnt = Counter(nums)
+print(cnt)
+for i in cnt.values():
+    if fun(i):
+        print(True)
+print(False)
