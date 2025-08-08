@@ -3,28 +3,27 @@ from math import sqrt, floor, gcd, lcm, prod
 import bisect, re
 from collections import deque
 from typing import List
-
-nums = [1, 1, 11, 4, 8, 1]
-
-
-def fun(n: int) -> bool:
-
-    if n <= 1:
-        return False
-    elif n == 2:
-        return True
-    elif n % 2 == 0:
-        return False
-    else:
-        for i in range(3, int(n**0.5) + 1, 2):
-            if n % i == 0:
-                return False
-    return True
+from fractions import Fraction
 
 
-cnt = Counter(nums)
-print(cnt)
-for i in cnt.values():
-    if fun(i):
-        print(True)
-print(False)
+cont = [1, 5, 6, 6, 5, 7, 5, 5, 4, 7]
+
+
+def fun(cont: list) -> list:
+    res = 1 / cont[-1] + cont[-2]
+    cont[-2] = res
+    del cont[-1]
+    return cont
+
+
+while len(cont) > 1:
+    cont = fun(cont)
+
+
+ans = Fraction(cont[0])
+
+print(ans)
+
+an1 = [ans.numerator, ans.denominator]
+
+print(an1)
