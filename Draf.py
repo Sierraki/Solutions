@@ -6,24 +6,17 @@ from typing import List
 from fractions import Fraction
 
 
-cont = [1, 5, 6, 6, 5, 7, 5, 5, 4, 7]
+nums = [2, 5, 3, 5]
+target = 10 - 4
 
-
-def fun(cont: list) -> list:
-    res = 1 / cont[-1] + cont[-2]
-    cont[-2] = res
-    del cont[-1]
-    return cont
-
-
-while len(cont) > 1:
-    cont = fun(cont)
-
-
-ans = Fraction(cont[0])
+nums.sort()
+l, r = 0, len(nums) - 1
+ans = 0
+while l < r:
+    if nums[l] + nums[r] <= target:
+        ans += r - l
+        l += 1
+    else:
+        r -= 1
 
 print(ans)
-
-an1 = [ans.numerator, ans.denominator]
-
-print(an1)
