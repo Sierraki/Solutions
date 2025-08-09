@@ -1,13 +1,13 @@
-from collections import defaultdict, Counter
-from math import sqrt, floor, gcd, lcm, prod
-import bisect, re
-from collections import deque
-from typing import List
-from fractions import Fraction
-
-
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 class Solution:
-    def decorateRecord(self, root) -> List[List[int]]:
+    def decorateRecord(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
         ans = []
         res = deque([root])
         while res:
