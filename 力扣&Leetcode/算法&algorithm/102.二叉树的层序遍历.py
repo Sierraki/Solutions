@@ -22,3 +22,25 @@ class Solution:
                     res.append(cur.right)
             ans.append(a)
         return ans
+
+
+class Solution:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[Optional[int]]]:
+        if not root:
+            return []
+        res = deque([root])
+        ans = []
+        while res:
+            a = []
+            size = len(res)
+            for _ in range(size):
+                cur = res.popleft()
+                if cur:
+                    a.append(cur.val)
+                    res.append(cur.left)
+                    res.append(cur.right)
+                else:
+                    a.append(None)
+            if any(item is not None for item in a):
+                ans.append(a)
+        return ans
