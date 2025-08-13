@@ -6,16 +6,13 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-def fun(ans=list, x=int, y=int) -> bool:
-    for idx, i in enumerate(ans):
-        if x in i and y in i and idx > 1:
-            for j in range(1, len(i), 2):
-                if (i[j] == x and i[j - 1] == y) or (i[j] == y and i[j - 1] == x):
-                    return False
-            else:
-                return True
-    return False
+s = "codeleet"
+indices = [4, 5, 6, 7, 0, 2, 1, 3]
 
 
-print(fun([[1], [2, None, 3, None, None], [4, None, None]], 4, 5))
-print(fun([[1], [2, None, 3, None, None], [4, None, None]], 2, 3))
+res = dict(zip(indices, s))
+
+ans = ""
+for i in range(len(indices)):
+    ans += res[i]
+print(ans)
