@@ -1,28 +1,32 @@
 from collections import defaultdict, Counter
-from math import sqrt, floor, gcd, lcm, prod
+from math import sqrt, floor, gcd, lcm, prod, ceil
 import bisect, re
 from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
 
-mat = [[0, 0], [0, 0], [1, 0]]
+releaseTimes = [9, 29, 49, 50]
+keysPressed = "cbcd"
 
-row = [sum(i) for i in mat]
-col = []
+res = [0] * len(releaseTimes)
 
-for i in range(len(mat[0])):
-    a = 0
-    for j in range(len(mat)):
-        a += mat[j][i]
-    col.append(a)
+res[0] = releaseTimes[0]
 
+for i in range(1, len(res)):
+    res[i] = releaseTimes[i] - releaseTimes[i - 1]
 
-print(row)
-print(col)
-res = 0
-for i in range(len(row)):
-    for j in range(len(col)):
-        if row[i] == col[j] == 1 and mat[i][j] == 1:
-            res += 1
-print(res)
+cnt = Counter()
+
+for i in range(len(res)):
+    cnt[keysPressed[i]] = max(cnt[keysPressed[i]], res[i])
+
+tar = max(cnt.values())
+
+ans = "a"
+
+for i, j in cnt.items():
+    if j == tar:
+        ans = chr(max(ord(ans), ord(i)))
+
+print(ans)
