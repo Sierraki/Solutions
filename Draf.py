@@ -6,42 +6,16 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-time = "07:?3"
-
-a = time[0]
-b = time[1]
-c = time[3]
-d = time[4]
-
-ans1 = ans2 = 1
-
-# hours
-if a == "?":
-    if b == "?":
-        # ??
-        ans1 = 24
-    else:
-        # ?x
-        if int(b) <= 3:
-            ans1 = 3
-        else:
-            ans1 = 2
-else:
-    # x?
-    if int(a) <= 1:
-        ans1 = 10
-    else:
-        ans1 = 2
+n = 5
 
 
-if c == "?":
-    if d == "?":
-        ans2 = 60
-    else:
-        ans2 = 10
-else:
-    if d == "?":
-        ans2 = 10
+def fun(n=int):
+    for i in range(floor(sqrt(n)) + 1):
+        if 2**i == n:
+            return i
+    return False
 
 
-print(ans1, ans2, ans1 * ans2)
+if fun(n):
+    return fun(n)
+return n
