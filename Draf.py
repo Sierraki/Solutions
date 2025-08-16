@@ -6,10 +6,42 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
+time = "07:?3"
 
-nums = [1, 5, 0, 3, 5]
+a = time[0]
+b = time[1]
+c = time[3]
+d = time[4]
 
-res = [i for i in set(nums) if i != 0]
+ans1 = ans2 = 1
+
+# hours
+if a == "?":
+    if b == "?":
+        # ??
+        ans1 = 24
+    else:
+        # ?x
+        if int(b) <= 3:
+            ans1 = 3
+        else:
+            ans1 = 2
+else:
+    # x?
+    if int(a) <= 1:
+        ans1 = 10
+    else:
+        ans1 = 2
 
 
-print(res)
+if c == "?":
+    if d == "?":
+        ans2 = 60
+    else:
+        ans2 = 10
+else:
+    if d == "?":
+        ans2 = 10
+
+
+print(ans1, ans2, ans1 * ans2)
