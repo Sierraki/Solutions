@@ -6,20 +6,20 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-words = ["aaa", "c", "aba"]
-words.sort()
-res = []
+nums = [[1, 2, 5], [1, 3]]
 
-for i in words:
-    a = deque([j for j in i])
-    cnt = 0
-    while a:
-        cur = a.popleft()
-        if not res:
-            res.append(cur)
-        if res[-1] == cur and cnt < 1:
-            cnt += 1
-            continue
-        else:
-            res.append(cur)
-print(res)
+
+def fun1(nums):
+    if len(nums) > 1:
+        for i in range(len(nums)):
+            if i < len(nums) - 1:
+                nums[i] = str(nums[i]) + "->"
+            else:
+                nums[i] = str(nums[i])
+    else:
+        return str(nums[0])
+    return "".join(nums)
+
+
+for i in range(len(nums)):
+    print(fun1(i))
