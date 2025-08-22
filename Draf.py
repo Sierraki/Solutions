@@ -1,19 +1,29 @@
 from collections import defaultdict, Counter
-from math import sqrt, floor
+from sortedcontainers import SortedList
+from math import sqrt, floor, gcd, lcm, prod, ceil
 import bisect, re
-from functools import lru_cache
 from collections import deque
+from typing import List, Optional
+from fractions import Fraction
 
-coins = [1, 2, 5]
-amount = 11
+words = ["hello", "leetcode"]
+order = "hlabcdefgijkmnopqrstuvwxyz"
 
-if amount < 1:
-    return 0
-dp = [float("inf")] * (amount + 1)
-dp[0] = 0
-for i in range(1, amount + 1):
-    for j in coins:
-        if j <= i:
-            dp[i] = min(dp[i], 1 + dp[i - j])
-return -1 if dp[amount] == float("inf") else dp[amount]
+cnt = dict(zip(order, [str(i) for i in range(1, 27)]))
 
+
+m = len(words)
+n = 0
+for i in words:
+    n = max(n, len(i))
+
+res = [["00"] * n for _ in range(m)]
+
+for i in range(m):
+    for j in range(n):
+        if j < len(words[i]):
+            res[i][j] = cnt[words[i][j]].zfill(2)
+for idx, i in enumerate(res):
+    res[idx] = int("".join(i))
+
+print(res)
