@@ -5,13 +5,23 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-res = [[4, 9, 5], [4, 9, 1], [4, 0]]
+n = 10000000
 
-ans = 0
-for i in res:
-    a = ""
-    for j in i:
-        a += str(j)
-    ans += int(a)
+mx = n + 1
+primes = []
+res = [True] * mx
+for i in range(2, mx):
+    if res[i]:
+        primes.append(i)
+        for j in range(i * i, mx, i):
+            res[j] = False
 
+print(primes)
+
+ans = []
+
+for i in primes:
+    if 1 < i <= n // 2:
+        if n - i in primes and n - i > 1:
+            ans.append([i, n - i])
 print(ans)
