@@ -6,31 +6,16 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-power = [7, 1, 6, 6]
+questions = [[21, 5], [92, 3], [74, 2], [39, 4], [58, 2], [5, 5], [49, 4], [65, 3]]
 
+n = len(questions)
+dp = [0] * n
 
-cnt = Counter(power)
+for i in range(n - 1, -1, -1):
+    dp[i] = max(questions[i][0], dp[i])
+    if i + questions[i][1] + 1 < n:
+        dp[i] = max(dp[i], questions[i][0] + dp[i + 1 + questions[i][1]])
+    if i < n - 1:
+        dp[i] = max(dp[i], dp[i + 1])
 
-total = sum(power)
-ans = 0
-
-for i in list(set(power)):
-    a = total
-    if i - 1 in cnt:
-        a -= cnt[i - 1] * (i - 1)
-    print(i, i - 1, a)
-    if i - 2 in cnt:
-        a -= cnt[i - 2] * (i - 2)
-    print(i, i - 2, a)
-    if i + 1 in cnt:
-        a -= cnt[i + 1] * (i + 1)
-    print(i, i + 1, a)
-    if i + 2 in cnt:
-        a -= cnt[i + 2] * (i + 2)
-    print(i, i + 2, a)
-
-    ans = max(a, ans)
-
-print(cnt)
-
-print(ans)
+print(dp)
