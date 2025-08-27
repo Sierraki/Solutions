@@ -6,16 +6,30 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-questions = [[21, 5], [92, 3], [74, 2], [39, 4], [58, 2], [5, 5], [49, 4], [65, 3]]
+nums = [-2, 0, -1]
 
-n = len(questions)
-dp = [0] * n
+s = 1
+prefix = []
+for i in nums:
+    s *= i
+    prefix.append(s)
+print(prefix)
 
-for i in range(n - 1, -1, -1):
-    dp[i] = max(questions[i][0], dp[i])
-    if i + questions[i][1] + 1 < n:
-        dp[i] = max(dp[i], questions[i][0] + dp[i + 1 + questions[i][1]])
-    if i < n - 1:
-        dp[i] = max(dp[i], dp[i + 1])
+mi1 = float("inf")  # >0
+mi2 = -float("inf")  # <0
+mx = -float("inf")
+for i in range(1, len(prefix)):
+    if prefix[i - 1] > 0:
+        mi1 = min(mi1, prefix[i - 1])
+    if prefix[i - 1] < 0:
+        mi2 = max(mi2, prefix[i - 1])
 
-print(dp)
+    mx = max(mx, prefix[i])
+
+    if mi1 != float("inf"):
+        mx = max(mx, prefix[i] // mi1)
+
+    if mi2 != -float("inf"):
+        mx = max(mx, prefix[i] // mi2)
+
+print(mx)
