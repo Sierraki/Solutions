@@ -5,31 +5,39 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
+nums1 = [13, 4, 2, 4]
+nums2 = [11, 14, 8, 13]
 
-nums = [-2, 0, -1]
+n = len(nums1)
+res = [0] * n
 
-s = 1
-prefix = []
-for i in nums:
-    s *= i
-    prefix.append(s)
-print(prefix)
+for i in range(n):
+    if i == 0:
+        res[0] = min(nums1[0], nums2[0])
+    else:
+        if nums1[i] >= res[i - 1] and nums2[i] >= res[i - 1]:
+            res[i] = min(nums1[i], nums2[i])
+        else:
+            if nums1[i] >= res[i - 1]:
+                res[i] = nums1[i]
+            elif nums2[i] >= res[i - 1]:
+                res[i] = nums2[i]
+            else:
+                res[i] = min(nums1[i], nums2[i])
+print(res)
 
-mi1 = float("inf")  # >0
-mi2 = -float("inf")  # <0
-mx = -float("inf")
-for i in range(1, len(prefix)):
-    if prefix[i - 1] > 0:
-        mi1 = min(mi1, prefix[i - 1])
-    if prefix[i - 1] < 0:
-        mi2 = max(mi2, prefix[i - 1])
 
-    mx = max(mx, prefix[i])
+def fun(res: list) -> int:
+    dp = [0] * n
+    dp[0] = 1
+    ans = 1
+    for i in range(1, n):
+        if res[i] >= res[i - 1]:
+            dp[i] = dp[i - 1] + 1
+        else:
+            dp[i] = 1
+        ans = max(ans, dp[i])
+    return ans
 
-    if mi1 != float("inf"):
-        mx = max(mx, prefix[i] // mi1)
 
-    if mi2 != -float("inf"):
-        mx = max(mx, prefix[i] // mi2)
-
-print(mx)
+print(fun(res), fun(nums1), fun(nums2))
