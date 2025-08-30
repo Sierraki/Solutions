@@ -5,39 +5,28 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-nums1 = [13, 4, 2, 4]
-nums2 = [11, 14, 8, 13]
 
-n = len(nums1)
-res = [0] * n
-
-for i in range(n):
-    if i == 0:
-        res[0] = min(nums1[0], nums2[0])
-    else:
-        if nums1[i] >= res[i - 1] and nums2[i] >= res[i - 1]:
-            res[i] = min(nums1[i], nums2[i])
-        else:
-            if nums1[i] >= res[i - 1]:
-                res[i] = nums1[i]
-            elif nums2[i] >= res[i - 1]:
-                res[i] = nums2[i]
-            else:
-                res[i] = min(nums1[i], nums2[i])
-print(res)
+a = [1, 1]
+b = [2, 3]
+c = [1, 5]
 
 
-def fun(res: list) -> int:
-    dp = [0] * n
-    dp[0] = 1
-    ans = 1
-    for i in range(1, n):
-        if res[i] >= res[i - 1]:
-            dp[i] = dp[i - 1] + 1
-        else:
-            dp[i] = 1
-        ans = max(ans, dp[i])
+def fun1(num=int) -> bool:
+    return bin(num)[2:].count("1") % 2 == 0
+
+
+def fun2(nums=list) -> int:
+    ans = nums[0]
+    for i in range(1, len(nums)):
+        ans ^= nums[i]
     return ans
 
 
-print(fun(res), fun(nums1), fun(nums2))
+ans = 0
+for i in range(len(a)):
+    for j in range(len(b)):
+        for k in range(len(c)):
+            res = fun2([a[i], b[j], c[k]])
+            if fun1(res):
+                ans += 1
+print(ans)
