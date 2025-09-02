@@ -5,24 +5,20 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
+n = 12
 
-nums = [1, 2, 1, 2, 1]
-k = 3
-
-prefix = [sum(nums[: i + 1]) for i in range(len(nums))]
-
-print(prefix)
-cnt = Counter()
-ans = 0
-
-for i in prefix:
-    tar = i - k
-    if tar in cnt:
-        ans += cnt[tar]
-    
-    cnt[i] += 1
-
-    if i == k:
-        ans += 1
-
-print(ans)
+dp = [0] * (n + 1)
+mi = []
+for i in range(1, n + 1):
+    if i == floor(sqrt(i)) ** 2:
+        dp[i] = 1
+        mi.append(i)
+    else:
+        for j in mi:
+            dif = i % (j)
+            if dp[i] == 0:
+                dp[i] = dp[j] * (i // (j)) + dp[i % (j)]
+            else:
+                dp[i] = min(dp[i], dp[j] * (i // (j)) + dp[i % (j)])
+print([i for i in range(13)])
+print(dp)
