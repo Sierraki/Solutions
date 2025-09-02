@@ -1,10 +1,9 @@
 class Solution:
     def moveZeroes(self, nums: List[int]) -> None:
-        left = 0
-
-        for right in range(len(nums)):
-            if nums[right] != 0:  # 如果当前元素不为 0
-                nums[left], nums[right] = nums[right], nums[left]  # 交换位置
-                left += 1  # 移动左指针
-
+        l = 0
+        for i in range(1, len(nums)):
+            while nums[l] != 0 and l < len(nums) and l < i:
+                l += 1
+            if nums[i] != 0:
+                nums[l], nums[i] = nums[i], nums[l]
         return nums
