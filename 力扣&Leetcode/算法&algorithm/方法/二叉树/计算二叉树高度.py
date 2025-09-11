@@ -3,4 +3,4 @@ def cnt(root):
         return 0
     left=cnt(root.left)
     right=cnt(root.right)
-    return 1+max(left+right)
+    return 1+max(left,right)
