@@ -6,31 +6,22 @@ from typing import List, Optional
 from fractions import Fraction
 import pandas as pd
 
-s = "aaba"
-c = "b"
 
-tar = []
-for idx, i in enumerate(s):
-    if i == c:
-        tar.append(idx)
-pin = 1
-if len(tar) == 1:
-    pin = 0
-res = list(range(len(s)))
+def count_stable_subsequences(nums: list[int]) -> int:
+    mod = 10**9 + 7
+    dp = [[0, 0], [0, 0]]
 
-print(res)
+    for num in nums:
+        res = num % 2
+        tar = 1 - res
+        new_c1 = (1 + dp[tar][0] + dp[tar][1]) % mod
+        new_c2 = dp[res][0]
+        dp[res][0] = (dp[res][0] + new_c1) % mod
+        dp[res][1] = (dp[res][1] + new_c2) % mod
+    total = (dp[0][0] + dp[0][1] + dp[1][0] + dp[1][1]) % mod
+    return total
 
-for i in range(len(res)):
-    if res[i] > tar[pin] and len(tar) > 1:
-        pin += 1
-    if res[i] == tar[pin]:
-        res[i] = 0
-    else:
-        if len(tar) > 1:
-            res[i] = min(abs(res[i] - tar[pin]), abs(res[i] - tar[pin - 1]))
-        else:
-            res[i] = abs(res[i] - tar[pin])
-    print(pin)
 
-print(res)
-print(tar)
+print(count_stable_subsequences([1, 3, 5]))  # 6
+print(count_stable_subsequences([2, 3, 4, 2]))  # 14
+print(count_stable_subsequences([8, 5]))  # 3
