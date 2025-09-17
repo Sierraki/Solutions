@@ -6,30 +6,31 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-coins = [10]
-amount = 10
+s = "bbaa"
+c = "b"
+
+tar = [idx for idx in range(len(s)) if s[idx] == c]
+nums = list(range(len(s)))
+
+if len(tar) > 1:
+    pin = 0
+    for i in range(len(nums)):
+        while nums[i] >= tar[pin] and pin < len(tar) - 1:
+            pin += 1
+
+        if pin == len(tar) - 1 or nums[i] < tar[pin] or i == len(nums) - 1:
+            if pin >= 1:
+                nums[i] = min(abs(i - tar[pin]), abs(i - tar[pin - 1]))
+            else:
+                nums[i] = abs(i - tar[pin])
+        elif nums[i] == tar[pin]:
+            nums[i] = 0
 
 
-dp = [[0] * amount for _ in range(len(coins))]
+else:
+    for i in range(len(nums)):
+        nums[i] = abs(nums[i] - tar[0])
 
-cnt = {i: 0 for i in range(1, amount + 1)}
-
-for i in range(len(coins)):
-    for j in range((amount)):
-        if i == 1:
-            if coins[i] <= j + 1 and (j + 1) % coins[i] == 0:
-                dp[i][j] = 1
-        # 判断可否整除
-        if (j + 1) % coins[i] == 0 and coins[i] >= j + 1:
-            dp[i][j] += 1
-        # 取上方
-
-        dp[i][j] += dp[i - 1][j]
-
-        if j + 1 - coins[i] >= 0 and j + 1 - coins[i] in cnt:
-            dp[i][j] += cnt[j + 1 - coins[i]]
-
-        cnt[j + 1] = max(cnt[j + 1], dp[i][j])
-print(cnt)
-print(dp)
-print(dp[-1][-1])
+print(tar)
+print(nums)
+print([3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0])
