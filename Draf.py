@@ -5,25 +5,21 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-nums = [42, 83, 48, 10, 24, 55, 29, 15, 40]
+nums = [1, 3, 5, 2, 1, 3, 1]
 
 nums.sort(reverse=True)
-n = len(nums) // 2
-a = deque(nums[:n])
-b = deque(nums[n:])
-
+res = nums.copy()
+res.sort()
+nums = deque(nums)
+res = deque(res)
 cnt = 0
-while a and b:
-    if a[-1] * 2 <= b[-1] or b[-1] * 2 <= a[-1]:
-        cnt += 2
-        a.pop()
-        b.pop()
-    else:
-        if a[-1] > b[-1]:
-            a.pop()
-        else:
-            b.pop()
 
-print(a)
-print(b)
-print(cnt)
+while nums:
+    if res[-1] > nums[0]:
+        cnt += 1
+        res.pop()
+        nums.popleft()
+    else:
+        nums.popleft()
+
+print(res, nums, cnt)
