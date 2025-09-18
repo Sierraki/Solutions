@@ -6,11 +6,9 @@ from typing import List, Optional
 from fractions import Fraction
 import pandas as pd
 
-
-nums = [3, 8, 1, 3, 2, 1, 8, 9, 0]
-firstLen = 3
-secondLen = 2
-
+nums = [1, 0, 1]
+firstLen = 1
+secondLen = 1
 s = 0
 prefix = []
 for i in nums:
@@ -19,19 +17,27 @@ for i in nums:
 
 
 print(prefix)
-top = [prefix[firstLen - 1]] + [
-    prefix[i] - prefix[i - firstLen] for i in range(firstLen, len(prefix))
-]
-down = [prefix[secondLen - 1]] + [
-    prefix[i] - prefix[i - secondLen] for i in range(secondLen, len(prefix))
-]
+top = (
+    [0] * (firstLen - 1)
+    + [prefix[firstLen - 1]]
+    + [prefix[i] - prefix[i - firstLen] for i in range(firstLen, len(prefix))]
+)
+down = (
+    [0] * (secondLen - 1)
+    + [prefix[secondLen - 1]]
+    + [prefix[i] - prefix[i - secondLen] for i in range(secondLen, len(prefix))]
+)
 
 print(top)
 print(down)
 dp = [[0] * (len(nums)) for _ in range(len(nums))]
-
-
-
-
-
+ans = 0
+for i in range(len(dp)):
+    for j in range(len(dp[0])):
+        if (0 <= i - secondLen <= i <= j - firstLen <= j < len(top)) or (
+            0 <= j - firstLen <= j <= i - secondLen <= i < len(top)
+        ):
+            dp[i][j] = top[j] + down[i]
+            ans = max(ans, dp[i][j])
 print(dp)
+print(ans)
