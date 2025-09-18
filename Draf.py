@@ -6,31 +6,22 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-s = "bbaa"
-c = "b"
+img = [[100, 200, 100], [200, 50, 200], [100, 200, 100]]
 
-tar = [idx for idx in range(len(s)) if s[idx] == c]
-nums = list(range(len(s)))
-
-if len(tar) > 1:
-    pin = 0
-    for i in range(len(nums)):
-        while nums[i] >= tar[pin] and pin < len(tar) - 1:
-            pin += 1
-
-        if pin == len(tar) - 1 or nums[i] < tar[pin] or i == len(nums) - 1:
-            if pin >= 1:
-                nums[i] = min(abs(i - tar[pin]), abs(i - tar[pin - 1]))
-            else:
-                nums[i] = abs(i - tar[pin])
-        elif nums[i] == tar[pin]:
-            nums[i] = 0
+m = len(img)
+n = len(img[0])
 
 
-else:
-    for i in range(len(nums)):
-        nums[i] = abs(nums[i] - tar[0])
+ans1 = [[0] * n for _ in range(m)]
 
-print(tar)
-print(nums)
-print([3, 2, 1, 0, 1, 0, 0, 1, 2, 2, 1, 0])
+for i in range(m):
+    for j in range(n):
+        ans = 0
+        cnt = 0
+        for a in [-1, 0, 1]:
+            for b in [-1, 0, 1]:
+                if 0 <= i + a < m and 0 <= j + b < n:
+                    ans += img[i + a][j + b]
+                    cnt += 1
+        ans1[i][j] = ans // cnt
+print(ans1)
