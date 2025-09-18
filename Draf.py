@@ -4,24 +4,40 @@ from bisect import bisect, bisect_left
 from collections import deque
 from typing import List, Optional
 from fractions import Fraction
+import pandas as pd
+
+nums = [1, 0, 1]
+firstLen = 1
+secondLen = 1
+s = 0
+prefix = []
+for i in nums:
+    s += i
+    prefix.append(s)
 
 
-img = [[100, 200, 100], [200, 50, 200], [100, 200, 100]]
+print(prefix)
+top = (
+    [0] * (firstLen - 1)
+    + [prefix[firstLen - 1]]
+    + [prefix[i] - prefix[i - firstLen] for i in range(firstLen, len(prefix))]
+)
+down = (
+    [0] * (secondLen - 1)
+    + [prefix[secondLen - 1]]
+    + [prefix[i] - prefix[i - secondLen] for i in range(secondLen, len(prefix))]
+)
 
-m = len(img)
-n = len(img[0])
-
-
-ans1 = [[0] * n for _ in range(m)]
-
-for i in range(m):
-    for j in range(n):
-        ans = 0
-        cnt = 0
-        for a in [-1, 0, 1]:
-            for b in [-1, 0, 1]:
-                if 0 <= i + a < m and 0 <= j + b < n:
-                    ans += img[i + a][j + b]
-                    cnt += 1
-        ans1[i][j] = ans // cnt
-print(ans1)
+print(top)
+print(down)
+dp = [[0] * (len(nums)) for _ in range(len(nums))]
+ans = 0
+for i in range(len(dp)):
+    for j in range(len(dp[0])):
+        if (0 <= i - secondLen + 1 <= i <= j - firstLen + 1 <= j < len(nums)) or (
+            0 <= j - firstLen + 1 <= j <= i - secondLen + 1 <= i < len(nums)
+        ):
+            dp[i][j] = top[j] + down[i]
+            ans = max(ans, dp[i][j])
+print(dp)
+print(ans)
