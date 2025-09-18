@@ -34,8 +34,8 @@ dp = [[0] * (len(nums)) for _ in range(len(nums))]
 ans = 0
 for i in range(len(dp)):
     for j in range(len(dp[0])):
-        if (0 <= i - secondLen <= i <= j - firstLen <= j < len(top)) or (
-            0 <= j - firstLen <= j <= i - secondLen <= i < len(top)
+        if (0 <= i - secondLen +1 <= i <= j - firstLen +1 <= j < len(nums)) or (
+            0 <= j - firstLen +1 <= j <= i - secondLen +1 <= i < len(nums)
         ):
             dp[i][j] = top[j] + down[i]
             ans = max(ans, dp[i][j])
