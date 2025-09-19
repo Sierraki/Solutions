@@ -15,3 +15,4 @@ class Solution:
             if i >= k - 1:
                 ans.append(res[0])
         return ans
+

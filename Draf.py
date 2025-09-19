@@ -5,21 +5,31 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-nums = [1, 3, 5, 2, 1, 3, 1]
+digits = ""
 
-nums.sort(reverse=True)
-res = nums.copy()
-res.sort()
-nums = deque(nums)
-res = deque(res)
-cnt = 0
+check = {
+    "2": "abc",
+    "3": "def",
+    "4": "ghi",
+    "5": "jkl",
+    "6": "mno",
+    "7": "pqrs",
+    "8": "tuv",
+    "9": "wxyz",
+}
+ans = deque([])
+nums = deque(digits)
 
 while nums:
-    if res[-1] > nums[0]:
-        cnt += 1
-        res.pop()
-        nums.popleft()
+    cur = nums.popleft()
+    if not ans:
+        for j in check[cur]:
+            ans.append(j)
     else:
-        nums.popleft()
+        n = len(ans)
+        for _ in range(n):
+            curr = ans.popleft()
+            for j in check[cur]:
+                ans.append(curr + j)
 
-print(res, nums, cnt)
+print(ans, nums)
