@@ -5,31 +5,24 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-digits = ""
+word = "aaaaaaaaaaaaaabb"
 
-check = {
-    "2": "abc",
-    "3": "def",
-    "4": "ghi",
-    "5": "jkl",
-    "6": "mno",
-    "7": "pqrs",
-    "8": "tuv",
-    "9": "wxyz",
-}
-ans = deque([])
-nums = deque(digits)
+ans = ""
+res = deque([])
+word = deque(word)
 
-while nums:
-    cur = nums.popleft()
-    if not ans:
-        for j in check[cur]:
-            ans.append(j)
-    else:
-        n = len(ans)
-        for _ in range(n):
-            curr = ans.popleft()
-            for j in check[cur]:
-                ans.append(curr + j)
+while word:
+    if (not res or word[0] == res[-1]) and len(res) < 9:
+        cur = word.popleft()
+        res.append(cur)
 
-print(ans, nums)
+    elif word[0] != res[-1] or len(res) == 9:
+        n = len(res)
+        ans += f"{n}{res[-1]}"
+        res.clear()
+    print(ans, res, word)
+
+n = len(res)
+ans += f"{n}{res[-1]}"
+
+print(ans, res, word)
