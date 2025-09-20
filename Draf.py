@@ -6,12 +6,28 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-nums = "Codeforces"
-tar = "aeiou"
+hours = [13, 11]
 
-def slove():
-    res = ""
-    for i in nums:
-        if i not in tar:
-            res += "." + i.lower()
-    print(res)
+
+cnt = Counter()
+for i in hours:
+    if i % 24 == 0:
+        cnt[0] += 1
+    else:
+        cnt[i % 24] += 1
+print(cnt)
+ans = 0
+check = Counter()
+for i, j in cnt.items():
+    if i == 0:
+        ans += (j - 1) * j // 2
+    else:
+        tar = 24 - i
+        if tar == i:
+            ans += (j - 1) * j // 2
+        else:
+            if tar in cnt and tar not in check:
+                ans += j * cnt[tar]
+                check[tar] += 1
+                check[i] += 1
+print(ans)
