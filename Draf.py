@@ -5,6 +5,13 @@ from collections import deque
 from typing import List, Optional
 from fractions import Fraction
 
-res = 1.515165
 
-print(res, type(res))
+nums = "Codeforces"
+tar = "aeiou"
+
+def slove():
+    res = ""
+    for i in nums:
+        if i not in tar:
+            res += "." + i.lower()
+    print(res)
