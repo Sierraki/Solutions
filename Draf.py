@@ -6,39 +6,47 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-nums = [1, 2, 1, 1, 2, 1, 2]
+board = [
+    ["5", "3", ".", ".", "7", ".", ".", ".", "."],
+    ["6", ".", ".", "1", "9", "5", ".", ".", "."],
+    [".", "9", "8", ".", ".", ".", ".", "6", "."],
+    ["8", ".", ".", ".", "6", ".", ".", ".", "3"],
+    ["4", ".", ".", "8", ".", "3", ".", ".", "1"],
+    ["7", ".", ".", ".", "2", ".", ".", ".", "6"],
+    [".", "6", ".", ".", ".", ".", "2", "8", "."],
+    [".", ".", ".", "4", "1", "9", ".", ".", "5"],
+    [".", ".", ".", ".", "8", ".", ".", "7", "9"],
+]
 
 
-cnt = Counter()
+def locate(i=int, j=int) -> int:
+    m = ceil(i // 3)
+    n = ceil(j // 3)
+    return (m) * 3 + n
 
-odd = True
-odd_len = 0
 
-even = True
-even_len = 0
+col = defaultdict(list)
+row = defaultdict(list)
+box = defaultdict(list)
 
-for i in nums:
-    if i%2== 1:
-        if odd == True:
-            odd_len += 1
-            odd = False
-        if even == False:
-            even_len += 1
-            even = True
-        cnt[1]+=1
-    else:
-        if odd == False:
-            odd_len += 1
-            odd = True
-        if even == True:
-            even_len += 1
-            even = False
-        cnt[0]+=1
-print(odd_len)
-print(even_len)
 
-print(nums)
-print(cnt)
+def fun(board) -> bool:
+    for i in range(9):
+        for j in range(9):
+            if board[i][j] != ".":
+                if board[i][j] in row[i]:
+                    return False
+                if board[i][j] in col[j]:
+                    return False
+                if board[i][j] in box[locate(i, j)]:
+                    return False
+                row[i].append(board[i][j])
+                col[j].append(board[i][j])
+                box[locate(i, j)].append(board[i][j])
+    return True
 
-ans = max(cnt[1], cnt[0], odd_len, even_len)
-print(ans)
+
+print(fun(board))
+print(dict(col))
+print(dict(row))
+print(dict(box))
