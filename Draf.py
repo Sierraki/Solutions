@@ -6,25 +6,39 @@ from typing import List, Optional
 from fractions import Fraction
 
 
-grid = [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 1]]
+nums = [1, 2, 1, 1, 2, 1, 2]
 
 
-l = t = float("inf")
-r = d = -float("inf")
+cnt = Counter()
 
+odd = True
+odd_len = 0
 
-for i in range(len(grid)):
-    for j in range(len(grid[0])):
-        if grid[i][j]==1:
-            l=min(l,j)
-            r=max(r,j)
-            d=i
-            if t== float("inf"):
-                t=i
+even = True
+even_len = 0
 
+for i in nums:
+    if i%2== 1:
+        if odd == True:
+            odd_len += 1
+            odd = False
+        if even == False:
+            even_len += 1
+            even = True
+        cnt[1]+=1
+    else:
+        if odd == False:
+            odd_len += 1
+            odd = True
+        if even == True:
+            even_len += 1
+            even = False
+        cnt[0]+=1
+print(odd_len)
+print(even_len)
 
-print(l, r, t, d)
+print(nums)
+print(cnt)
 
-ans = (r - l + 1) * (d - t + 1)
-
+ans = max(cnt[1], cnt[0], odd_len, even_len)
 print(ans)
