@@ -14,13 +14,11 @@ class Solution:
                 return abs(tar - n1) * 2
 
         # 如果直接加答案
-        lc = -1
         mi = float("inf")
         for i in range(len(nums1)):
             dis = fun(nums1[i], tar, nums2[i])
             if dis < mi:
                 mi = dis
-                lc = i
         ans1 = 1 + mi
         for i in range(len(nums1)):
             ans1 += abs(nums2[i] - nums1[i])

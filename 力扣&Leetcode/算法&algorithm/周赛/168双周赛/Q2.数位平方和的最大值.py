@@ -12,10 +12,8 @@ class Solution:
                 sum1 -= 9
             elif sum1 > 0:
                 res[i] = sum1
+                sum1 = 0
                 break
-        aa = 0
-        for i in res:
-            aa += i
-        if aa == sum:
+        if sum1 == 0:
             return "".join(map(str, res))
         return ""
