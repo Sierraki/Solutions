@@ -4,11 +4,7 @@ class Solution:
 
         def fun(tar, test):
             for i in range(n):
-                p1 = test[:i]
-                p2 = test[i]
-                p3 = test[i + 1 :]
-                res = p1 + p3
-                if res == tar[:-1] and p2 != tar[-1]:
+                if test[:i] + test[i + 1 :] == tar[:-1] and test[i] != tar[-1]:
                     return True
             return False
 
