@@ -1,40 +1,24 @@
 class Solution:
     def longestSubarray(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return 1
         n = len(nums)
-        if n <= 1:
-            return n
-        left = [1] * n
-        for i in range(1, n):
-            if nums[i] >= nums[i - 1]:
-                left[i] = left[i - 1] + 1
-            else:
-                left[i] = 1
-        right = [1] * n
-        for i in range(n - 2, -1, -1):
-            if nums[i] <= nums[i + 1]:
-                right[i] = right[i + 1] + 1
-            else:
-                right[i] = 1
-        mx = max(left) if left else 0
+        res1 = [1] * n
+        res2 = [1] * n
         for i in range(n):
-            if i > 0:
-                left1 = left[i - 1]
-            else:
-                left1 = 0
-            if i < n - 1:
-                right1 = right[i + 1]
-            else:
-                right1 = 0
-            if i == 0:
-                mx = max(mx, 1 + right1)
-            elif i == n - 1:
-                mx = max(mx, left1 + 1)
-            else:
+            if i != 0:
+                if nums[i - 1] <= nums[i]:
+                    res1[i] = res1[i - 1] + 1
+        for i in range(n - 1, -1, -1):
+            if i != n - 1:
+                if nums[i] <= nums[i + 1]:
+                    res2[i] = res2[1 + i] + 1
+        mx = -float("inf")
+        for i in range(n):
+            if 0 < i < n - 1:
                 if nums[i - 1] <= nums[i + 1]:
-                    cur = left1 + 1 + right1
-                    mx = max(mx, cur)
+                    mx = max(mx, res1[i - 1] + res2[i + 1] + 1)
                 else:
-                    res1 = left1 + 1
-                    res2 = 1 + right1
-                    mx = max(mx, res1, res2)
+                    mx = max(mx, res1[i - 1] + 1, res2[i + 1] + 1)
+        mx = max(mx, res1[-2] + 1, res2[1] + 1)
         return mx
