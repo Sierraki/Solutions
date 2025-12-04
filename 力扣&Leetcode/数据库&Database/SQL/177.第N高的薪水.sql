@@ -1,8 +1,18 @@
-CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT BEGIN
+CREATE FUNCTION getNthHighestSalary (N INT) RETURNS INT BEGIN
+SET
+    N = N -1;
 
-SET N = N-1; RETURN (
+RETURN (
+    SELECT DISTINCT
+        (salary)
+    FROM
+        Employee
+    ORDER BY
+        salary DESC
+    LIMIT
+        1
+    OFFSET
+        N
+);
 
-SELECT  DISTINCT(salary)
-FROM Employee
-ORDER BY salary DESC
-LIMIT 1 OFFSET N # Write your MySQL query statement below. ); END
+END
