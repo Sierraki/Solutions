@@ -1,9 +1,4 @@
-# Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+# 自下向上
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
@@ -14,7 +9,7 @@ class Solution:
                 ans = max(ans, self.maxDepth(i))
             return ans + 1
 
-
+# 自下向上
 class Solution:
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         if not root:
@@ -23,3 +18,20 @@ class Solution:
             a = self.maxDepth(root.left)
             b = self.maxDepth(root.right)
             return max(a, b) + 1
+
+
+# 自顶向下
+class Solution:
+    def maxDepth(self, root: Optional[TreeNode]) -> int:
+        ans = 0
+
+        def dfs(root, cur):
+            nonlocal ans
+            if not root:
+                ans = max(ans, cur)
+                return
+            dfs(root.left, cur + 1)
+            dfs(root.right, cur + 1)
+
+        dfs(root, 0)
+        return ans
