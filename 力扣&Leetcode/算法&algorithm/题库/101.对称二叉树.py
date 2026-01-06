@@ -27,3 +27,15 @@ class Solution:
             if not (i == i[::-1]):
                 return False
         return True
+
+
+class Solution:
+    def isSymmetric(self, root: Optional[TreeNode]) -> bool:
+        def fun(left, right):
+            if not left and not right:
+                return True
+            if not left or not right or left.val != right.val:
+                return False
+            return fun(left.left, right.right) and fun(left.right, right.left)
+
+        return not root or fun(root.left, root.right)
