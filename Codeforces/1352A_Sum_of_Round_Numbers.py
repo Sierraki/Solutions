@@ -15,6 +15,6 @@ def fun(num):
 n = int(input())
 for _ in range(n):
     num = int(input())
-    ans = sorted(fun(num),reverse=True)
+    ans = sorted(fun(num), reverse=True)
     print(len(ans))
     print(" ".join(map(str, ans)))

@@ -2,11 +2,11 @@
 
 *这类题不考套路，考查对规律的敏锐观察。*
 
-* [ ] **[1352A] Sum of Round Numbers** (800)
+* [X] **[1352A] Sum of Round Numbers** (800)
   *知识点：基础数字拆分* [🔗 题目链接](https://codeforces.com/problemset/problem/1352/A)
-* [ ] **[1367B] Even Array** (800)
+* [X] **[1367B] Even Array** (800)
   *知识点：奇偶校验与交换逻辑* [🔗 题目链接](https://codeforces.com/problemset/problem/1367/B)
-* [ ] **[1512C] A-B Palindrome** (1200)
+* [X] **[1512C] A-B Palindrome** (1200)
   *知识点：回文串对称性与剩余计数* [🔗 题目链接](https://codeforces.com/problemset/problem/1512/C)
 * [ ] **[1520D] Same Differences** (1200)
   *知识点：移项变式 (a[j]-a[i]=j-i 转化为 a[j]-j=a[i]-i)* [🔗 题目链接](https://codeforces.com/problemset/problem/1520/D)
