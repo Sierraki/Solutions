@@ -21,9 +21,9 @@
   *知识点：数论、2 的幂次判定* [🔗 题目链接](https://codeforces.com/problemset/problem/1475/A)
 * [X] **[1360C] Similar Pairs** (1000)
   *知识点：贪心匹配与奇偶对数* [🔗 题目链接](https://codeforces.com/problemset/problem/1360/C)
-* [ ] **[1335C] Two Teams Composed of Students** (1100)
+* [X] **[1335C] Two Teams Composed of Students** (1100)
   *知识点：Map/计数与集合大小平衡* [🔗 题目链接](https://codeforces.com/problemset/problem/1335/C)
-* [ ] **[1186D] Vus the Cossack and Numbers** (1500)
+* [X] **[1186D] Vus the Cossack and Numbers** (1500)
   *知识点：总量守恒与局部微调 (你刚问过的那道题)* [🔗 题目链接](https://codeforces.com/problemset/problem/1186/D)
 
 ---
