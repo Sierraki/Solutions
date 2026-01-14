@@ -4,14 +4,13 @@ input = sys.stdin.readline
 
 
 def fun(n):
-    if n % 2 != 0:
+    if n % 2 == 1:
         return "YES"
     while n % 2 == 0:
-        n //= 2
+        n = n // 2
     if n > 1:
         return "YES"
-    else:
-        return "NO"
+    return "NO"
 
 
 n = int(input())
