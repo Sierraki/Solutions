@@ -3,4 +3,6 @@ import sys
 input = sys.stdin.readline
 size = int(input())
 for _ in range(size):
-    pass
+    n=int(input())
+    a,b=map(int,input().split())
+    nums=map(input().split())
