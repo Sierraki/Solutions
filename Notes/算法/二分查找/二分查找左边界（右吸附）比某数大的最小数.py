@@ -1,3 +1,5 @@
+from bisect import bisect, bisect_left
+
 nums = [0, 1, 1, 1, 2, 2, 3, 3, 5]
 arrr = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
@@ -14,3 +16,4 @@ while left <= right:
         left = mid + 1
 print(ans)
 # 比某数大的最小数
+print(bisect_left(nums, target))
