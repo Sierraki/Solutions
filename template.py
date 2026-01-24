@@ -1,7 +1,7 @@
 from collections import defaultdict, Counter, deque
 from math import sqrt, floor
 from bisect import bisect, bisect_left
-from itertools import accumulate
+from itertools import accumulate as acc
 import sys
 
 input = sys.stdin.readline
@@ -13,7 +13,8 @@ def ii():
     return int(input())
 def si():
     return input()[:-1]
-
+def lacc(nums):
+    return list(acc(nums))
 
 size = ii()
 for _ in range(size):
