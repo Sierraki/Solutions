@@ -27,10 +27,8 @@ def si():
 size = ii()
 for _ in range(size):
     n, x = mii()
-
     total = 0
     mx = -float("inf")
-
     for _ in range(n):
         a, b, c = mii()
         total += a * (b - 1)
@@ -38,7 +36,6 @@ for _ in range(size):
         cur = a * b - c
         if cur > mx:
             mx = cur
-
     if total >= x:
         print(0)
     elif mx <= 0:
