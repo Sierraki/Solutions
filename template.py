@@ -24,5 +24,4 @@ def solve():
 if __name__ == "__main__":
     # size = ii()
     # for _ in range(size):
-    #     solve()
-    solve()
+        solve()

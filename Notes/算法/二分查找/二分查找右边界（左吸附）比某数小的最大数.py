@@ -15,3 +15,15 @@ while left <= right:
         right = mid - 1
 print(ans)
 # 比某数小的最大数
+
+def fun(nums,tar):
+    left, right = 0, len(nums) - 1
+    ans = -1
+    while left <= right:
+        mid = (left + right) // 2
+        if nums[mid] <= tar:
+            ans = mid
+            left = mid + 1
+        else:
+            right = mid - 1
+    return ans
