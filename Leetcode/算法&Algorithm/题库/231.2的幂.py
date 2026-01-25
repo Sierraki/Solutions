@@ -14,3 +14,8 @@ eg = Solution()
 print(eg.isPowerOfTwo(1))  # true
 print(eg.isPowerOfTwo(16))  # true
 print(eg.isPowerOfTwo(13))  # false
+
+
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        return n > 0 and n & (n - 1) == 0
