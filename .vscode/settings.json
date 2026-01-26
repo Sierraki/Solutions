@@ -1,0 +1,31 @@
+{
+    "editor.formatOnSave": true,
+    "Lingma.localMachineModel": false,
+    "Lingma.cloudModelAutoTriggerGenerateLength": "disable",
+    "Lingma.cloudModelEnable": false,
+    "Lingma.cloudModelAutoTriggerDisplayRule": false,
+    "Lingma.aI Rules.projectRuleEnable": false,
+    "editor.fontLigatures": true,
+    "python.analysis.autoImportCompletions": false,
+    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode",
+    "[sql]": {
+        "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode",
+        "prettier-sql.SQLFlavourOverride": "mysql"
+    },
+    "editor.fontFamily": "JetBrains Mono",
+    "editor.hover.enabled": "off",
+    "editor.hover.above": false,
+    "editor.hover.sticky": false,
+    "accessibility.verbosity.hover": false,
+    "css.hover.documentation": true,
+    "editor.editContext": false,
+    "editor.parameterHints.enabled": false,
+    "editor.parameterHints.cycle": false,
+    "python-envs.pythonProjects": [
+        {
+            "path": "",
+            "envManager": "ms-python.python:conda",
+            "packageManager": "ms-python.python:conda"
+        }
+    ]
+}
