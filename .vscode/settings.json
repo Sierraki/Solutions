@@ -27,5 +27,9 @@
             "envManager": "ms-python.python:conda",
             "packageManager": "ms-python.python:conda"
         }
-    ]
+    ],
+    "C_Cpp.hover": "disabled",
+    "editor.suggest.showInlineDetails": false,
+    "breadcrumbs.showTypeParameters": false,
+    "editor.suggest.showTypeParameters": false
 }

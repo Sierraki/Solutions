@@ -4,5 +4,11 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"editor.parameterHints.cycle": false,
+		"editor.parameterHints.enabled": false,
+		"editor.suggest.showTypeParameters": false,
+		"breadcrumbs.showTypeParameters": false,
+		"editor.suggest.showInlineDetails": false
+	}
 }
