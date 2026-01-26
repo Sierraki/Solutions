@@ -27,33 +27,18 @@ def lacc(nums):
     return list(acc(nums))
 
 
-def fun(nums, tar):
-    left, right = 0, len(nums) - 1
-    ans = -1
-    while left <= right:
-        mid = (left + right) // 2
-        if nums[mid] <= tar:
-            ans = mid
-            left = mid + 1
-        else:
-            right = mid - 1
-    return ans
-
-
 def solve():
     n = ii()
     sow = lmii()
     lv = lmii()
-    cnt = Counter()
     sow.sort(reverse=True)
-    for i, j in enumerate(sow):
-        cnt[j] = i + 1
-    pf = lacc(lv)
+    cur = 0
     ans = 0
-    for i, j in cnt.items():
-        cur = fun(pf, j)
-        if cur != -1:
-            ans = max(ans, (cur + 1) * i)
+    for i, j in enumerate(lv, start=1):
+        cur += j
+        if cur > n:
+            break
+        ans = max(ans, i * sow[cur - 1])
     print(ans)
 
 
