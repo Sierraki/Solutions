@@ -21,23 +21,16 @@ def solve():
     n=ii()
     nums=lmii()
     dp = [float("inf")] * (n + 1)
-    has = [False] * (n + 1)
-    for x in nums:
-        dp[x] = 1
-        has[x] = True
+    vis = [False] * (n + 1)
+    for i in nums:
+        vis[i] = True
+        dp[i] = 1
     for i in range(1, n + 1):
         if dp[i] != float("inf"):
             for j in range(2 * i, n + 1, i):
-                mult = j // i
-                if has[mult]:
-                    if dp[i] + 1 < dp[j]:
-                        dp[j] = dp[i] + 1
-    ans = []
-    for i in range(1, n + 1):
-        if dp[i] == float("inf"):
-            ans.append(-1)
-        else:
-            ans.append(dp[i])
+                res = j // i
+                dp[j] = min(dp[j], dp[res] + dp[i])
+    ans = [i if i != float("inf") else -1 for i in (dp[1:])]
     print(*ans)
 
 # sys.setrecursionlimit(200000)
