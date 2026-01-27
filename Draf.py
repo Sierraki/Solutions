@@ -18,4 +18,4 @@ def lacc(nums):
 ranks = [2, 1, 2, 1, 1]
 suits = ["d", "b", "a", "a", "d"]
 
-
+print(123)
