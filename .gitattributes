@@ -1,2 +1,17 @@
-*.sql linguist-detectable
+# Node.js 依赖（最重要，不用同步）
+node_modules/
+
+# Next.js 的构建缓存（不用同步，体积大）
+.next/
+
+# Python 虚拟环境（你的 uv 环境）
 .venv/
+venv/
+
+# 环境变量文件（包含敏感信息，通常不上传）
+.env
+.env.local
+
+# 操作系统生成的垃圾文件
+.DS_Store
+Thumbs.db

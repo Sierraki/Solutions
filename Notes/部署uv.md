@@ -100,6 +100,47 @@ uv add numpy pandas matplotlib ipykernel
 | 更新锁文件 | N/A | `uv sync` |
 | 清理缓存 | `conda clean --all` | `uv cache clean` |
 
+### 3. 更改项目 Python 版本
+
+如果需要更改项目使用的 Python 版本，有两种方法：
+
+**方法 1：修改 `.python-version` 文件（推荐）**
+
+项目根目录下有一个 `.python-version` 文件，它控制了项目使用的 Python 版本。
+
+1. 打开 `.python-version` 文件（隐藏文件，可能需要显示隐藏文件）
+2. 修改内容为你需要的版本，例如：
+   - `3.12` （使用 3.12 最新版）
+   - `3.11.5` （指定精确版本）
+3. 保存文件
+4. 运行 `uv sync` 重新同步环境
+
+**方法 2：通过命令行指定**
+
+```powershell
+uv python pin 3.12
+```
+
+这会自动更新 `.python-version` 文件。
+
+**方法 3：在 `pyproject.toml` 中指定最低版本**
+
+编辑 `pyproject.toml` 中的 `requires-python` 字段：
+
+```toml
+requires-python = ">=3.12"
+```
+
+然后运行 `uv sync` 让 uv 自动下载合适的 Python 版本。
+
+**查看当前使用的 Python 版本：**
+
+```powershell
+uv python list
+```
+
+这会显示你本地安装的所有 Python 版本以及当前项目使用的版本。
+
 ---
 
 ## 第四阶段：多电脑同步 (Git Workflow)
