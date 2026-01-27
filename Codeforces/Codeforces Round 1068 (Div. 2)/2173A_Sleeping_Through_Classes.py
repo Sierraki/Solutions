@@ -4,7 +4,6 @@ from bisect import bisect, bisect_left
 from itertools import accumulate as acc
 import sys
 
-
 input = sys.stdin.readline
 
 
@@ -30,8 +29,17 @@ def lacc(nums):
 
 def solve():
     n, k = mii()
-    a = input()
-    print(n, k, a)
+    s = si()
+    ans = 0
+    cnt = 0
+    for i in s:
+        cnt -= 1
+        if i == "1":
+            cnt = k + 1
+        else:
+            if cnt <= 0:
+                ans += 1
+    print(ans)
 
 
 # sys.setrecursionlimit(200000)

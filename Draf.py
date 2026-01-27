@@ -15,26 +15,15 @@ def lacc(nums):
     return list(acc(nums))
 
 
-n = 8
-nums = [3, 2, 2, 3, 7, 3, 6, 7]
-
-dp = [float("inf")] * (n + 1)
-vis = [False] * (n + 1)
-
-for i in nums:
-    vis[i] = True
-    dp[i] = 1
-    # print(i)
-
-for i in range(1, n + 1):
-    if dp[i] != float("inf"):
-        for j in range(2 * i, n + 1, i):
-            res = j // i
-            dp[j] = min(dp[j], dp[res] + dp[i])
-
-ans = [i if i!=float('inf') else -1 for i in  (dp[1:])]
-print(list(range(n + 1)))
-print(vis)
-print(dp)
-
+n,k=4,1
+s='1001'
+ans = 0
+cnt = 0
+for i, j in enumerate(s):
+    cnt -= 1
+    if j == "1":
+        cnt = k
+    else:
+        if cnt <= 0:
+            ans += 1
 print(ans)

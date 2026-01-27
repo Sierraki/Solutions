@@ -3,5 +3,8 @@
         {
             "path": "."
         }
-    ]
+    ],
+    "settings": {
+        "cph.general.defaultLanguage": "python"
+    }
 }
