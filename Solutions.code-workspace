@@ -1,10 +1,8 @@
 {
-    "folders": [
-        {
-            "path": "."
-        }
-    ],
-    "settings": {
-        "cph.general.defaultLanguage": "python"
-    }
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
 }
