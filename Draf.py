@@ -15,15 +15,7 @@ def lacc(nums):
     return list(acc(nums))
 
 
-n,k=4,1
-s='1001'
-ans = 0
-cnt = 0
-for i, j in enumerate(s):
-    cnt -= 1
-    if j == "1":
-        cnt = k
-    else:
-        if cnt <= 0:
-            ans += 1
-print(ans)
+ranks = [2, 1, 2, 1, 1]
+suits = ["d", "b", "a", "a", "d"]
+
+
