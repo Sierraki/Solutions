@@ -40,24 +40,24 @@ def lap(range1, range2):
 
 def solve():
     n, h = mii()
-    t = [0] * (n + 1)
-    mi = [0] * (n + 1)
-    mx = [0] * (n + 1)
-    mi[0] = mx[0] = h
+    t = 0
+    mi = h
+    mx = h
+    mi = mx = h
     swap = False
-    for times in range(n):
+    for _ in range(n):
         i, j, k = mii()
         tar = [j, k]
-        dif = i - t[times]
-        t[times + 1] = i
-        cur = [mi[times] - dif if mi[times] - dif > 0 else 1, mx[times] + dif]
+        dif = i - t
+        t = i
+        cur = [mi - dif if mi - dif > 0 else 1, mx + dif]
         res = lap(cur, tar)
         if res == [-1, -1]:
             if not swap:
                 print("No")
                 swap = True
         else:
-            mi[times + 1], mx[times + 1] = res[0], res[1]
+            mi, mx  = res[0], res[1]
     if not swap:
         print("Yes")
 
