@@ -45,11 +45,9 @@ def solve():
     for i in s:
         if i == "1":
             cnt += 1
-
     res = s.split("1")
     if cnt == 0:
         print((n + 2) // 3)
-        
     else:
         m = len(res)
         for i in range(m):
@@ -60,7 +58,6 @@ def solve():
                 cnt += one(item) 
             else:
                 cnt += both(item)
-
         print(cnt)
 
 
