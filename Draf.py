@@ -37,34 +37,9 @@ def si():
 def lacc(nums):
     return list(acc(nums))
 
-
-n, m = mii()
-ma = [[0] * (n + 1) for _ in range(n + 1)]
-for _ in range(m):
-    a, b = mii()
-    ma[a][b] = 1
-p(ma)
-
-res = []
-path = []
-
-start = 1
-end = 5
+nums = [1, 2, 3, 4, 5, 6]
 
 
-def dfs(cur, path):
-    if cur == end:
-        res.append(path.copy())
-        return
-    if not path:
-        path.append(cur)
-    # 对cur行进行遍历
-    for idx, i in enumerate(ma[cur]):
-        if i == 1:
-            path.append(idx)
-            dfs(idx, path)
-            path.pop()
+nums.insert(4, 56454)
 
-
-dfs(1, [])
-print(res)
+print(nums)
