@@ -4,6 +4,9 @@ from bisect import bisect, bisect_left
 from itertools import accumulate as acc
 import heapq
 import copy
+import sys
+
+input = sys.stdin.readline
 
 
 def p(nums):
@@ -15,44 +18,53 @@ def lacc(nums):
     return list(acc(nums))
 
 
-def fun(nums):
-    for i in range(1, len(nums)):
-        if 1 <= abs(nums[i] - nums[i - 1]) <= 2:
-            continue
-        else:
-            return False
-
-    return 1 <= abs(nums[0] - nums[-1]) <= 2
+def mii():
+    return map(int, input().split())
 
 
-n = 5
+def lmii():
+    return list(map(int, input().split()))
 
 
-def fun1(n):
-    nums = list(range(1, n + 1))
-
-    res = []
-
-    while n >= 2:
-        cur1 = n - 1
-        cur2 = n - 2
-        n -= 2
-        if not res:
-            res += [cur1, cur2] * cur2 + [cur1]
-        else:
-            res = [cur1] + res + [cur1, cur2] * cur2
-    if n==1:
-        res.append(1)
-    return res
+def ii():
+    return int(input())
 
 
-for i in range(3, 1000 + 1):
-    cur = fun1(i)
+def si():
+    return input().strip()
 
-    if fun(cur):
-        print(i, fun(cur))
-    else:
-        print(i)
-        break
 
-print(fun1(4))
+def lacc(nums):
+    return list(acc(nums))
+
+
+n, m = mii()
+ma = [[0] * (n + 1) for _ in range(n + 1)]
+for _ in range(m):
+    a, b = mii()
+    ma[a][b] = 1
+p(ma)
+
+res = []
+path = []
+
+start = 1
+end = 5
+
+
+def dfs(cur, path):
+    if cur == end:
+        res.append(path.copy())
+        return
+    if not path:
+        path.append(cur)
+    # 对cur行进行遍历
+    for idx, i in enumerate(ma[cur]):
+        if i == 1:
+            path.append(idx)
+            dfs(idx, path)
+            path.pop()
+
+
+dfs(1, [])
+print(res)
