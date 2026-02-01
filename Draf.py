@@ -37,9 +37,25 @@ def si():
 def lacc(nums):
     return list(acc(nums))
 
-nums = [1, 2, 3, 4, 5, 6]
+
+isConnected = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+
+n = len(isConnected)
+vis =  [False] * (n)
 
 
-nums.insert(4, 56454)
+def dfs(cur):
+    vis[cur ] = True
+    for idx, j in enumerate(isConnected[cur ] ):
+        if j == 1 and vis[idx] == False:
+            vis[idx] = True
+            dfs(idx)
 
-print(nums)
+
+cnt = 0
+for i in range(n):
+    if vis[i] == False:
+        cnt += 1
+        dfs(i)
+
+print(cnt)
