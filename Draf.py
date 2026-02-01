@@ -38,24 +38,30 @@ def lacc(nums):
     return list(acc(nums))
 
 
-isConnected = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
+n = 5
+edges = [[0, 4]]
+source = 0
+destination = 4
 
-n = len(isConnected)
-vis =  [False] * (n)
-
-
+nums = [[] for _ in range(n)]
+vis = [False] * n
+for i, j in edges:
+    nums[i].append(j)
+    nums[j].append(i)
+res = [False]
 def dfs(cur):
-    vis[cur ] = True
-    for idx, j in enumerate(isConnected[cur ] ):
-        if j == 1 and vis[idx] == False:
-            vis[idx] = True
-            dfs(idx)
+    if cur == destination:
+        res[0] = True
+        return
+    for i  in (nums[cur]):
+        if vis[i] == False:
+            vis[i] = True
+            dfs(i)
 
 
-cnt = 0
-for i in range(n):
-    if vis[i] == False:
-        cnt += 1
-        dfs(i)
+vis[source] = True
+dfs(source)
+p(nums)
+print(vis)
 
-print(cnt)
+print(res[0])
