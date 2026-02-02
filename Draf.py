@@ -38,17 +38,16 @@ def lacc(nums):
     return list(acc(nums))
 
 
-n = 7
-edges = [[0, 2], [0, 5], [2, 4], [1, 6], [5, 4]]
+n = 6
+connections = [[0, 1], [0, 2], [0, 3], [1, 2]]
+
+cable = len(connections)
 
 nums = [[] for _ in range(n)]
-for i, j in edges:
+for i, j in connections:
     nums[i].append(j)
     nums[j].append(i)
-
-
 vis = [False] * n
-
 res = []
 
 
@@ -64,15 +63,21 @@ for i in range(n):
     if not vis[i]:
         path = []
         dfs(i, path)
-        res.append(len(path))
+        res.append((path[:]))
+
 print(res)
-ans = 0
-
-total = sum(res)
-
+need = len(res) - 1
+cur=0
 for i in res:
-    total -= i
-    ans += i * total
+    cur+=len(i)-1
+print(need)
+print(cable)
+
+if len(res)==1:
+    ans=0
+elif need+cur>cable:
+    ans=-1
+else:
+    ans=cur
 
 print(ans)
-print(nums)
