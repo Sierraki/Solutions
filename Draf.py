@@ -38,30 +38,41 @@ def lacc(nums):
     return list(acc(nums))
 
 
-n = 5
-edges = [[0, 4]]
-source = 0
-destination = 4
+n = 7
+edges = [[0, 2], [0, 5], [2, 4], [1, 6], [5, 4]]
 
 nums = [[] for _ in range(n)]
-vis = [False] * n
 for i, j in edges:
     nums[i].append(j)
     nums[j].append(i)
-res = [False]
-def dfs(cur):
-    if cur == destination:
-        res[0] = True
-        return
-    for i  in (nums[cur]):
-        if vis[i] == False:
-            vis[i] = True
-            dfs(i)
 
 
-vis[source] = True
-dfs(source)
-p(nums)
-print(vis)
+vis = [False] * n
 
-print(res[0])
+res = []
+
+
+def dfs(cur, path):
+    vis[cur] = True
+    path.append(cur)
+    for i in nums[cur]:
+        if not vis[i]:
+            dfs(i, path)
+
+
+for i in range(n):
+    if not vis[i]:
+        path = []
+        dfs(i, path)
+        res.append(len(path))
+print(res)
+ans = 0
+
+total = sum(res)
+
+for i in res:
+    total -= i
+    ans += i * total
+
+print(ans)
+print(nums)
