@@ -7,7 +7,7 @@
     "Lingma.aI Rules.projectRuleEnable": false,
     "editor.fontLigatures": true,
     "python.analysis.autoImportCompletions": false,
-    "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode",
+    "editor.defaultFormatter": "ms-python.black-formatter",
     "[sql]": {
         "editor.defaultFormatter": "inferrinizzard.prettier-sql-vscode",
         "prettier-sql.SQLFlavourOverride": "mysql"
