@@ -37,47 +37,53 @@ def si():
 def lacc(nums):
     return list(acc(nums))
 
+bombs = [[2, 1, 3], [6, 1, 4]]
 
-n = 6
-connections = [[0, 1], [0, 2], [0, 3], [1, 2]]
+n = len(bombs)
 
-cable = len(connections)
 
-nums = [[] for _ in range(n)]
-for i, j in connections:
-    nums[i].append(j)
-    nums[j].append(i)
-vis = [False] * n
+def check(x1, y1, r1, x2, y2):
+    return sqrt((y1 - y2) ** 2 + (x1 - x2) ** 2) <= r1
+
+
 res = []
+
+for i in range(n):
+    for j in range(i + 1, n):
+        a = bombs[i]
+        b = bombs[j]
+        if check(a[0], a[1], a[2], b[0], b[1]):
+            res.append([i, j])
+        if check(b[0], b[1], b[2], a[0], a[1]):
+            res.append([j, i])
+print(res)
+adj = [[] for _ in range(n)]
+for i, j in res:
+    adj[i].append(j)
+
+p(adj)
+ans = []
+
+vis = [False] * n
 
 
 def dfs(cur, path):
-    vis[cur] = True
     path.append(cur)
-    for i in nums[cur]:
+    vis[cur] = True
+    for i in adj[cur]:
         if not vis[i]:
             dfs(i, path)
 
 
 for i in range(n):
-    if not vis[i]:
-        path = []
-        dfs(i, path)
-        res.append((path[:]))
-
-print(res)
-need = len(res) - 1
-cur=0
-for i in res:
-    cur+=len(i)-1
-print(need)
-print(cable)
-
-if len(res)==1:
-    ans=0
-elif need+cur>cable:
-    ans=-1
-else:
-    ans=cur
+    path = []
+    vis = [False] * n
+    dfs(i, path)
+    ans.append(path[:])
 
 print(ans)
+
+mx = -float("inf")
+for i in ans:
+    mx = max(mx, len(i))
+print(mx)
