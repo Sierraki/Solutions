@@ -38,20 +38,22 @@ def lacc(nums):
     return list(acc(nums))
 
 
-graph = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]
-initial = [0, 2]
+graph = [[1, 1, 0, 0], [1, 1, 1, 0], [0, 1, 1, 1], [0, 0, 1, 1]]
+
+initial = [0, 1]
 
 n = len(graph)
 vis = [False] * n
-initial = set(initial)
+for i in initial:
+    vis[i] = True
+
 
 def dfs(cur, path):
     path.append(cur)
     vis[cur] = True
     for i, j in enumerate(graph[cur]):
-        if j == 1:
-            if not vis[i]:
-                dfs(i, path)
+        if j == 1 and not vis[i]:
+            dfs(i, path)
 
 
 res = []
@@ -60,29 +62,42 @@ for i in range(n):
         path = []
         dfs(i, path)
         res.append(path[:])
-ans = []
+# print(res)
 
+# 源头-入口 so
+so = defaultdict(list)
 
-def check(tar):
-    res = []
-    for i in tar:
-        if i in initial:
-            res.append(i)
-    if len(res) > 1:
-        return [[0, i] for i in res]
-    elif len(res) == 1:
-        return [[len(tar), res[0]]]
-    return []
+for i in initial:
+    for idx, j in enumerate(graph[i]):
+        if j == 1:
+            so[i].append(idx)
 
+res1 = defaultdict(list)
+# 每个入口对应的源头 res1
+for i, j in so.items():
+    for k in j:
+        if k != i:
+            res1[k].append(i)
+initial = set(initial)
+# print(res1)
+
+ans1 = Counter()
 
 for i in res:
-    cur = check(i)
-    if cur:
-        ans += cur
+    cnt1 = set()
+    for j in i:
+        # print(res1[j])
+        for k in res1[j]:
+            if k in initial:
+                cnt1.add(k)
+    if len(cnt1) == 1:
+        cnt1 = list(cnt1)
+        ans1[cnt1[0]] += len(i)
+ans1 = [[i, j] for i, j in ans1.items()]
+ans1.sort(key=lambda x: (-x[1], x[0]))
 
-
-ans.sort(key=lambda x: (-x[0], x[1]))
-
-print(res)
-print(ans)
-print(ans[0][1])
+# print(ans1)
+if ans1:
+    print(ans1[0][0])
+else:
+    print(min(initial))
