@@ -7,22 +7,34 @@ import copy
 import sys
 
 
-weight = [2, 5, 1, 4, 3]
+numCourses = 2
+prerequisites = [[1, 0]]
 
-nums = deque(weight)
+nums = [[] for _ in range(numCourses)]
 
-cnt = 0
-res = []
-while nums:
-    if not res:
-        res.append(nums.popleft())
+for i, j in prerequisites:
+    nums[j].append(i)
+print(nums)
+vis = [0] * numCourses
 
-    cur=   nums.popleft() 
-    if res[-1] > cur:
-        res.pop()
-        cnt += 1
+
+def dfs(cur):
+    if vis[cur] > 0:
+        return vis[cur] == 2
+    vis[cur] = 1
+    for i in nums[cur]:
+        if not dfs(i):
+            return False
+    vis[cur] = 2
+    return True
+
+
+for i in range(numCourses):
+    dfs(i)
+
+for i in vis:
+    if i==2:
+        continue
     else:
-        res.append(cur)
-    print(res, nums)
-
-print(cnt)
+        return False
+return True
