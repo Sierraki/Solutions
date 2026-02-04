@@ -28,13 +28,3 @@ def dfs(cur):
     vis[cur] = 2
     return True
 
-
-for i in range(numCourses):
-    dfs(i)
-
-for i in vis:
-    if i==2:
-        continue
-    else:
-        return False
-return True
