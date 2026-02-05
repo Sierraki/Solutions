@@ -22,10 +22,9 @@ class Solution:
             graph.append(res)
         adj = [[] * n for _ in range(n)]
         for i in graph:
-            for a in range(len(i)):
-                for b in range(a + 1, len(i)):
-                    adj[i[a]].append(i[b])
-                    adj[i[b]].append(i[a])
+            for k in range(1, len(i)):
+                adj[i[k - 1]].append(i[k])
+                adj[i[k]].append(i[k - 1])
         vis = [False] * n
         res = []
 
