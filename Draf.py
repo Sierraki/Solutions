@@ -1,7 +1,7 @@
 from collections import defaultdict, Counter, deque
 from math import sqrt, floor
 from bisect import bisect, bisect_left
-from itertools import accumulate as acc
+from itertools import accumulate
 import heapq
 import copy
 import sys
@@ -12,45 +12,30 @@ def p(numss):
         print(i)
 
 
-accounts = [
-    ["John", "johnsmith@mail.com", "john00@mail.com"],
-    ["John", "johnnybravo@mail.com"],
-    ["John", "johnsmith@mail.com", "john_newyork@mail.com"],
-    ["Mary", "mary@mail.com"],
-]
+nums = [3, 7]
 
-n = 0
-pin = au = len(accounts)
+mi = min(nums)
+idx = nums.index(mi)
 
-mail_idx = defaultdict()
-mail_idx1 = defaultdict()
+del nums[idx]
 
-for i in accounts:
-    cur = i[1:]
-    for j in cur:
-        if j not in mail_idx:
-            mail_idx[j] = pin
-            mail_idx1[pin] = j
-            pin += 1
-            n = pin
+if len(nums)>1:
+    pf = list(accumulate(nums))
+    print(nums)
 
-print(mail_idx)
-# print(mail_idx1)
+    print(pf)
 
-adj = [[] * n for _ in range(au)]
+    ans = -float("inf")
+    l = pf[0]
 
-for i in range(au):
-    for j in accounts[i][1:]:
-        adj[i].append(mail_idx[j])
+    for i in range(1, len(pf)):
+        if i < len(pf) - 1:
+            l = min(l, pf[i - 1])
+            ans = max(ans, pf[i] - l, pf[i])
+        if i == len(pf) - 1:
+            l = min(l, pf[i - 1])
+            ans = max(ans, pf[i] - l)
 
-p(adj)
-vis = [False] * n
-res = []
-
-
-def dfs(cur, path):
-    path.append(cur)
-    vis[cur] = True
-    for i in adj[cur]:
-        if not vis[i]:
-            dfs(i, path)
+    print(ans)
+else:
+    print(nums[0])
