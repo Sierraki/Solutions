@@ -9,7 +9,6 @@ def p(numss):
         print(i)
 
 
-nums = [3, 2, 1, 2, 3, 2, 1]
-
-n = len(nums)
+def fun(X,Y,total,ai):
+    return (total-X*ai)//(Y-X)
 
