@@ -12,4 +12,3 @@ def p(numss):
         print(i)
 
 
-n

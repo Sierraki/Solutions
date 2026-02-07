@@ -34,28 +34,27 @@ def ms(numss):
 def solve():
     n = ii()
     nums = lmii()
-
     mx = max(nums)
-    cnt = [0] * (mx + 1)
-
-    for i in nums:
-        cnt[i] += 1
-    cur_idx = 0
-    cur = []
-    for i in range(mx, 0, -1):
-        cur_idx += cnt[i]
-        cur.append(cur_idx)
-    cur.reverse()
-    res = []
-    ans = 0
-    for val in cur:
-        total = val + ans
-        res.append(str(total % 10))
-        ans = total // 10
-    while ans > 0:
-        res.append(str(ans % 10))
-        ans //= 10
-    print("".join(res[::-1]))
+    ans = [0] * (mx + 1)
+    nums.sort(reverse=True)
+    for i, j in enumerate(nums):
+        ans[j] = i + 1
+    for i in range(mx - 1, 0, -1):
+        ans[i] = max(ans[i], ans[i + 1])
+    del ans[0]
+    ans += [0]
+    for i in range(len(ans)):
+        if i < len(ans) - 1:
+            if ans[i] >= 10:
+                ans[i + 1] += ans[i] // 10
+                ans[i] = ans[i] % 10
+        else:
+            if ans[i] >= 10:
+                ans[i] = str(ans[i])[::-1]
+    if ans[-1] == 0:
+        ans.pop()
+    ans = "".join(map(str, ans))[::-1]
+    print(ans)
 
 
 # sys.setrecursionlimit(200000)
