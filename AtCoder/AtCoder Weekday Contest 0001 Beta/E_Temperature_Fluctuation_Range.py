@@ -34,21 +34,22 @@ def ms(numss):
 def solve():
     n, k = mii()
     nums = lmii()
-    
-
-    mx = deque()
-    mi = deque()
+    cur_mi = deque([])
+    cur_mx = deque([])
     ans = 0
-    for idx,i in enumerate(nums):
-        if not mx:
-            mx.append(i)
-        if not mi:
-            mi.append(i)
-        
-        if mx:
-            if i>mx[0]:
-                mx.o
-
+    for i, j in enumerate(nums):
+        if cur_mi and cur_mi[0] <= i - k:
+            cur_mi.popleft()
+        while cur_mi and nums[cur_mi[-1]] >= j:
+            cur_mi.pop()
+        cur_mi.append(i)
+        if cur_mx and cur_mx[0] <= i - k:
+            cur_mx.popleft()
+        while cur_mx and nums[cur_mx[-1]] <= j:
+            cur_mx.pop()
+        cur_mx.append(i)
+        if i >= k - 1:
+            ans = max(ans, abs(nums[cur_mx[0]] - nums[cur_mi[0]]))
     print(ans)
 
 
