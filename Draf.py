@@ -11,18 +11,36 @@ def p(numss):
         print(i)
 
 
-nums = [7, 2, 4]
-k = 2
+n = 3
+k = 3
 
-cur = deque([])
-ans = []
+vis = [False] * (n)
+res = []
 
-for i, j in enumerate(nums):
-    if cur and cur[0]<=i-k:
-        cur.popleft()
-    while cur and nums[cur[-1]]>=j:
-        cur.pop()
-    cur.append(i)
-    if i>=k-1:
-        ans.append(nums[cur[0]])
-print(ans)
+swap = True
+
+
+def dfs(path):
+    global swap
+    if swap:
+        if len(path) == n:
+            cur = "".join(path)
+            res.append(cur)
+            return
+        if len(res) == k:
+            swap = False
+            return
+
+        for i in range(n):
+            if not vis[i]:
+                path.append(str(i + 1))
+                vis[i] = True
+                dfs(path)
+                path.pop()
+                vis[i] = False
+    return
+
+
+dfs([])
+
+print(res[-1])
