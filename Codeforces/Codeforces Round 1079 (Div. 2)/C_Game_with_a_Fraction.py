@@ -2,6 +2,7 @@ from collections import defaultdict, Counter, deque
 from math import sqrt, floor, gcd, ceil
 from bisect import bisect, bisect_left
 from itertools import accumulate as acc
+from functools import lru_cache
 import sys
 
 input = sys.stdin.readline
@@ -32,32 +33,15 @@ def ms(numss):
 
 
 def solve():
-    n = ii()
-    p = lmii()
-    a = lmii()
-    # print(p)
-    cnt = Counter()
-    for i, j in enumerate(p):
-        cnt[j] = i
-    # print(cnt)
-    res = [cnt[a[0]]]
-    for i in range(1, n):
-        if a[i - 1] == a[i]:
-            continue
-        else:
-            res.append(cnt[a[i]])
+    p, q = mii()
 
-    swap = True
-    for i in range(1, len(res)):
-        if res[i - 1] <= res[i]:
-            continue
-        else:
-            swap = False
-            break
-    print("YES" if swap else "NO")
+    if 3 * p >= 2 * q and p < q:
+        print("Bob")
+    else:
+        print("Alice")
 
 
-# sys.setrecursionlimit(200000)
+sys.setrecursionlimit(200000)
 if __name__ == "__main__":
     size = ii()
     for _ in range(size):
