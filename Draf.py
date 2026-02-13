@@ -4,7 +4,6 @@ from bisect import bisect, bisect_left
 from itertools import accumulate
 from functools import cache
 import heapq
-import sys
 import copy
 
 
@@ -12,15 +11,37 @@ def p(numss):
     for i in numss:
         print(i)
 
-cost = [1, 100, 1, 1, 1, 100, 1, 1, 100, 1]
+
+n = 3
+k = 3
+
+vis = [False] * (n)
+res = []
+
+swap = True
 
 
-@cache
-def dfs(cur):
-    if cur <= 1:
-        return 0
+def dfs(path):
+    global swap
+    if swap:
+        if len(path) == n:
+            cur = "".join(path)
+            res.append(cur)
+            return
+        if len(res) == k:
+            swap = False
+            return
 
-    return min(dfs(cur - 1) + cost[cur - 1], dfs(cur - 2) + cost[cur - 2])
+        for i in range(n):
+            if not vis[i]:
+                path.append(str(i + 1))
+                vis[i] = True
+                dfs(path)
+                path.pop()
+                vis[i] = False
+    return
 
 
-print(dfs(len(cost)))
+dfs([])
+
+print(res[-1])
