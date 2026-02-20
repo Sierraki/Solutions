@@ -11,41 +11,15 @@ def p(numss):
     for i in numss:
         print(i)
 
-colors = "bbbaaa"
-neededTime = [4, 9, 3, 8, 8, 9]
-
-n = len(colors)
-
-res = []
-
-pin = 0
-
-for i, j in enumerate(colors):
-    if j == colors[pin]:
-        continue
-    else:
-        res.append(neededTime[pin:i])
-        pin = i
-
-if pin != n + 1:
-    res.append(neededTime[pin:])
 
 
-def fun(nums):
-    total = sum(nums)
-    ans = 0
-    for i, j in enumerate(nums):
-        if i % 2 == 0:
-            ans += j
-    return min(ans, total - ans)
+numBottles = 10
+numExchange = 3
 
+a=0.5
+b=numExchange-0.5
+c=-numBottles
 
-# p(res)
+det=b**2-4*a*c
 
-ans = 0
-
-for i in res:
-    ans += fun(i)
-
-print(res)
-print(ans)
+print((-b+ (sqrt(det)))//(2*a))
