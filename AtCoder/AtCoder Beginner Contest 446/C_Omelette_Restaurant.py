@@ -22,25 +22,31 @@ def ms(numss):
 
 
 def solve():
-    n=ii()
-    nums=lmii()
-
-    cnt=defaultdict(int)
-    mx=1
-    for i in nums:
-        tar=i-1
-        if tar not in cnt:
-            cnt[i]=max(cnt[i],1)
-        else:
-            cnt[i]=max(cnt[i],cnt[tar]+1)
-        mx=max(mx,cnt[i])
-    print(mx)
-
-
-
+    n,d=mii()
+    buy=lmii()
+    use=lmii()
+    res=deque([])
+    total=0
+    for i in range(n):
+        res.append([i+1,buy[i]])
+        total+=buy[i]
+        cur=use[i]
+        total-=cur
+        while cur>0:
+            if res and res[0][1]>=cur:
+                res[0][1]-=cur
+                cur=0
+            else:
+                cur-=res[0][1]
+                res[0][1]=0
+                res.popleft()
+        while res[0][0]<=i+1-d:
+            total-=res[0][1]
+            res.popleft()
+    print(total)
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
-    # size = ii()
-    # for _ in range(size):
+    size = ii()
+    for _ in range(size):
         solve()

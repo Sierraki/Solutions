@@ -31,5 +31,10 @@
     "C_Cpp.hover": "disabled",
     "editor.suggest.showInlineDetails": false,
     "breadcrumbs.showTypeParameters": false,
-    "editor.suggest.showTypeParameters": false
+    "editor.suggest.showTypeParameters": false,
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true
 }

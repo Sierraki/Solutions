@@ -31,21 +31,17 @@ def solve():
             nextt = j * m + w
             cur = i * m + j
             adj[nextt].append(cur)
-            
     res = deque()
     vis = [False] * m*m
-    
     for i in range(m):
         s1 = i  
         if not vis[s1]:
             vis[s1] = True
             res.append(s1)
-            
         s2 = i * m 
         if not vis[s2]:
             vis[s2] = True
             res.append(s2)
-            
     cnt = 0
     while res:
         cur = res.popleft()
@@ -54,10 +50,7 @@ def solve():
             if not vis[prev]:
                 vis[prev] = True
                 res.append(prev)
-                
     print(m * m - cnt)
-    pass
-
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
     # size = ii()

@@ -22,24 +22,8 @@ def ms(numss):
 
 
 def solve():
-    n,m=mii()
-    seen=set()
-    for _ in range(n):
-        n1=ii()
-        nums=lmii()
-        nums=[i for i in nums if i not in seen]
-        if nums:
-            print(nums[0])
-            seen.add(nums[0])
-            del nums[0]
-        else:
-            print(0)
-        
-        
-        # print(nums)
-        
-         
-    
+    s=si()
+    print('Of'+s[0].lower()+s[1:])
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
