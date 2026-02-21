@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"editor.defaultFormatter": "ms-python.black-formatter"
+		"editor.mouseWheelZoom": true
 	}
 }
