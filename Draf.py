@@ -11,6 +11,5 @@ def p(numss):
     for i in numss:
         print(i)
 
-
-for i   in range(10  ):
-    print(i  )
+for i   in range(10):
+    print(i)
