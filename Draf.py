@@ -13,13 +13,3 @@ def p(numss):
 
 
 
-numBottles = 10
-numExchange = 3
-
-a=0.5
-b=numExchange-0.5
-c=-numBottles
-
-det=b**2-4*a*c
-
-print((-b+ (sqrt(det)))//(2*a))
