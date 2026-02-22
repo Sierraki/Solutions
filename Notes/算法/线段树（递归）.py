@@ -76,7 +76,7 @@ def query(node, L, R, left, right):
 
 build(0, 0, n - 1)
 print(tree)
-update(0, 1, 10, 0, n - 1)
-print(tree)
-cur1 = query(0, 0, 1 + 1, 0, n - 1)
+# update(0, 1, 10, 0, n - 1)
+# print(tree)
+cur1 = query(0, 1, 4, 0, n - 1)
 print(cur1)
