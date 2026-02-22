@@ -7,6 +7,8 @@
 	"settings": {
 		"editor.defaultFormatter": "ms-python.black-formatter",
 		"editor.formatOnSave": true,
-		"files.autoSave": "afterDelay"
+		"files.autoSave": "afterDelay",
+		"editor.fontFamily": "JetBrains Mono",
+		"editor.mouseWheelZoom": true
 	}
 }
