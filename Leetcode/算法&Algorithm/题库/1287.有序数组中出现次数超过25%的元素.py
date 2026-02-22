@@ -1,4 +1,6 @@
 from collections import defaultdict
+
+
 class Solution:
     def findSpecialInteger(self, arr) -> int:
         n=len(arr)

@@ -1,10 +1,10 @@
-from collections import defaultdict, Counter, deque
-from math import sqrt, floor, gcd, ceil
-from bisect import bisect, bisect_left
-from itertools import accumulate
-from functools import cache, lru_cache
-import heapq
 import copy
+import heapq
+from bisect import bisect, bisect_left
+from collections import Counter, defaultdict, deque
+from functools import cache, lru_cache
+from itertools import accumulate
+from math import ceil, floor, gcd, sqrt
 
 
 def p(numss):

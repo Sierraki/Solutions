@@ -1,5 +1,7 @@
-from typing import List
 import bisect
+from typing import List
+
+
 class Solution:
     def getSubarrayBeauty(self, nums: List[int], k: int, x: int) -> List[int]:
         n = len(nums)

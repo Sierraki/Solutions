@@ -1,4 +1,6 @@
 from collections import defaultdict
+
+
 class Solution:
     def lengthOfLongestSubstringTwoDistinct(self, s: str) -> int:
         left = 0

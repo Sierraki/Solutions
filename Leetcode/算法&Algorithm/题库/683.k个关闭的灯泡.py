@@ -1,5 +1,6 @@
-from collections import defaultdict
 import bisect
+from collections import defaultdict
+
 
 class Solution:
     def kEmptySlots(self, bulbs: List[int], k: int) -> int:

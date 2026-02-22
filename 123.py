@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
-import sys
-import requests
-import time
 import math
+import sys
+import time
+
+import requests
 
 # ================= 配置区域 =================
 # 门槛分 (通常是 1600)

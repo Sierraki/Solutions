@@ -1,8 +1,10 @@
-from collections import defaultdict as dfd, Counter, deque
-from math import sqrt, floor
-from bisect import bisect, bisect_left
-from itertools import accumulate as acc
 import sys
+from bisect import bisect, bisect_left
+from collections import Counter
+from collections import defaultdict as dfd
+from collections import deque
+from itertools import accumulate as acc
+from math import floor, sqrt
 
 input = sys.stdin.readline
 

@@ -1,8 +1,8 @@
-from collections import defaultdict, Counter, deque
-from math import sqrt, floor
-from bisect import bisect, bisect_left
-from itertools import accumulate
 import sys
+from bisect import bisect, bisect_left
+from collections import Counter, defaultdict, deque
+from itertools import accumulate
+from math import floor, sqrt
 
 # 设定输入
 input = sys.stdin.readline

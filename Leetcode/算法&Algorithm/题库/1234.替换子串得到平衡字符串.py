@@ -1,6 +1,7 @@
 import bisect
+from collections import Counter, defaultdict
+
 from sortedcontainers import SortedList
-from collections import defaultdict, Counter
 
 
 class Solution:

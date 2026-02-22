@@ -20,7 +20,8 @@ class Solution:
             # print(s[left : right + 1], cur)
         return cur
 
-from collections import defaultdict 
+from collections import defaultdict
+
 
 class Solution:
     def countKConstraintSubstrings(self, s: str, k: int) -> int:

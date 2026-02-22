@@ -1,5 +1,5 @@
-from collections import Counter
 import sys
+from collections import Counter
 
 
 def fun(nums):

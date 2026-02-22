@@ -1,5 +1,5 @@
-from collections import defaultdict
 import sys
+from collections import defaultdict
 
 input = sys.stdin.readline
 size = int(input())

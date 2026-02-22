@@ -1,9 +1,9 @@
-from collections import defaultdict, Counter, deque
-from math import sqrt, floor, gcd, ceil
-from bisect import bisect, bisect_left
-from itertools import accumulate as acc
-from functools import lru_cache
 import sys
+from bisect import bisect, bisect_left
+from collections import Counter, defaultdict, deque
+from functools import lru_cache
+from itertools import accumulate as acc
+from math import ceil, floor, gcd, sqrt
 
 input = sys.stdin.readline
 
