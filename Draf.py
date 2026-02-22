@@ -1,39 +1,20 @@
-from math import ceil, sqrt
-from operator import le
-from turtle import left
+import heapq
+import sys
+from bisect import bisect, bisect_left
+from collections import Counter, defaultdict, deque
+from functools import cache, lru_cache
+from itertools import accumulate as acc
+from math import ceil, floor, gcd, sqrt
 
+s = "00110"
+k = 2
 
-nums = [5, 2, 8, 1, 9, 4, 7, 3, 6, 2]
+ans = 2**k
 
-n = len(nums)
-n1 = int(n**0.5)
-block = []
-for i in range(0, n, n1):
-    block.append(sum(nums[i:i + n1]))
-print(block)
+seen = set()
 
+for i in range(len(s) - k + 1):
+    seen.add(s[i:i + k])
+print(len(seen) == ans)
 
-def ask(left, right):
-    ans = 0
-    b1 = left // n1
-    b2 = right // n1
-    if b1 == b2:
-        return sum(nums[left: right + 1])
-    ans = sum(nums[left: (b1 + 1) * n1])
-    ans += sum(block[b1 + 1: b2])
-    ans += sum(nums[b2 * n1: right + 1])
-    return ans
-
-
-def update(idx, val):
-    lc = (idx) // n1
-    block[lc] = block[lc] - nums[idx] + val
-    nums[idx] = val
-
-
-print(ask(2, 7))
-# update(4, 5)
-# print(ask(1, 8))
-
-# update(0, 10)
-# print(ask(0, 3))
+print(seen, ans)

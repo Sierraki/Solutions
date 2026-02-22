@@ -1,11 +1,7 @@
 class Solution:
-    def minimumDifference(self, nums: List[int], k: int) -> int:
-        n = len(nums)
-
-        nums.sort()
-        cur = big = nums[k - 1] - nums[0]
-
-        for i in range(k - 1, n):
-            cur = nums[i] - nums[i - k + 1]
-            big = min(big, cur)
-        return big
+    def hasAllCodes(self, s: str, k: int) -> bool:
+        ans = 2**k
+        seen = set()
+        for i in range(len(s) - k + 1):
+            seen.add(s[i : i + k])
+        return len(seen) == ans

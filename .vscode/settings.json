@@ -4,7 +4,7 @@
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
     "editor.fontFamily": "JetBrains Mono",
-    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoImportCompletions": false,
     "javascript.suggest.autoImports": false,
     "editor.hover.above": false,
     "editor.hover.enabled": "off",
@@ -14,4 +14,5 @@
     "editor.suggest.showTypeParameters": false,
     "breadcrumbs.showTypeParameters": false,
     "outline.showTypeParameters": false,
+    "typescript.suggest.autoImports": false,
 }

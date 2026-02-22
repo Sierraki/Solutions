@@ -13,7 +13,7 @@
 		"[python]": {
 			"editor.defaultFormatter": "ms-python.autopep8"
 		},
-		"python.analysis.autoImportCompletions": true,
+		"python.analysis.autoImportCompletions": false,
 		"cph.general.defaultLanguage": "python",
 		"cph.general.defaultLanguageTemplateFileLocation": "S:\\CodeDB\\Solutions\\template.py",
 		"javascript.suggest.autoImports": false,
@@ -24,6 +24,8 @@
 		"editor.parameterHints.cycle": false,
 		"editor.suggest.showTypeParameters": false,
 		"breadcrumbs.showTypeParameters": false,
-		"outline.showTypeParameters": false
+		"outline.showTypeParameters": false,
+		"editor.autoClosingComments": "never",
+		"typescript.suggest.autoImports": false
 	}
 }
