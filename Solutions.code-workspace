@@ -9,6 +9,10 @@
 		"editor.formatOnSave": true,
 		"files.autoSave": "afterDelay",
 		"editor.fontFamily": "JetBrains Mono",
-		"editor.mouseWheelZoom": true
+		"editor.mouseWheelZoom": true,
+		"[python]": {
+			"editor.defaultFormatter": "ms-python.autopep8"
+		},
+		"python.analysis.autoImportCompletions": true
 	}
 }

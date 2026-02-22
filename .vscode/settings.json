@@ -2,5 +2,6 @@
     "editor.mouseWheelZoom": true,
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
-    "editor.fontFamily": "JetBrains Mono"
+    "editor.fontFamily": "JetBrains Mono",
+    "python.analysis.autoImportCompletions": true
 }
