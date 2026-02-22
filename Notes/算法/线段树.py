@@ -32,13 +32,12 @@ def build(node, left, right):
 # idx: 我们要修改的目标在 nums 里的下标
 # cur: 我们要修改成的新值
 # left, right: 当前 node 管辖的范围
-def update(node, idx, cur, left, right):
+def update(node, idx, val, left, right):
     # 1. 找到了那个唯一的叶子节点！
     if left == right:
-        tree[node] = cur
-        # nums[idx] = cur  # 可选：如果你也想让原数组保持同步的话可以加上
+        tree[node] = val
+        # nums[idx] = val  # 可选：如果你也想让原数组保持同步的话可以加上
         return
-
     mid = (left + right) // 2
     left_node = 2 * node + 1
     right_node = 2 * node + 2
@@ -46,10 +45,10 @@ def update(node, idx, cur, left, right):
     # 2. 核心导航逻辑：目标 idx 到底在左边还是右边？
     if idx <= mid:
         # 目标在左半区，只去左边找！
-        update(left_node, idx, cur, left, mid)
+        update(left_node, idx, val, left, mid)
     else:
         # 目标在右半区，只去右边找！
-        update(right_node, idx, cur, mid + 1, right)
+        update(right_node, idx, val, mid + 1, right)
 
     # 3. 回溯：儿子们改完后，更新老爸的值
     tree[node] = tree[left_node] + tree[right_node]
