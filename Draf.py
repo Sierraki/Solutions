@@ -24,8 +24,8 @@ def ask(left, right):
     ans += sum(nums[b2 * n1: right + 1])
     return ans
 
-def update(idx, val):
 
+def update(idx, val):
     lc = (idx) // n1
     block[lc] = block[lc] - nums[idx] + val
     nums[idx] = val
