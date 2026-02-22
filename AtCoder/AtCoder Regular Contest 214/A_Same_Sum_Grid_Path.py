@@ -28,11 +28,33 @@ def lacc(nums):
     return list(acc(nums))
 def matt(row, col):
     return [[0] * col for _ in range(row)]
-
+def p(numss):
+    for i in numss:
+        print(i)
 
 
 def solve():
-    pass
+    n = ii()
+    nums = [lmsi() for _ in range(n)]
+    grid = [None for _ in range(2 * n - 1)]
+    for i in range(n):
+        for j in range(n):
+            if nums[i][j] != '?':
+                if not grid[i + j]:
+                    grid[i + j] = nums[i][j]
+                else:
+                    if nums[i][j] != grid[i + j]:
+                        print(-1)
+                        return
+    for i in range(n):
+        for j in range(n):
+            if nums[i][j] == '?':
+                if grid[i + j]:
+                    nums[i][j] = grid[i + j]
+                else:
+                    nums[i][j] = '0'
+    for i in nums:
+        print(''.join(i))
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":

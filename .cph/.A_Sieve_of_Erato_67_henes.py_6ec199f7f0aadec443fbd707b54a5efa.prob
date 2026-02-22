@@ -1,1 +1,0 @@
-{"name":"Local: A_Sieve_of_Erato_67_henes","url":"s:\\CodeDB\\Solutions\\A_Sieve_of_Erato_67_henes.py","tests":[{"id":1771697281182,"input":"2\n5\n1 7 6 7 67\n5\n1 3 5 7 8\n","output":"YES\nNO\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"s:\\CodeDB\\Solutions\\A_Sieve_of_Erato_67_henes.py","group":"local","local":true}

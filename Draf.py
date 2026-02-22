@@ -6,15 +6,7 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
-s = "00110"
-k = 2
+def matt(row, col):
+    return [[0] * col for _ in range(row)]
 
-ans = 2**k
-
-seen = set()
-
-for i in range(len(s) - k + 1):
-    seen.add(s[i:i + k])
-print(len(seen) == ans)
-
-print(seen, ans)
+print(matt(2, 3))
