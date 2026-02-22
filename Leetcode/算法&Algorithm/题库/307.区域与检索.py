@@ -1,3 +1,4 @@
+# 做法一：线段树
 class NumArray:
     def __init__(self, nums: List[int]):
         self.n = len(nums)
@@ -50,3 +51,34 @@ class NumArray:
         if R > mid:
             res += self._query(right_node, mid + 1, right, L, R)
         return res
+# 做法二：分块
+class NumArray:
+
+    def __init__(self, nums: List[int]):
+        n = len(nums)
+        self.nums = nums
+        self.n1 = int(n**0.5)
+        self.block = []
+        for i in range(0, n, self.n1):
+            self.block.append(sum(nums[i: i + self.n1]))
+
+    def update(self, index: int, val: int) -> None:
+        lc = (index) // self.n1
+        self.block[lc] = self.block[lc] - self.nums[index] + val
+        self.nums[index] = val
+
+    def sumRange(self, left: int, right: int) -> int:
+        b1 = left // self.n1
+        b2 = right // self.n1
+        if b1 == b2:
+            return sum(self.nums[left: right + 1])
+        ans = sum(self.nums[left: (b1 + 1) * self.n1])
+        ans += sum(self.block[b1 + 1: b2])
+        ans += sum(self.nums[b2 * self.n1: right + 1])
+        return ans
+
+
+# Your NumArray object will be instantiated and called as such:
+# obj = NumArray(nums)
+# obj.update(index,val)
+# param_2 = obj.sumRange(left,right)

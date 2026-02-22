@@ -3,5 +3,14 @@
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
     "editor.fontFamily": "JetBrains Mono",
-    "python.analysis.autoImportCompletions": true
+    "python.analysis.autoImportCompletions": true,
+    "javascript.suggest.autoImports": false,
+    "editor.hover.above": false,
+    "editor.hover.enabled": "off",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.parameterHints.cycle": false,
+    "editor.parameterHints.enabled": false,
+    "editor.suggest.showTypeParameters": false,
+    "breadcrumbs.showTypeParameters": false,
+    "outline.showTypeParameters": false,
 }
