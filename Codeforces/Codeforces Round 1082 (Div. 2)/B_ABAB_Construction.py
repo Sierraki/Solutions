@@ -35,25 +35,23 @@ def solve():
     n = ii()
     s = si()
 
-    swap = True
-    pin = 0
-    
-    if n % 2 != 0:
-        if s[0] == 'b':
-            swap = False
-        pin = 1
-        
-    if swap:
-        for i in range(pin, n, 2):
-            if (s[i] == 'a' and s[i+1] == 'a') or (s[i] == 'b' and s[i+1] == 'b'):
-                swap = False
+    if n % 2 == 0:
+        for i in range(1, n, 2):
+            if s[i - 1] == s[i] and s[i] != '?' and s[i - 1] != '?':
+                print('NO')
                 break
-    if swap:
-        print('YES')
+        else:
+            print('YES')
     else:
-        print('NO')
-
-    pass
+        if s[0] == 'a' or s[0] == '?':
+            for i in range(2, n, 2):
+                if s[i - 1] == s[i] and s[i] != '?' and s[i - 1] != '?':
+                    print('NO')
+                    break
+            else:
+                print('YES')
+        else:
+            print('NO')
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
