@@ -6,23 +6,16 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
-nums = [2, 6, 4, 8, 10, 9, 15]
-nums1 = sorted(nums)
 
-cnt = []
+nums = [1,1,1,1,1]
+target = 3
 
-for i in range(len(nums)):
-    if nums[i] != nums1[i]:
-        cnt.append(i)
-
-print(nums)
-
-print(nums1)
-
-
-print(cnt)
-
-if cnt:
-    print(cnt[-1] - cnt[0] + 1)
-else:
-    print(0)
+n=len(nums)
+res=[]
+def dfs(start,path):
+    if len(path)==n:
+        res.append(path[:])
+        return 
+    for i in range(start,n):
+        path.append(i*1)
+        

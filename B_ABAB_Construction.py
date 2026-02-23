@@ -32,10 +32,31 @@ def matt(row, col):
 
 
 def solve():
+    n = ii()
+    s = si()
+
+    swap = True
+    pin = 0
+    
+    if n % 2 != 0:
+        if s[0] == 'b':
+            swap = False
+        pin = 1
+        
+    if swap:
+        for i in range(pin, n, 2):
+            if (s[i] == 'a' and s[i+1] == 'a') or (s[i] == 'b' and s[i+1] == 'b'):
+                swap = False
+                break
+    if swap:
+        print('YES')
+    else:
+        print('NO')
+
     pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
-    # size = ii()
-    # for _ in range(size):
+    size = ii()
+    for _ in range(size):
         solve()

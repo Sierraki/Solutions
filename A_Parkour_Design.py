@@ -32,10 +32,15 @@ def matt(row, col):
 
 
 def solve():
+    x, y = mii()
+    if (x - 2 * y) % 3 == 0 and ((y >= 0 and x >= 2 * y) or (y < 0 and x + 4 * y >= 0)):
+        print('YES')
+    else:
+        print('NO')
     pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
-    # size = ii()
-    # for _ in range(size):
+    size = ii()
+    for _ in range(size):
         solve()
