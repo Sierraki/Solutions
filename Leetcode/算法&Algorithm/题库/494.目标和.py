@@ -16,17 +16,24 @@ class Solution:
 # 动态规划
 class Solution:
     def findTargetSumWays(self, nums: List[int], target: int) -> int:
-        n = len(nums)
         total = sum(nums)
-        if total < abs(target) or (total + target) % 2 != 0:
+        po = (total + target) / 2
+        n = len(nums)
+        if po % 1 == 0 and abs(target)<=total:
+            po = int(po)
+            dp = [[0] * (po + 1) for _ in range(n)]
+            dp[0][0] = 1
+            if nums[0] <= po:
+                dp[0][nums[0]] += 1
+            for i in range(1, n):
+                for j in range(po + 1):
+                    # 选
+                    dp[i][j] = dp[i - 1][j]
+                    # 不选
+                    if j >= nums[i]:
+                        dp[i][j] += dp[i - 1][j - nums[i]]
+            return(dp[-1][-1])
+        else:
             return 0
-        po = (total + target) // 2
-        dp = [[0] * (po + 1) for _ in range(n + 1)]
-        dp[0][0] = 1
-        for i in range(1, len(nums) + 1):
-            num = nums[i - 1]
-            for j in range(po + 1):
-                dp[i][j] = dp[i - 1][j]
-                if j >= num:
-                    dp[i][j] += dp[i - 1][j - num]
-        return dp[-1][-1]
+
+
