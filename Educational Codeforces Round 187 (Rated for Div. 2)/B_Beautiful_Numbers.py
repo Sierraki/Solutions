@@ -23,17 +23,24 @@ def p(numss):
 def read_mat(n): return [lmii() for _ in range(n)]
 
 def solve():
-    a, b, c = mii()
-    single = 0
-    if b > c:
-        single = 1
+    s = si()
+    total = sum(int(i) for i in s)
+    if total <= 9:
+        print(0)
     else:
-        single = c // b + 1 if c // b + 1 <= a else a
-
-
-
-    print(ceil(a / single))
-
+        p1 = s[0]
+        p2 = s[1:]
+        res = []
+        if int(p1) > 1:
+            res.append(int(p1) - 1)
+        for i in p2:
+            res.append(int(i))
+        res.sort(reverse=True)
+        for i, j in enumerate(res, 1):
+            total -= j
+            if total <= 9:
+                print(i)
+                break
     pass
 
 # sys.setrecursionlimit(200000)

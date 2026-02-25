@@ -28,38 +28,17 @@ def lacc(nums):
     return list(acc(nums))
 def matt(row, col):
     return [[0] * col for _ in range(row)]
-def p(numss):
-    for i in numss:
-        print(i)
+
 
 
 def solve():
-    n, m = mii()
-    nums = [lmii() for _ in range(n)]
-    # print(nums)
-    # p(nums)
-    res = []
-    for i in range(m):
-        cur = []
-        for j in range(n):
-            cur.append(nums[j][i])
-        res.append(sorted(cur, reverse=True))
-    # p(res)
+    n, k = mii()
+    nums = lmii()
+    tar = nums[k - 1]
+    nums.sort()
+    print(bisect_left(nums, tar))
 
-    def fun(ll):
-        ans = 0
-        n = len(ll)
-        for i, j in enumerate(ll):
-            ans += (n - i - 1) * j
-            ans -= i * j
-        return ans
-    ans = 0
-    for i in res:
-        ans += fun(i)
-        # print(fun(i), i)
-    print(ans)
-
-
+    pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":

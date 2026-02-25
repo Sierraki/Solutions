@@ -11,38 +11,14 @@ def p(numss):
 
 
 
-nums = [[4, 1, 2, 3, 4],
-        [3, 2, 5, 6],
-        [2, 1, 3],
-        [3, 4, 7, 8],
-        [2, 6, 8],
-        [0],
-        ]
+s = "1101"
 
-m = 8
-n = len(nums)
-
-check = [set(i) for i in nums]
-p(check)
-
-vis = [True] + [False] * (m)
-res = [0]
-def dfs(cur, path):
-    if cur == n:
-        if len(path) > res[0]:
-            res[0] = len(path)
-        return
-
-    for i in check[cur]:
-        if vis[i] == False:
-            vis[i] = True
-            path.append(i)
-            dfs(cur + 1, path)
-            path.pop()
-            vis[i] = False
+ans = 0
+for i in range(len(s) - 1, 0, -1):
+    cur = s[i]
+    print(cur)
+    if cur == '0':
+        ans += 1
     else:
-        dfs(cur + 1, path)
-
-dfs(0, [])
-
-print(bin(5), bin(4))
+        ans += 2
+print(ans)
