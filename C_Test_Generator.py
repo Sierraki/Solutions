@@ -23,10 +23,39 @@ def p(numss):
 def read_mat(n): return [lmii() for _ in range(n)]
 
 def solve():
+    s, m = mii()
+    low = m & -m
+    # print(low)
+    if s % low != 0:
+        print(-1)
+    else:
+        bit = []
+        for j in range(60, -1, -1):
+            if (m >> j) & 1:
+                bit.append(1 << j)
+        # print(bit)
+        def check(n):
+            rem = s
+            for val in bit:
+                take = min(n, rem // val)
+                rem -= take * val
+            return rem == 0
+        low = 1
+        high = s // low
+        ans = high
+        while low <= high:
+            mid = (low + high) // 2
+            if check(mid):
+                ans = mid
+                high = mid - 1
+            else:
+                low = mid + 1
+
+        print(ans)
     pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
-    # size = ii()
-    # for _ in range(size):
-    solve()
+    size = ii()
+    for _ in range(size):
+        solve()

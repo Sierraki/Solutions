@@ -32,19 +32,20 @@ def matt(row, col):
 
 
 def solve():
-    n=ii()
-    nums=lmsi()
-    nn=ii()
-    for _ in range(nn):
-        cur=lmii()
-        if cur[0]==1:
-            x=cur[1]
-        else:
-            x,y=cur[1:]
+    n, m = mii()
+    cnt = defaultdict(set)
+    ans = 0
+    for _ in range(m):
+        a, b = mii()
+        cnt[a].add(b)
+        if b in cnt and a in cnt[b]:
+            ans += 1
+    print(ans)
+
     pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
     # size = ii()
     # for _ in range(size):
-        solve()
+    solve()

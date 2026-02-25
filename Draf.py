@@ -9,37 +9,40 @@ def p(numss):
     for i in numss:
         print(i)
 
-nums = [1, 1, 1, 1]
-target = -1000
 
-total = sum(nums)
 
-po = (total + target) / 2
+nums = [[4, 1, 2, 3, 4],
+        [3, 2, 5, 6],
+        [2, 1, 3],
+        [3, 4, 7, 8],
+        [2, 6, 8],
+        [0],
+        ]
 
-print(po)
+m = 8
 n = len(nums)
-if po % 1 == 0:
-    po = int(po)
-    dp = [[0] * (po + 1) for _ in range(n)]
 
-    dp[0][0] = 1
-    if nums[0] <= po:
-        dp[0][nums[0]] += 1
+check = [set(i) for i in nums]
+p(check)
 
-    for i in range(1, n):
-        for j in range(po + 1):
-            # 选
-            dp[i][j] = dp[i - 1][j]
-            # 不选
-            if j >= nums[i]:
-                dp[i][j] += dp[i - 1][j - nums[i]]
-    print(dp[-1][-1])
+vis = [True] + [False] * (m)
+res = [0]
+def dfs(cur, path):
+    if cur == n:
+        if len(path) > res[0]:
+            res[0] = len(path)
+        return
 
+    for i in check[cur]:
+        if vis[i] == False:
+            vis[i] = True
+            path.append(i)
+            dfs(cur + 1, path)
+            path.pop()
+            vis[i] = False
+    else:
+        dfs(cur + 1, path)
 
+dfs(0, [])
 
-
-else:
-    print(0)
-
-
-p(dp)
+print(bin(5), bin(4))

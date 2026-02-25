@@ -23,10 +23,21 @@ def p(numss):
 def read_mat(n): return [lmii() for _ in range(n)]
 
 def solve():
+    a, b, c = mii()
+    single = 0
+    if b > c:
+        single = 1
+    else:
+        single = c // b + 1 if c // b + 1 <= a else a
+
+
+
+    print(ceil(a / single))
+
     pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
-    # size = ii()
-    # for _ in range(size):
-    solve()
+    size = ii()
+    for _ in range(size):
+        solve()

@@ -23,10 +23,38 @@ def p(numss):
 def read_mat(n): return [lmii() for _ in range(n)]
 
 def solve():
+    s = si()
+    total = sum(int(i) for i in s)
+    # print(total)
+    if total <= 9:
+        print(0)
+    else:
+        p1 = s[0]
+        p2 = s[1:]
+        # print(total)
+        # print(nums)
+        ans = 0
+        res = []
+        if int(p1) > 1:
+            res.append(int(p1) - 1)
+        for i in p2:
+            res.append(int(i))
+        res.sort(reverse=True)
+        # print(total)
+        for i, j in enumerate(res, 1):
+            total -= j
+            if total <= 9:
+                print(i)
+                break
+        # print(res, total)
+
+
+
+
     pass
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":
-    # size = ii()
-    # for _ in range(size):
-    solve()
+    size = ii()
+    for _ in range(size):
+        solve()
