@@ -11,14 +11,7 @@ def p(numss):
 
 
 
-s = "1101"
+print((1**8) % 8)
 
-ans = 0
-for i in range(len(s) - 1, 0, -1):
-    cur = s[i]
-    print(cur)
-    if cur == '0':
-        ans += 1
-    else:
-        ans += 2
-print(ans)
+
+print(min([1, 3, 5], [float('inf')]))

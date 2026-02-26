@@ -29,8 +29,26 @@ def solve():
         cur = 2**i
         if cur & m == cur:
             tar.append(cur)
-    print(tar)
-    left,right=
+    if s % tar[-1] != 0:
+        print(-1)
+        return
+    left, right = 1,s // tar[-1]
+    def check(limit):
+        rem = s
+        for val in tar:
+            take = min(limit, rem // val)
+            rem -= take * val
+        return rem == 0 
+    ans = -1
+    while left <=right:
+        mid = (left + right) // 2
+        if check(mid):
+            ans = mid
+            right = mid-1
+        else:
+            left = mid + 1
+    print(ans)
+
 
     pass
 
