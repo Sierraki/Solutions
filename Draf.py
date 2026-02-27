@@ -11,7 +11,3 @@ def p(numss):
 
 
 
-print((1**8) % 8)
-
-
-print(min([1, 3, 5], [float('inf')]))
