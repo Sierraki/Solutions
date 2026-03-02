@@ -10,4 +10,9 @@ def p(numss):
         print(i)
 
 
-
+ans = 1
+cnt = 0
+while ans >= 0.5:
+    ans = ans * ((1 - 0.005)**cnt)
+    cnt += 1
+print(cnt, ans)
