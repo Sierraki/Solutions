@@ -1,10 +1,9 @@
 {
-    
     "editor.mouseWheelZoom": true,
     "files.autoSave": "afterDelay",
     "editor.formatOnSave": true,
     "editor.fontFamily": "JetBrains Mono",
-    "python.analysis.autoImportCompletions": false,
+    "python.analysis.autoImportCompletions": true,
     "javascript.suggest.autoImports": false,
     "editor.hover.above": false,
     "editor.hover.enabled": "off",
@@ -15,4 +14,7 @@
     "breadcrumbs.showTypeParameters": false,
     "outline.showTypeParameters": false,
     "typescript.suggest.autoImports": false,
+    "editor.inlineSuggest.edits.allowCodeShifting": "never",
+    "editor.inlineSuggest.edits.renderSideBySide": "never",
+    "editor.inlineSuggest.enabled": false,
 }
