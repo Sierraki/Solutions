@@ -5,14 +5,15 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
+
 def p(numss):
     for i in numss:
         print(i)
 
+matrix = [[1, 4, 7, 11, 15], [2, 5, 8, 12, 19], [
+    3, 6, 9, 16, 22], [10, 13, 14, 17, 24], [18, 21, 23, 26, 30]]
 
-ans = 1
-cnt = 0
-while ans >= 0.5:
-    ans = ans * ((1 - 0.005)**cnt)
-    cnt += 1
-print(cnt, ans)
+target = 5
+# p(matrix)
+m = len(matrix)
+n = len(matrix[0])
