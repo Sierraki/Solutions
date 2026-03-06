@@ -13,28 +13,18 @@ def p(numss):
     for i in numss:
         print(i)
 
+energy = [5, -10, 4, 3, 5, -9, 9, -7]
+k = 2
 
-s = "10001100101000000"
+dp = [0] * len(energy)
+ans = -float('inf')
+for i, j in enumerate(energy):
+    if i - k >= 0:
+        dp[i] = max(j, j + dp[i - k])
+        ans=max()
 
-s = list(map(int, s + s))
-
-
-
-nums = [1 if i % 2 == j else 0 for i, j in enumerate(s)]
-
-
-cur = 0
-l = 0
-k = len(s) // 2
-ans = float('inf')
-for r, val in enumerate(nums):
-    if r < k:
-        cur += val
     else:
-        cur += val
-        cur -= nums[l]
-        l += 1
-        ans = min(ans, cur, k - cur)
+        dp[i] = j
 
-
-print(ans)
+print(dp)
+print(dp[-1])
