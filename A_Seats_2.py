@@ -27,6 +27,8 @@ def read_mat(n): return [lmii() for _ in range(n)]
 
 
 def solve():
+    a, b = mii()
+    print('Yes' if (a + 1) // 2 >= b else 'No')
     pass
 
 

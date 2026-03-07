@@ -5,9 +5,7 @@ from collections import Counter, defaultdict, deque
 from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
-
 input = sys.stdin.readline
-
 # num
 def ii(): return int(input())
 def mii(): return map(int, input().split())
@@ -24,12 +22,20 @@ def p(numss):
         print(i)
 def read_mat(n): return [lmii() for _ in range(n)]
 
-
-
 def solve():
+    n, m = mii()
+    nums = lmii()
+    cur = 0
+    for _ in range(n):
+        a, b = mii()
+        if nums[a - 1] - b >= 0:
+            nums[a - 1] -= b
+            cur += b
+        else:
+            cur += nums[a - 1]
+            nums[a - 1] = 0
+    print(cur)
     pass
-
-
 
 # sys.setrecursionlimit(200000)
 if __name__ == "__main__":

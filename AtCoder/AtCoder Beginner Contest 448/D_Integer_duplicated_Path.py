@@ -6,6 +6,7 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
+
 input = sys.stdin.readline
 
 # num
@@ -27,11 +28,35 @@ def read_mat(n): return [lmii() for _ in range(n)]
 
 
 def solve():
+    n = ii()
+    nums = [0] + lmii()
+    adj = [[]for _ in range(n + 1)]
+    for _ in range(n - 1):
+        a, b = mii()
+        adj[a].append(b)
+        adj[b].append(a)
+    res = ['No'] * (n + 1)
+    vis = [False] * (n + 1)
+
+    def dfs(cur, path, lv):
+        if not vis[cur]:
+            path[nums[cur]] += 1
+            vis[cur] = True
+            if len(path) != lv:
+                res[cur] = 'Yes'
+            for i in adj[cur]:
+                dfs(i, path, lv + 1)
+            lv -= 1
+            path[nums[cur]] -= 1
+            if path[nums[cur]] == 0:
+                del path[nums[cur]]
+            vis[cur] = False
+    dfs(1, Counter(), 1)
+    for i in res[1:]:
+        print(i)
     pass
 
-
-
-# sys.setrecursionlimit(200000)
+sys.setrecursionlimit(200000)
 if __name__ == "__main__":
     # size = ii()
     # for _ in range(size):
