@@ -15,5 +15,4 @@ class Solution:
                 pin += 1
             if "".join(check) == s:
                 return True
-                break
         return False
