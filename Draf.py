@@ -5,10 +5,24 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
-n = 5
+k = 3
 
-res = bin(n)[2:]
-l = n.bit_length()
-mask = (1 << l) - 1
-print(n ^ mask)
-print(mask)
+res = []
+swap = [True]
+
+tar = ["01", "10"]
+
+def dfs(cur):
+    if swap[0]:
+        if len(cur) == k or cur in tar:
+            res.append(cur)
+            swap[0] = False
+            return
+        dfs(cur + '1')
+        dfs(cur + '0')
+    else:
+        return
+
+dfs('')
+
+print(res)
