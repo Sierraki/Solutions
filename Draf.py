@@ -12,17 +12,15 @@ swap = [True]
 
 tar = ["01", "10"]
 
-def dfs(cur):
-    if swap[0]:
-        if len(cur) == k or cur in tar:
-            res.append(cur)
-            swap[0] = False
-            return
-        dfs(cur + '1')
-        dfs(cur + '0')
-    else:
-        return
-
-dfs('')
-
-print(res)
+def dfs(cur): 
+    if len(cur) == k:
+        if cur not in tar:
+            return cur
+    res1= dfs(cur + '1') 
+    if res1 :
+        return res1
+    res2= dfs(cur + '2') 
+    if res2 :
+        return res2
+    
+print(dfs(''))

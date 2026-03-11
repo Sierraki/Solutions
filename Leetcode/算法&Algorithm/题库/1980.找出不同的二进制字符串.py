@@ -1,19 +1,19 @@
 class Solution:
     def findDifferentBinaryString(self, nums: List[str]) -> str:
         k = len(nums[0])
-        res = []
-        swap = [True]
         tar = set(nums)
 
         def dfs(cur):
-            if swap[0]:
-                if len(cur) == k:
-                    if cur not in tar:
-                        res.append(cur)
-                        swap[0] = False
-                    return
-                dfs(cur + "1")
-                dfs(cur + "0")
+            if len(cur) == k:
+                if cur not in tar:
+                    return cur
+                return
+            res1 = dfs(cur + "1")
+            if res1:
+                return res1
+            res2 = dfs(cur + "0")
+            if res2:
+                return res2
+            return
 
-        dfs("")
-        return res[0]
+        return dfs("")
