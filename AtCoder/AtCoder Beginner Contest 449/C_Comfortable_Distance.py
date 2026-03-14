@@ -27,6 +27,29 @@ def read_mat(n): return [lmii() for _ in range(n)]
 
 
 def solve():
+    n, l, r = mii()
+    s = si()
+    cnt = defaultdict(list)
+    for i, j in enumerate(s, 1):
+        cnt[j].append(i)
+    # print(cnt)
+
+    def fun(nums, l, r):
+        count = 0
+        for b_idx in range(len(nums)):
+            current_val = nums[b_idx]
+            lower_bound = current_val - r
+            upper_bound = current_val - l
+            i_left = bisect_left(nums, lower_bound)
+            i_right = bisect(nums, upper_bound)
+            if i_right > i_left:
+                count += (i_right - i_left)
+        return count
+
+    ans = 0
+    for i in cnt.values():
+        ans += fun(i, l, r)
+    print(ans)
     pass
 
 

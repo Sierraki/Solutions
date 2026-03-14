@@ -27,6 +27,8 @@ def read_mat(n): return [lmii() for _ in range(n)]
 
 
 def solve():
+    n = ii()
+    print((n / 2 )**2* pi)
     pass
 
 

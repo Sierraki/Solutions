@@ -26,8 +26,41 @@ def read_mat(n): return [lmii() for _ in range(n)]
 
 
 
+def fun1(X, Y):
+    if X < 0 or Y < 0:
+        return 0
+    if X > Y:
+        X, Y = Y, X
+    m = X // 2
+    ans = (2 * m + 1) * (m + 1)
+    def fun2(n):
+        if n < 0:
+            return 0
+        return n // 2 + 1
+    even_cnt = fun2(Y) - fun2(X)
+    ans += (X + 1) * even_cnt
+    return ans
+
+def countt(low, high):
+    if low > 0: 
+        return [(1, high), (-1, low - 1)]
+    if high < 0: 
+        return [(1, abs(low)), (-1, abs(high) - 1)]
+    return [(1, high), (1, abs(low)), (-1, 0)]
+
 def solve():
-    pass
+
+    l, r, d, u = mii()
+
+    row = countt(l, r)
+    col = countt(d, u)
+
+    black_cnt = 0
+    for i, j in row:
+        for ii, jj in col:
+            black_cnt += i * ii * fun1(j, jj)
+
+    print(black_cnt)
 
 
 

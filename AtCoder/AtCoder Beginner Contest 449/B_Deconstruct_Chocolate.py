@@ -4,7 +4,7 @@ from bisect import bisect, bisect_left
 from collections import Counter, defaultdict, deque
 from functools import cache, lru_cache
 from itertools import accumulate as acc
-from math import ceil, floor, gcd, sqrt, pi
+from math import ceil, floor, gcd, sqrt
 
 input = sys.stdin.readline
 
@@ -27,6 +27,15 @@ def read_mat(n): return [lmii() for _ in range(n)]
 
 
 def solve():
+    h, w, q = mii()
+    for _ in range(q):
+        a, b = mii()
+        if a == 2:
+            print(b * h)
+            w -= b
+        else:
+            print(b * w)
+            h -= b
     pass
 
 
