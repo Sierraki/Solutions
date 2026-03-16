@@ -5,22 +5,24 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
-k = 3
 
-res = []
-swap = [True]
+n = 1
+k = 4
 
-tar = ["01", "10"]
+tar = ['a', 'b', 'c']
+res = [0]
 
-def dfs(cur): 
-    if len(cur) == k:
-        if cur not in tar:
-            return cur
-    res1= dfs(cur + '1') 
-    if res1 :
-        return res1
-    res2= dfs(cur + '2') 
-    if res2 :
-        return res2
-    
-print(dfs(''))
+def dfs(idx, cur):
+
+    if len(cur) == n:
+        res[0] = cur
+        return
+    for i in tar:
+        if not cur or i != cur[-1]:
+            cur.append(i)
+            dfs(idx + 1, cur)
+            cur.pop()
+
+dfs(1, [])
+
+print(res)
