@@ -1,14 +1,4 @@
-import heapq
-from bisect import bisect, bisect_left
-from collections import Counter, defaultdict, deque
-from functools import cache, lru_cache
-from itertools import accumulate as acc
-from math import ceil, floor, gcd, sqrt
-
-
-
 class Bank:
-
     def __init__(self, balance: List[int]):
         self.nums = balance
         self.n = len(balance)
@@ -24,19 +14,22 @@ class Bank:
                 return True
         return False
 
-
-
     def deposit(self, account: int, money: int) -> bool:
         if self.check(account):
-            self.nums[account-1]+=money
+            self.nums[account - 1] += money
             return True
         return False
 
-
-
     def withdraw(self, account: int, money: int) -> bool:
         if self.check(account):
-            if self.nums[account-1]>=money:
-                self.nums[account-1]-=money
+            if self.nums[account - 1] >= money:
+                self.nums[account - 1] -= money
                 return True
         return False
+
+
+# Your Bank object will be instantiated and called as such:
+# obj = Bank(balance)
+# param_1 = obj.transfer(account1,account2,money)
+# param_2 = obj.deposit(account,money)
+# param_3 = obj.withdraw(account,money)
