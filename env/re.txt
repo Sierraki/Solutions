@@ -1,0 +1,17 @@
+# --- 基础请求与爬虫 ---
+requests          # 经典的 HTTP 请求库
+httpx             # 支持异步的高性能请求库（爬虫进阶必备）
+parsel            # 基于 CSS 和 XPath 的解析库（比 BeautifulSoup 快且强）
+
+# --- 数据分析核心三剑客 ---
+numpy             # 矩阵运算与底层数值计算
+pandas            # 数据处理的“瑞士军刀”，处理表格、CSV、Excel 的核心
+matplotlib        # 基础绘图库，功能最全
+
+# --- 高级分析与可视化 ---
+seaborn           # 基于 matplotlib 的高级美化绘图库
+scipy             # 科学计算与统计分析
+
+# --- 辅助工具 ---
+openpyxl          # 让 pandas 支持读写 Excel 文件
+tqdm              # 为你的爬虫和处理循环添加进度条

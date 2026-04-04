@@ -5,38 +5,20 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
+s1 = "aavizsxpqhxztrwi"
+s2 = "zvisqatzpaxhixwr"
 
+def fun(s):
+    cnt1 = Counter()
+    cnt2 = Counter()
+    for i, j in enumerate(s):
+        if i % 2 == 0:
+            cnt1[j] += 1
+        else:
+            cnt2[j] += 1
+    return [cnt1, cnt2]
 
-class Bank:
+nums1 = [1, 3]
+nums2 = [3, 1]
 
-    def __init__(self, balance: List[int]):
-        self.nums = balance
-        self.n = len(balance)
-
-    def check(self, num):
-        return 1 <= num <= self.n
-
-    def transfer(self, account1: int, account2: int, money: int) -> bool:
-        if self.check(account1) and self.check(account2):
-            if self.nums[account1 - 1] >= money:
-                self.nums[account2 - 1] += money
-                self.nums[account1 - 1] -= money
-                return True
-        return False
-
-
-
-    def deposit(self, account: int, money: int) -> bool:
-        if self.check(account):
-            self.nums[account-1]+=money
-            return True
-        return False
-
-
-
-    def withdraw(self, account: int, money: int) -> bool:
-        if self.check(account):
-            if self.nums[account-1]>=money:
-                self.nums[account-1]-=money
-                return True
-        return False
+print(nums1 == nums2)
