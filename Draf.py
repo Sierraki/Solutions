@@ -5,20 +5,28 @@ from functools import cache, lru_cache
 from itertools import accumulate as acc
 from math import ceil, floor, gcd, sqrt
 
-s1 = "aavizsxpqhxztrwi"
-s2 = "zvisqatzpaxhixwr"
+commands = [4, -1, 4, -2, 4]
+obstacles = [[2, 4]]
 
-def fun(s):
-    cnt1 = Counter()
-    cnt2 = Counter()
-    for i, j in enumerate(s):
-        if i % 2 == 0:
-            cnt1[j] += 1
-        else:
-            cnt2[j] += 1
-    return [cnt1, cnt2]
+obstacle_set = set(map(tuple, obstacles)) 
+dirs = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+d = 0   
 
-nums1 = [1, 3]
-nums2 = [3, 1]
+x, y = 0, 0
+mx = 0
 
-print(nums1 == nums2)
+for cmd in commands:
+    if cmd == -2:  
+        d = (d + 3) % 4
+    elif cmd == -1:   
+        d = (d + 1) % 4
+    else:   
+        dx, dy = dirs[d]
+        for _ in range(cmd): 
+            nx, ny = x + dx, y + dy 
+            if (nx, ny) in obstacle_set:
+                break 
+            x, y = nx, ny 
+        mx = max(mx, x * x + y * y)
+
+print(mx)
